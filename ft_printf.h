@@ -16,7 +16,7 @@ char	*ft_itoa_base(int value, int base);
 void	ft_putnbr(int n);
 int		ft_strlen(const char *s);
 
-int		put_s(const char *s);
+int		put_s(const char *s, char *fl);
 int		put_d(int n);
 int		put_u(unsigned int n);
 int		put_o(unsigned int n);
