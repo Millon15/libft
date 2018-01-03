@@ -1,12 +1,39 @@
 
 #include "ft_printf.h"
 
-int		findsubstr(const char *s, size_t i, va_list ap)
+char		*findconvchr(const char *s, size_t *l)
 {
+	size_t		i;
+	size_t		j;
+	char		*fl;
+
+	i = *l;
+	while (s[i] && (s[i] != 's' || s[i] != 'd' || s[i] != 'i' ||
+	s[i] != 's' || s[i] != 'u' || s[i] != 's' || s[i] != 'x' || s[i] != 'X'))
+		i++;
+	if (!s[i])
+		return (NULL);
+	fl = (char *)malloc(sizeof(char) * (i - *l + 2));
+	j = 0;
+	while (j < i)
+		fl[j++] = s[*l++];
+	fl[j] = '\0';
+	return (fl);
+}
+
+int			findsubstr(const char *s, size_t *l, va_list ap)
+{
+	size_t		i;
+	char		*fl;
+
+	i = ++(*l);
 	if (s[i] == '%' || s[i] == 'c')
-		return (putchar(s[i]));
+		return (ft_putchar(s[i]));
+	if (!(fl = findconvchr(s, l)))
+		return (0);
+	i = *l;
 	if (s[i] == 's')
-		return (put_s(va_arg(ap, const char *)));
+		return (put_s(va_arg(ap, const char *), fl));
 	if (s[i] == 'S')
 		return (ft_putstr("%S"));
 	if (s[i] == 'i')
@@ -38,7 +65,7 @@ int			ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%')
 		{
-			k += findsubstr(s, ++i, ap);
+			k += findsubstr(s, &i, ap);
 			i++;
 		}
 		else
@@ -58,7 +85,5 @@ int			main(void)
 
 	k1 = ft_printf("yyguy %i\n%d\n%u\n%x\n%X\n%o\nijiji\n\n", 123, 999, 999, 999, 999, 999);
 	k2 = printf("yyguy %i\n%d\n%u\n%x\n%X\n%o\nijiji\n\n", 123, 999, 999, 999, 999, 999);
-	printf("%lugbfg\n\n", 12789858723);
-	printf("k1 = %d\nk2 = %d\n", k1, k2);
 	return (0);
 }

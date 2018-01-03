@@ -1,7 +1,7 @@
 
 #include "../ft_printf.h"
 
-int		put_s(const char *s)
+int		put_s(const char *s, char fl)
 {
 	size_t		i;
 

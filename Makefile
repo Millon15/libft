@@ -12,9 +12,6 @@
 
 NAME	=	ft_printf
 SRC		=	main.c \
-			src/help/ft_putchar.c \
-			src/help/ft_putstr.c \
-			src/help/ft_itoa.c \
 			src/put_s.c \
 			src/put_d.c \
 			src/put_u.c \

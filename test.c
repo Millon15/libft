@@ -3,6 +3,9 @@
 
 int		main()
 {
-	printf("%o\n", 123);
-	return (0);
+	char	s[] = "lka";
+	int		k;
+
+	k = printf("%%12.022w\n");
+	return (k);
 }
