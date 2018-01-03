@@ -1,5 +1,6 @@
 #My addings
 .*
+test.c
 
 # Prerequisites
 *.d
