@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/03 12:38:22 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/03 15:58:08 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ char	*ft_utoa(unsigned int n)
 	return (buf);
 }
 
-int put_u(unsigned int n)
+int		put_u(unsigned int n)
 {
-	char *h;
-	int k;
+	char	*h;
+	int		k;
 
 	h = ft_utoa(n);
 	k = ft_putstr(h);
