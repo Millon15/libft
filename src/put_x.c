@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/03 15:58:37 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/03 19:19:30 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,10 @@ char	*ft_itoa_base_small(unsigned int value, int base)
 	while (value / b && ++j)
 		b *= base;
 	b = value;
-	if (value < 0 && (b = -b) && base == 10)
-		j++;
 	res = (char *)malloc(sizeof(char) * j);
 	res[j--] = '\0';
 	if (value == 0)
 		res[0] = '0';
-	if (value < 0 && base == 10)
-		res[0] = '-';
 	while (b)
 	{
 		res[j--] = "0123456789abcdef"[b % base];

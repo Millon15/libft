@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/01/03 12:37:47 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/01/03 19:21:22 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC		=	main.c \
 			src/put_u.c \
 			src/put_o.c \
 			src/put_x.c \
-			src/put_X.c \
+			src/put_big_x.c \
 			
 OBJ		=	$(SRC:.c=.o)
 CFLAGS	=	

@@ -6,13 +6,13 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/03 12:38:16 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/03 19:15:38 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		put_s(const char *s, char *fl)
+int		put_s(const char *s)
 {
 	size_t		i;
 
