@@ -6,7 +6,7 @@ int		put_d(int n)
 	char	*h;
 	int		k;
 
-	h = ft_itoa(n);
+	h = ft_itoa_base(n, 10);
 	k = ft_putstr(h);
 	free(h);
 	return (k);

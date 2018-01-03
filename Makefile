@@ -12,6 +12,7 @@
 
 NAME	=	ft_printf
 SRC		=	main.c \
+			help.c \
 			src/put_s.c \
 			src/put_d.c \
 			src/put_u.c \

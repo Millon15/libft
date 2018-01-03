@@ -9,12 +9,9 @@
 #include <stdio.h>
 
 int		ft_putchar(int c);
-int		ft_putstr(const char *s);
-char	*ft_itoa(int n);
-char	*ft_itoa_base(int value, int base);
-
-void	ft_putnbr(int n);
 int		ft_strlen(const char *s);
+int		ft_putstr(const char *s);
+char	*ft_itoa_base(int value, int base);
 
 int		put_s(const char *s, char *fl);
 int		put_d(int n);
