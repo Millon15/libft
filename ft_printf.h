@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/03 19:22:36 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/04 13:04:55 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,20 @@ typedef struct		s_flags
 	unsigned int	z : 1;
 	unsigned int	t : 1;
 	unsigned int	L : 1;
-	unsigned int	min_lenth;
+	unsigned int	precs_spec : 1;
 	unsigned int	precision;
+	unsigned int	min_lenth;
 }					t_flags;
+
+void				print_fl(t_flags **fl);
 
 int					ft_putchar(int c);
 int					ft_strlen(const char *s);
 int					ft_putstr(const char *s);
 char				*ft_itoa_base(int value, int base);
 
-int					put_s(const char *s);
-int					put_d(int n);
+int					put_s(const char *s, t_flags *fl);
+int					put_d(int n, t_flags *fl);
 int					put_u(unsigned int n);
 int					put_o(unsigned int n);
 int					put_x(unsigned int n);
