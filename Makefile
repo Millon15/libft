@@ -6,13 +6,13 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/01/04 11:42:28 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/01/04 15:53:41 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	ft_printf
-SRC		=	main.c \
-			help.c \
+NAME	=	libftprintf.a
+SRC		=	help.c \
+			ft_printf.c \
 			src/put_s.c \
 			src/put_d.c \
 			src/put_u.c \
@@ -20,7 +20,7 @@ SRC		=	main.c \
 			src/put_x.c \
 			src/put_big_x.c \
 			print_fl.c \
-			
+
 OBJ		=	$(SRC:.c=.o)
 CFLAGS	=	
 # CFLAGS	=	-Wall -Wextra -Werror
@@ -29,7 +29,8 @@ CFLAGS	=
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(CFLAGS) -o $(NAME) $^
+	ar rc $(NAME) $^
+	ranlib $(NAME)
 
 %.o: %.c
 	gcc $(CFLAGS) -o $@ -c $<

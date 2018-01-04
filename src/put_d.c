@@ -6,23 +6,16 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/04 13:12:22 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/04 16:44:48 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int		put_d(int n, t_flags *fl)
+int		handle_minln(char *s, char *ml, int i, t_flags *fl)
 {
-	int		i;
 	int		j;
-	char	*s;
-	char	*ml;
 
-	i = 0;
-	s = ft_itoa_base(n, 10);
-	while (s[i])
-		i++;
 	if (i < fl->min_lenth)
 	{
 		ml = (char *)malloc(sizeof(char) * (fl->min_lenth + 1));
@@ -37,10 +30,32 @@ int		put_d(int n, t_flags *fl)
 		free(ml);
 		return (j);
 	}
-	else
+	j = (int)write(1, s, i);
+	free(s);
+	return (j);
+}
+
+int		put_d(int n, t_flags *fl)
+{
+	int		i;
+	int		j;
+	char	*s;
+	char	*ml;
+
+	s = ft_itoa_base(n, 10);
+	i = ft_strlen(s);
+	if (fl->precs_spec && i < fl->precision)
 	{
-		j = (int)write(1, s, i);
+		ml = (char *)malloc(sizeof(char) * (fl->precision + 1));
+		j = 0;
+		while (j < fl->precision)
+			ml[j++] = '0';
+		ml[j] = '\0';
+		while (i > 0)
+			ml[--j] = s[--i];
 		free(s);
-		return (j);
+		s = ml;
+		i = ft_strlen(s);
 	}
+	return (handle_minln(s, ml, i, fl));
 }

@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/04 13:04:55 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/04 15:54:54 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct		s_flags
 }					t_flags;
 
 void				print_fl(t_flags **fl);
+int					ft_printf(const char *s, ...);
 
 int					ft_putchar(int c);
 int					ft_strlen(const char *s);
