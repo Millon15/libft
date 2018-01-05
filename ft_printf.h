@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/04 15:54:54 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/05 20:06:04 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 typedef struct		s_flags
 {
+	unsigned int	small_x : 1;
 	unsigned int	plus : 1;
 	unsigned int	minus : 1;
 	unsigned int	space : 1;
@@ -40,18 +41,15 @@ typedef struct		s_flags
 }					t_flags;
 
 void				print_fl(t_flags **fl);
+
 int					ft_printf(const char *s, ...);
 
 int					ft_putchar(int c);
 int					ft_strlen(const char *s);
 int					ft_putstr(const char *s);
-char				*ft_itoa_base(int value, int base);
+void				*ft_memalloc(size_t size);
 
 int					put_s(const char *s, t_flags *fl);
-int					put_d(int n, t_flags *fl);
-int					put_u(unsigned int n);
-int					put_o(unsigned int n);
-int					put_x(unsigned int n);
-int					put_big_x(unsigned int n);
+int					put_dioux(long n, short base, t_flags *fl);
 
 #endif

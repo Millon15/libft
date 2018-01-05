@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/03 19:19:30 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/05 13:46:42 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char	*ft_itoa_base_small(unsigned int value, int base)
 	}
 	return (res);
 }
+
 
 int		put_x(unsigned int n)
 {

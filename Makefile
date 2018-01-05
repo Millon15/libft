@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/01/04 15:53:41 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/01/05 19:53:28 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,7 @@ NAME	=	libftprintf.a
 SRC		=	help.c \
 			ft_printf.c \
 			src/put_s.c \
-			src/put_d.c \
-			src/put_u.c \
-			src/put_o.c \
-			src/put_x.c \
-			src/put_big_x.c \
+			src/put_dioux.c \
 			print_fl.c \
 
 OBJ		=	$(SRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/04 16:58:41 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/05 20:00:29 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		fill_zr(t_flags **fl)
 {
+	(*fl)->small_x = 0;
 	(*fl)->plus = 0;
 	(*fl)->minus = 0;
 	(*fl)->space = 0;
@@ -99,20 +100,13 @@ int			findsubstr(const char *s, size_t *i, va_list ap)
 		return (ft_putstr("%S"));
 	if (s[*i] == 'c')
 		return (ft_putchar(va_arg(ap, int)));
-	if (s[*i] == 'i' && (*i)++)
-		return (put_d(va_arg(ap, int), fl));
-	if (s[*i] == 'd' && (*i)++)
-		return (put_d(va_arg(ap, int), fl));
-	if (s[*i] == 'D' && (*i)++)
-		return (ft_putstr("%D"));
-	if (s[*i] == 'o' && (*i)++)
-		return (put_o(va_arg(ap, unsigned int)));
-	if (s[*i] == 'u' && (*i)++)
-		return (put_u(va_arg(ap, unsigned int)));
-	if (s[*i] == 'x' && (*i)++)
-		return (put_x(va_arg(ap, unsigned int)));
-	if (s[*i] == 'X' && (*i)++)
-		return (put_big_x(va_arg(ap, unsigned int)));
+	if ((s[*i] == 'd' || s[*i] == 'i' || s[*i] == 'o' || s[*i] == 'u' ||\
+	s[*i] == 'x' || s[*i] == 'X') && (*i)++)
+	{
+		if (s[*i - 1] == 'x')
+			fl->small_x = 1;
+		return (put_dioux(va_arg(ap, long), fl), fl);
+	}
 	return (0);
 }
 
