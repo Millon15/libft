@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/06 18:51:08 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/06 20:07:44 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static	char	*norm_it(char *buf, t_flags *fl)
 
 static	char	*estoa_base(long long value, short base, t_flags *fl)
 {
-	unsigned long	v;
-	char			*buf;
-	int				i;
+	unsigned long long	v;
+	char				*buf;
+	int					i;
 
 	i = 65;
 	buf = (char *)malloc(sizeof(char) * (i + 1));
@@ -84,7 +84,7 @@ static	int		handle_minln(char *s, char *ml, int i, t_flags *fl)
 	return (j);
 }
 
-int		put_di(long long n, short base, t_flags *fl)
+int				put_di(long long n, short base, t_flags *fl)
 {
 	int		i;
 	int		j;
@@ -97,15 +97,15 @@ int		put_di(long long n, short base, t_flags *fl)
 	{
 		precision = (char *)ft_memalloc(sizeof(char) * (fl->precision + 2));
 		j = 0;
-		if (n < 0)
-			precision[j++] = '-';
-		else if (n > 0 && fl->plus)
-			precision[j++] =  '+';
-		else if (n > 0 && fl->space)
-			precision[j++] = ' ';
-		while (j < (fl->precision + ((fl->minus || fl->plus || fl->space) ? 1 : 0)))
+		while (j < (fl->precision + ((n < 0 || fl->plus || fl->space) ? 1 : 0)))
 			precision[j++] = '0';
-		while (i > ((fl->minus || fl->plus || fl->space) ? 1 : 0))
+		if (n < 0)
+			precision[0] = '-';
+		else if (n > 0 && fl->plus)
+			precision[0] =  '+';
+		else if (n > 0 && fl->space)
+			precision[0] = ' ';
+		while (i > ((n < 0 || fl->plus || fl->space) ? 1 : 0))
 			precision[--j] = s[--i];
 		free(s);
 		s = precision;

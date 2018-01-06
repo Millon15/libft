@@ -6,42 +6,42 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/06 15:54:31 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/06 21:40:24 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	char	*norm_it(char *buf, short base, t_flags *fl)
+static	char	*norm_it(char *buf, t_flags *fl)
 {
 	int		i;
 	int		j;
 	char	*res;
 
 	i = 0;
+	j = 0;
 	res = (char *)ft_memalloc(sizeof(char) * 65);
-	if (buf[0] != '0' && base == 10 && (j = 1))
-		res[i++] = buf[0];
-	else
-		j = 0;
+	if (buf[0] != '0')
+		res[i++] = buf[j++];
 	while (buf[j] == '0')
 		j++;
 	if (!buf[j])
 		return (res = "0");
 	while (buf[j])
 		res[i++] = buf[j++];
+	free(buf);
 	return (res);
 }
 
-static	char	*eutoa_base(unsigned long value, short base, t_flags *fl)
+static	char	*eutoa_base(unsigned long long value, short base, t_flags *fl)
 {
-	unsigned long	v;
-	char			*buf;
-	int				i;
+	unsigned long long	v;
+	char				*buf;
+	int					i;
 
 	i = 65;
-	buf = (char *)malloc(sizeof(char) * (i + 1));
 	v = value;
+	buf = (char *)malloc(sizeof(char) * (i + 1));
 	buf[i] = '\0';
 	while (i != 0)
 	{
@@ -49,16 +49,62 @@ static	char	*eutoa_base(unsigned long value, short base, t_flags *fl)
 		(buf[--i] = "0123456789ABCDEF"[v % base]);
 		v /= base;
 	}
-	return (norm_it(buf, base, fl));
+	if (fl->hesh && fl->small_x && base == 16)
+		buf[1] = 'x';
+	if (fl->hesh && base == 16)
+		buf[1] = 'X';
+	return (norm_it(buf, fl));
 }
 
-int		put_oux(unsigned long n, short base, t_flags *fl)
+static	int		handle_minln(char *s, char *ml, int i, t_flags *fl)
 {
-	char	*s;
-	int		i;
+	int		j;
 
-	s = ft_eutoa_base(n, base, fl);
-	i = ft_putstr(s);
+	if (i < fl->min_lenth)
+	{
+		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 2));
+		j = fl->minus ? i : 0;
+		while (j < fl->min_lenth && !fl->minus)
+			ml[j++] = (fl->zero && !fl->precs_spec) ? '0' : ' ';
+		while (i > 0)
+			ml[--j] = s[--i];
+		j = fl->minus ? ft_strlen(s) : 0;
+		while (j < fl->min_lenth && fl->minus)
+			ml[j++] = ' ';
+		free(s);
+		j = ft_putstr(ml);
+		free(ml);
+		return (j);
+	}
+	j = (int)write(1, s, i);
 	free(s);
-	return (i);
+	return (j);
+}
+
+int				put_oux(unsigned long long n, short base, t_flags *fl)
+{
+	int		i;
+	int		j;
+	char	*precision;
+	char	*s;
+
+	s = eutoa_base(n, base, fl);
+	i = ft_strlen(s);
+	if (fl->precs_spec && i <= fl->precision)
+	{
+		precision = (char *)ft_memalloc(sizeof(char) * (fl->precision + 3));
+		j = 0;
+		while (j < (fl->precision + ((fl->hesh && base == 16) ? 2 : 0)))
+			precision[j++] = '0';
+		if (fl->hesh && fl->small_x && base == 16)
+			precision[1] = 'x';
+		if (fl->hesh && base == 16)
+			precision[1] = 'X';
+		while (i > ((fl->hesh && base == 16) ? 2 : (fl->hesh && base == 8) ? 1 : 0))
+			precision[--j] = s[--i];
+		free(s);
+		s = precision;
+		i = ft_strlen(s);
+	}
+	return (handle_minln(s, precision, i, fl));
 }
