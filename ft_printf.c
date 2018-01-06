@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/05 20:00:29 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/06 15:51:04 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,14 @@ int			findsubstr(const char *s, size_t *i, va_list ap)
 		return (ft_putstr("%S"));
 	if (s[*i] == 'c')
 		return (ft_putchar(va_arg(ap, int)));
-	if ((s[*i] == 'd' || s[*i] == 'i' || s[*i] == 'o' || s[*i] == 'u' ||\
-	s[*i] == 'x' || s[*i] == 'X') && (*i)++)
+	if ((s[*i] == 'd' || s[*i] == 'i') && (*i)++)
+		return (put_di(va_arg(ap, int), 10, fl));
+	if ((s[*i] == 'o' || s[*i] == 'u' || s[*i] == 'x' ||\
+	s[*i] == 'X') && (*i)++)
 	{
 		if (s[*i - 1] == 'x')
 			fl->small_x = 1;
-		return (put_dioux(va_arg(ap, long), fl), fl);
+		return (put_di(va_arg(ap, unsigned int), 10, fl));
 	}
 	return (0);
 }

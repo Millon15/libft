@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/05 20:06:04 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/06 18:47:55 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int					ft_putstr(const char *s);
 void				*ft_memalloc(size_t size);
 
 int					put_s(const char *s, t_flags *fl);
-int					put_dioux(long n, short base, t_flags *fl);
+int					put_di(long long n, short base, t_flags *fl);
 
 #endif

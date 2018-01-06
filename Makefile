@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/01/05 19:53:28 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/01/06 15:44:45 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME	=	libftprintf.a
 SRC		=	help.c \
 			ft_printf.c \
 			src/put_s.c \
-			src/put_dioux.c \
-			print_fl.c \
+			src/put_di.c
+			# print_fl.c
 
 OBJ		=	$(SRC:.c=.o)
 CFLAGS	=	
