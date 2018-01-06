@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/06 22:14:14 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/06 22:32:37 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,41 +27,44 @@ static	void	fill_zr(t_flags **fl)
 	(*fl)->j = 0;
 	(*fl)->z = 0;
 	(*fl)->t = 0;
-	(*fl)->L = 0;
+	(*fl)->lll = 0;
 	(*fl)->precs_spec = 0;
 	(*fl)->precision = 0;
 	(*fl)->min_lenth = 0;
 }
 
-static	int		fill_lenthmod(const char *s, size_t *i, t_flags *fl)
+static	int		fill_lenthmod(const char *s, size_t i, t_flags *fl)
 {
-	if (s[*i] && (s[*i] == 'h' || s[*i] == 'l' || s[*i] == 'L' ||
-	s[*i] == 't' || s[*i] == 'j' || s[*i] == 'z' ||
-	(s[*i] == 'h' && s[*i + 1] == 'h') || (s[*i] == 'l' && s[*i + 1] == 'l')))
+	while (s[i] && (s[i] != 's' || s[i] != 'S' || s[i] != 'c' || s[i] != 'S' ||
+	s[i] != 'i' || s[i] != 'd' || s[i] != 'D' || s[i] != 'x' || s[i] != 'X' ||
+	s[i] == 'o' || s[i] != 'O' || s[i] != 'u' || s[i] != 'U' || s[i] != 'p' ))
 	{
-		if (s[*i] == 'h' && s[*i + 1] == 'h')
+		if (s[i] == 'h' && s[i + 1] == 'h')
 			return ((fl->hh = 1));
-		if (s[*i] == 'l' && s[*i + 1] == 'l')
+		if (s[i] == 'l' && s[i + 1] == 'l')
 			return ((fl->ll = 1));
-		if (s[*i] == 'l')
+		if (s[i] == 'l')
 			return ((fl->l = 1));
-		if (s[*i] == 'h')
+		if (s[i] == 'h')
 			return ((fl->h = 1));
-		if (s[*i] == 't')
+		if (s[i] == 't')
 			return ((fl->t = 1));
-		if (s[*i] == 'j')
+		if (s[i] == 'j')
 			return ((fl->j = 1));
-		if (s[*i] == 'z')
+		if (s[i] == 'z')
 			return ((fl->z = 1));
-		if (s[*i] == 'L')
-			return ((fl->L = 1));
+		if (s[i] == 'L')
+			return ((fl->lll = 1));
+		i++;
 	}
+	return (0);
 }
 
 t_flags			*fill_flags(const char *s, size_t *i, t_flags *fl)
 {
 	fl = (t_flags *)malloc(sizeof(t_flags));
 	fill_zr(&fl);
+	fill_lenthmod(s, *i, fl);
 	while (s[*i] && (s[*i] == ' ' || s[*i] == '0' ||
 	s[*i] == '#' || s[*i] == '+' || s[*i] == '-'))
 	{
@@ -82,6 +85,5 @@ t_flags			*fill_flags(const char *s, size_t *i, t_flags *fl)
 	if (s[*i] && s[*i] == '.' && (*i)++ && (fl->precs_spec = 1))
 		while (s[*i] && (s[*i] >= '0' && s[*i] <= '9'))
 			fl->precision = fl->precision * 10 + s[(*i)++] - '0';
-	fill_lenthmod(s, i, fl);
 	return (fl);
 }
