@@ -67,5 +67,8 @@ int			main(void)
 	// ft_printf("%0100d\n", 0);
 	// printf("\n");
 
+	printf("%hd\n", 132);
+	ft_printf("%hd\n", 132);
+
 	return (0);
 }
