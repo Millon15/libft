@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/08 18:27:55 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 18:57:39 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static	int		help_oux(const char *s, size_t *i, va_list ap, t_flags *fl)
 		if (fl->h)
 			return (put_oux((unsigned short)va_arg(ap, int), fl->base, fl));
 		if (fl->j)
-			return (put_oux(va_arg(ap, intmax_t), fl->base, fl));
+			return (put_oux(va_arg(ap, uintmax_t), fl->base, fl));
 		if (fl->z)
-			return (put_oux(va_arg(ap, ssize_t), fl->base, fl));
+			return (put_oux(va_arg(ap, size_t), fl->base, fl));
 		return (put_oux(va_arg(ap, unsigned int), fl->base, fl));
 	}
 	return (0);
@@ -60,7 +60,7 @@ static	int		help_did(const char *s, size_t *i, va_list ap, t_flags *fl)
 
 static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
-	if (s[*i] == '%')
+	if (s[*i] == '%' && (*i)++)
 		return (ft_putchar('%'));
 	fl = fill_flags(s, i, NULL);
 	if (s[*i] == 's' && (*i)++)
