@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/04 13:04:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 21:33:49 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		put_s(const char *s, t_flags *fl)
 {
-	int		i;
-	int		j;
-	char	*ml;
+	unsigned int	i;
+	unsigned int	j;
+	char			*ml;
 
 	i = 0;
 	while (s[i] && (!fl->precs_spec || i < fl->precision))

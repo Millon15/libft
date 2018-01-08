@@ -6,16 +6,16 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/08 18:31:49 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 21:44:23 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	char	*norm_it(char *buf, t_flags *fl)
+static	char	*norm_it(char *buf)
 {
-	int		i;
-	int		j;
+	unsigned int	i;
+	unsigned int	j;
 	char	*res;
 
 	i = 0;
@@ -33,11 +33,11 @@ static	char	*norm_it(char *buf, t_flags *fl)
 	return (res);
 }
 
-static	char	*estoa_base(long long value, short base, t_flags *fl)
+static	char	*estoa_base(intmax_t value, short base, t_flags *fl)
 {
-	unsigned long long	v;
-	char				*buf;
-	int					i;
+	uintmax_t		v;
+	char			*buf;
+	unsigned int	i;
 
 	i = 65;
 	buf = (char *)malloc(sizeof(char) * (i + 1));
@@ -56,12 +56,13 @@ static	char	*estoa_base(long long value, short base, t_flags *fl)
 		buf[0] =  '+';
 	else if (value > 0 && fl->space)
 		buf[0] = ' ';
-	return (norm_it(buf, fl));
+	return (norm_it(buf));
 }
 
-static	int		handle_minln(char *s, char *ml, int i, t_flags *fl)
+static	int		handle_minln(char *s, unsigned int i, t_flags *fl)
 {
-	int		j;
+	unsigned int	j;
+	char			*ml;
 
 	if (i < fl->min_lenth)
 	{
@@ -84,14 +85,14 @@ static	int		handle_minln(char *s, char *ml, int i, t_flags *fl)
 	return (j);
 }
 
-int				put_di(long long n, short base, t_flags *fl)
+int				put_di(intmax_t n, t_flags *fl)
 {
-	int		i;
-	int		j;
-	char	*precision;
-	char	*s;
+	unsigned int	i;
+	unsigned int	j;
+	char			*precision;
+	char			*s;
 
-	s = estoa_base(n, base, fl);
+	s = estoa_base(n, fl->base, fl);
 	i = ft_strlen(s);
 	if (fl->precs_spec && i <= fl->precision)
 	{
@@ -111,5 +112,5 @@ int				put_di(long long n, short base, t_flags *fl)
 		s = precision;
 		i = ft_strlen(s);
 	}
-	return (handle_minln(s, precision, i, fl));
+	return (handle_minln(s, i, fl));
 }

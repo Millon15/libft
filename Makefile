@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/01/08 21:09:45 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/01/08 21:47:29 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,10 @@ SRC		=	help.c \
 			fill_flags.c \
 			src/put_s.c \
 			src/put_di.c \
-			src/put_oux.c \
-			print_fl.c
+			src/put_oux.c
 
 OBJ		=	$(SRC:.c=.o)
-CFLAGS	=	
-# CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 
 
 all: $(NAME)
@@ -42,6 +40,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf ft_printf.out
 
 re: fclean all
 

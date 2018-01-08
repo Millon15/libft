@@ -1,9 +1,6 @@
-#My addings
-.*
-test.c
-
 # Prerequisites
 *.d
+.*
 
 # Object files
 *.o

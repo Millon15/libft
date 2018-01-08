@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/08 18:50:05 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 21:45:53 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static	char	*norm_it(char *buf, t_flags *fl)
 {
-	int		i;
-	int		j;
-	char	*res;
+	unsigned int	i;
+	unsigned int	j;
+	char			*res;
 
 	i = 0;
 	j = 0;
@@ -35,11 +35,11 @@ static	char	*norm_it(char *buf, t_flags *fl)
 	return (res);
 }
 
-static	char	*eutoa_base(unsigned long long value, short base, t_flags *fl)
+static	char	*eutoa_base(uintmax_t value, short base, t_flags *fl)
 {
-	unsigned long long	v;
-	char				*buf;
-	int					i;
+	uintmax_t		v;
+	char			*buf;
+	unsigned int	i;
 
 	i = 65;
 	v = value;
@@ -56,9 +56,9 @@ static	char	*eutoa_base(unsigned long long value, short base, t_flags *fl)
 	return (norm_it(buf, fl));
 }
 
-static	int		handle_minln(char *s, char *ml, int i, t_flags *fl)
+static	int		handle_minln(char *s, char *ml,unsigned int i, t_flags *fl)
 {
-	int		j;
+	unsigned int	j;
 
 	if (i < fl->min_lenth)
 	{
@@ -85,28 +85,28 @@ static	int		handle_minln(char *s, char *ml, int i, t_flags *fl)
 	return (j);
 }
 
-int				put_oux(unsigned long long n, short base, t_flags *fl)
+int				put_oux(uintmax_t n, t_flags *fl)
 {
-	int		i;
-	int		j;
-	char	*precision;
-	char	*s;
+	unsigned int	i;
+	unsigned int	j;
+	char			*precision;
+	char			*s;
 
-	s = eutoa_base(n, base, fl);
+	s = eutoa_base(n, fl->base, fl);
 	i = ft_strlen(s);
 	if (fl->precs_spec && i <= fl->precision)
 	{
 		precision = (char *)ft_memalloc(sizeof(char) * (fl->precision + 3));
 		j = 0;
-		while (j < (fl->precision + ((fl->hesh && base == 16) ? 2 : 0)))
+		while (j < (fl->precision + ((fl->hesh && fl->base == 16) ? 2 : 0)))
 			precision[j++] = '0';
-		if (fl->hesh && base == 16)
+		if (fl->hesh && fl->base == 16)
 			precision[1] = fl->is_small_x ? 'x' : 'X';
-		while (i > (fl->hesh ? !(base % 8) ? (base / 8) : 0 : 0))
+		while (i > (fl->hesh ? !(fl->base % 8) ? (fl->base / 8) : 0 : 0))
 			precision[--j] = s[--i];
 		free(s);
 		s = precision;
 		i = ft_strlen(s);
 	}
-	return (handle_minln(s, precision, i, fl));
+	return (handle_minln(s, NULL, i, fl));
 }
