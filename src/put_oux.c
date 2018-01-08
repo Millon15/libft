@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/08 18:31:47 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 18:50:05 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static	int		handle_minln(char *s, char *ml, int i, t_flags *fl)
 		if (fl->zero && !fl->precs_spec && fl->hesh\
 		 && !fl->minus && fl->base == 16 && (ml[0] = '0'))
 			ml[1] = fl->is_small_x ? 'x' : 'X';
-		while (i > ((fl->hesh && fl->zero && !fl->precs_spec) ?\
+		while (i > ((fl->hesh && fl->zero && !fl->precs_spec && !fl->minus) ?\
 		(fl->base / 8) : 0))
 			ml[--j] = s[--i];
 		j = fl->minus ? ft_strlen(s) : 0;
