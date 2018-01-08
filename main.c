@@ -67,8 +67,9 @@ int			main(void)
 	// ft_printf("%0100d\n", 0);
 	// printf("\n");
 
-	printf("%ld\n", 214748364799);
-	ft_printf("%ld\n", 214748364799);
+	// char	p[] = "sddfgsd";
 
+	// printf("%-.100p\n", p);
+	// ft_printf("%-.100p\n", p);
 	return (0);
 }
