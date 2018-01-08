@@ -6,37 +6,32 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/06 22:23:11 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 18:27:55 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int		help_oouuxx(const char *s, size_t *i, va_list ap, t_flags *fl)
+static	int		help_oux(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
-	short		o;
-
-	if ((s[*i] == 'o' || s[*i] == 'u' || s[*i] == 'X' || s[*i] == 'U'\
-	|| s[*i] == 'O' || (s[*i] == 'x' && (fl->small_x = 1))) && (*i)++)
+	if ((s[*i] == 'o' ||  s[*i] == 'O' || s[*i] == 'u' || s[*i] == 'U'\
+	|| s[*i] == 'X' || (s[*i] == 'x' && (fl->is_small_x = 1))) && (*i)++)
 	{
-		o = 16;
-		if (s[*i - 1] == 'o' || s[*i - 1] == 'O')
-			o = 8;
-		if (s[*i - 1] == 'u' || s[*i - 1] == 'U')
-			o = 10;
+		fl->base = ((s[*i - 1] == 'o' || s[*i - 1] == 'O') ? 8 :\
+		(s[*i - 1] == 'u' || s[*i - 1] == 'U') ? 10 : 16);
 		if (fl->ll)
-			return (put_oux(va_arg(ap, unsigned long long), o, fl));
+			return (put_oux(va_arg(ap, unsigned long long), fl->base, fl));
 		if (fl->l || s[*i - 1] == 'U' || s[*i - 1] == 'O')
-			return (put_oux(va_arg(ap, unsigned long), o, fl));
-		// if (fl->hh)
-		// 	return (put_oux(va_arg(ap, unsigned char), o, fl));
-		// if (fl->h)
-		// 	return (put_oux(va_arg(ap, unsigned short), o, fl));
-		// if (fl->j)
-		// 	return (put_oux(va_arg(ap, unsigned long long), o, fl));
-		// if (fl->t)
-		// 	return (put_oux(va_arg(ap, long), o, fl));
-		return (put_oux(va_arg(ap, unsigned int), o, fl));
+			return (put_oux(va_arg(ap, unsigned long), fl->base, fl));
+		if (fl->hh)
+			return (put_oux((unsigned char)va_arg(ap, int), fl->base, fl));
+		if (fl->h)
+			return (put_oux((unsigned short)va_arg(ap, int), fl->base, fl));
+		if (fl->j)
+			return (put_oux(va_arg(ap, intmax_t), fl->base, fl));
+		if (fl->z)
+			return (put_oux(va_arg(ap, ssize_t), fl->base, fl));
+		return (put_oux(va_arg(ap, unsigned int), fl->base, fl));
 	}
 	return (0);
 }
@@ -45,26 +40,25 @@ static	int		help_did(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
 	if ((s[*i] == 'd' || s[*i] == 'i' || s[*i] == 'D') && (*i)++)
 	{
+		fl->base = 10;
 		if (fl->ll)
-			return (put_di(va_arg(ap, long long), 10, fl));
+			return (put_di(va_arg(ap, long long), fl->base, fl));
 		if (fl->l || s[*i - 1] == 'D')
-			return (put_di(va_arg(ap, long), 10, fl));
-		// if (fl->hh)
-		// 	return (put_di(va_arg(ap, char), 10, fl));
-		// if (fl->h)
-		// 	return (put_di(va_arg(ap, short), 10, fl));
-		// if (fl->j)
-		// 	return (put_di(va_arg(ap, long long), 10, fl));
-		// if (fl->t)
-		// 	return (put_di(va_arg(ap, long), 10, fl));
-		// if (fl->z)
-		// 	return (put_di(va_arg(ap, ssize_t), 10, fl));
-		return (put_di(va_arg(ap, int), 10, fl));
+			return (put_di(va_arg(ap, long), fl->base, fl));
+		if (fl->hh)
+			return (put_oux((unsigned char)va_arg(ap, int), fl->base, fl));
+		if (fl->h)
+			return (put_oux((unsigned short)va_arg(ap, int), fl->base, fl));
+		if (fl->j)
+			return (put_oux(va_arg(ap, intmax_t), fl->base, fl));
+		if (fl->z)
+			return (put_oux(va_arg(ap, ssize_t), fl->base, fl));
+		return (put_di(va_arg(ap, int), fl->base, fl));
 	}
-	return (help_oouuxx(s, i, ap, fl));
+	return (help_oux(s, i, ap, fl));
 }
 
-int				findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
+static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
 	if (s[*i] == '%')
 		return (ft_putchar('%'));

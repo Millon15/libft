@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/06 22:32:37 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 16:56:53 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	void	fill_zr(t_flags **fl)
 {
-	(*fl)->small_x = 0;
+	(*fl)->is_small_x = 0;
 	(*fl)->plus = 0;
 	(*fl)->minus = 0;
 	(*fl)->space = 0;
@@ -29,6 +29,7 @@ static	void	fill_zr(t_flags **fl)
 	(*fl)->t = 0;
 	(*fl)->lll = 0;
 	(*fl)->precs_spec = 0;
+	(*fl)->base = 0;
 	(*fl)->precision = 0;
 	(*fl)->min_lenth = 0;
 }

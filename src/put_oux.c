@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/06 21:40:24 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 18:31:47 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ static	char	*norm_it(char *buf, t_flags *fl)
 	i = 0;
 	j = 0;
 	res = (char *)ft_memalloc(sizeof(char) * 65);
-	if (buf[0] != '0')
+	if (buf[0] != '0' || (fl->hesh && !(fl->base % 8)))
+		res[i++] = buf[j++];
+	if (buf[1] != '0')
 		res[i++] = buf[j++];
 	while (buf[j] == '0')
 		j++;
 	if (!buf[j])
-		return (res = "0");
+		res[i] = '0';
 	while (buf[j])
 		res[i++] = buf[j++];
 	free(buf);
@@ -45,14 +47,12 @@ static	char	*eutoa_base(unsigned long long value, short base, t_flags *fl)
 	buf[i] = '\0';
 	while (i != 0)
 	{
-		fl->small_x ? (buf[--i] = "0123456789abcdef"[v % base]) :\
+		fl->is_small_x ? (buf[--i] = "0123456789abcdef"[v % base]) :\
 		(buf[--i] = "0123456789ABCDEF"[v % base]);
 		v /= base;
 	}
-	if (fl->hesh && fl->small_x && base == 16)
-		buf[1] = 'x';
 	if (fl->hesh && base == 16)
-		buf[1] = 'X';
+		buf[1] = fl->is_small_x ? 'x' : 'X';
 	return (norm_it(buf, fl));
 }
 
@@ -62,11 +62,15 @@ static	int		handle_minln(char *s, char *ml, int i, t_flags *fl)
 
 	if (i < fl->min_lenth)
 	{
-		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 2));
+		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 3));
 		j = fl->minus ? i : 0;
 		while (j < fl->min_lenth && !fl->minus)
 			ml[j++] = (fl->zero && !fl->precs_spec) ? '0' : ' ';
-		while (i > 0)
+		if (fl->zero && !fl->precs_spec && fl->hesh\
+		 && !fl->minus && fl->base == 16 && (ml[0] = '0'))
+			ml[1] = fl->is_small_x ? 'x' : 'X';
+		while (i > ((fl->hesh && fl->zero && !fl->precs_spec) ?\
+		(fl->base / 8) : 0))
 			ml[--j] = s[--i];
 		j = fl->minus ? ft_strlen(s) : 0;
 		while (j < fl->min_lenth && fl->minus)
@@ -96,11 +100,9 @@ int				put_oux(unsigned long long n, short base, t_flags *fl)
 		j = 0;
 		while (j < (fl->precision + ((fl->hesh && base == 16) ? 2 : 0)))
 			precision[j++] = '0';
-		if (fl->hesh && fl->small_x && base == 16)
-			precision[1] = 'x';
 		if (fl->hesh && base == 16)
-			precision[1] = 'X';
-		while (i > ((fl->hesh && base == 16) ? 2 : (fl->hesh && base == 8) ? 1 : 0))
+			precision[1] = fl->is_small_x ? 'x' : 'X';
+		while (i > (fl->hesh ? !(base % 8) ? (base / 8) : 0 : 0))
 			precision[--j] = s[--i];
 		free(s);
 		s = precision;

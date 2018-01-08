@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/06 20:07:44 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 18:31:49 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static	char	*norm_it(char *buf, t_flags *fl)
 	while (buf[j] == '0')
 		j++;
 	if (!buf[j])
-		return (res = "0");
+		res[i] = '0';
 	while (buf[j])
 		res[i++] = buf[j++];
 	free(buf);

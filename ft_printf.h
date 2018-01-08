@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/06 22:26:12 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/08 17:05:32 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct		s_flags
 {
-	unsigned int	small_x : 1;
+	unsigned int	is_small_x : 1;
 	unsigned int	plus : 1;
 	unsigned int	minus : 1;
 	unsigned int	space : 1;
@@ -36,9 +36,12 @@ typedef struct		s_flags
 	unsigned int	t : 1;
 	unsigned int	lll : 1;
 	unsigned int	precs_spec : 1;
+	unsigned int	base : 5;
 	unsigned int	precision;
 	unsigned int	min_lenth;
 }					t_flags;
+
+void				print_fl(t_flags *fl);
 
 int					ft_printf(const char *s, ...);
 t_flags				*fill_flags(const char *s, size_t *i, t_flags *fl);
