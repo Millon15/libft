@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/09 21:31:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/09 21:37:31 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
 		while (j < fl->min_lenth && !fl->minus)
 			ml[j++] = (fl->zero && !fl->precs_spec) ? '0' : ' ';
 		if (fl->zero && !fl->precs_spec && fl->hesh\
-		 && !fl->minus && fl->base == 16 && (ml[0] = '0'))
+		&& !fl->minus && fl->base == 16 && (ml[0] = '0'))
 			ml[1] = fl->is_small_x ? 'x' : 'X';
 		while (i > ((fl->hesh && fl->zero && !fl->precs_spec && !fl->minus) ?\
 		(fl->base / 8) : 0))
@@ -89,6 +89,7 @@ int				put_oux(uintmax_t n, t_flags *fl)
 {
 	unsigned int	i;
 	unsigned int	j;
+	unsigned int	rem;
 	char			*precision;
 	char			*s;
 
@@ -102,7 +103,8 @@ int				put_oux(uintmax_t n, t_flags *fl)
 			precision[j++] = '0';
 		if (fl->hesh && fl->base == 16)
 			precision[1] = fl->is_small_x ? 'x' : 'X';
-		while (i > (fl->hesh ? !(fl->base % 8) ? (fl->base / 8) : 0 : 0))
+		rem = !(fl->base % 8) ? (fl->base / 8) : 0;
+		while (i > (fl->hesh ? rem : 0))
 			precision[--j] = s[--i];
 		free(s);
 		s = precision;
