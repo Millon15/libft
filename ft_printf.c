@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/09 22:17:30 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/09 22:21:46 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 	if (s[*i] == 'c' && (*i)++)
 		return (ft_putchar((char)va_arg(ap, int)));
 	if (s[*i] == 'C' && (*i)++)
-		return (ft_putchar(va_arg(ap, int)));
+		return (ft_putchar((char)va_arg(ap, int)));
 	return (help_did(s, i, ap, fl));
 }
 
