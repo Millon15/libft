@@ -1,5 +1,6 @@
 
 #include "ft_printf.h"
+#include <locale.h>
 
 int			main(void)
 {
@@ -68,8 +69,14 @@ int			main(void)
 	printf("\n");
 
 	char	p[] = "sddfgsd";
-
 	printf("%p\n", p);
 	ft_printf("%p\n", p);
+
+	int	c;
+	c = 945;
+	setlocale(LC_ALL, "");
+	printf("printf(\"%%C\") :: %C\n\n", c);
+	ft_putchar(c);
+	printf("\n");
 	return (0);
 }
