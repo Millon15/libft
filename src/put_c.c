@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 21:52:16 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/09 22:09:19 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/09 22:24:57 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,12 @@ static	void	help1(int *k, unsigned int mask[], unsigned char c[])
 		help2(k, mask, c);
 }
 
-int				ft_putchar(int chr)
+int				ft_putchar(unsigned int chr)
 {
 	unsigned int	mask[5];
 	unsigned char	c[5];
 	int				k;
 
-	if (chr < 0)
-		return (0);
 	mask[1] = 49280;
 	mask[2] = 14712960;
 	mask[3] = 4034953344;
