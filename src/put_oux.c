@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/08 21:45:53 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/09 21:31:07 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static	char	*eutoa_base(uintmax_t value, short base, t_flags *fl)
 	return (norm_it(buf, fl));
 }
 
-static	int		handle_minln(char *s, char *ml,unsigned int i, t_flags *fl)
+static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
 {
 	unsigned int	j;
 

@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/01/08 21:47:29 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/01/09 21:22:28 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ NAME	=	libftprintf.a
 SRC		=	help.c \
 			ft_printf.c \
 			fill_flags.c \
+			src/put_c \
 			src/put_s.c \
 			src/put_di.c \
-			src/put_oux.c
+			src/put_oux.c \
 
 OBJ		=	$(SRC:.c=.o)
 CFLAGS	=	-Wall -Wextra -Werror

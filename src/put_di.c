@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/08 21:44:23 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/09 21:30:09 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static	char	*norm_it(char *buf)
 {
 	unsigned int	i;
 	unsigned int	j;
-	char	*res;
+	char			*res;
 
 	i = 0;
 	j = 0;
@@ -53,7 +53,7 @@ static	char	*estoa_base(intmax_t value, short base, t_flags *fl)
 	if (value < 0)
 		buf[0] = '-';
 	else if (value > 0 && fl->plus)
-		buf[0] =  '+';
+		buf[0] = '+';
 	else if (value > 0 && fl->space)
 		buf[0] = ' ';
 	return (norm_it(buf));
@@ -64,6 +64,7 @@ static	int		handle_minln(char *s, unsigned int i, t_flags *fl)
 	unsigned int	j;
 	char			*ml;
 
+	i = ft_strlen(s);
 	if (i < fl->min_lenth)
 	{
 		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 2));
@@ -103,14 +104,13 @@ int				put_di(intmax_t n, t_flags *fl)
 		if (n < 0)
 			precision[0] = '-';
 		else if (n > 0 && fl->plus)
-			precision[0] =  '+';
+			precision[0] = '+';
 		else if (n > 0 && fl->space)
 			precision[0] = ' ';
 		while (i > ((n < 0 || fl->plus || fl->space) ? 1 : 0))
 			precision[--j] = s[--i];
 		free(s);
 		s = precision;
-		i = ft_strlen(s);
 	}
 	return (handle_minln(s, i, fl));
 }

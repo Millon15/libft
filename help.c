@@ -6,41 +6,28 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:37:39 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/05 19:55:16 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/09 20:05:47 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memalloc(size_t size)
 {
+	void			*buf;
 	unsigned char	*k;
 	size_t			i;
 
-	if (n <= 0)
-		return ;
-	k = (unsigned char *)s;
-	i = 0;
-	while (i < n)
+	if ((buf = (void *)malloc(size)))
 	{
-		k[i] = 0;
-		i++;
+		if (size <= 0)
+			return (buf);
+		k = (unsigned char *)buf;
+		i = 0;
+		while (i < size)
+			k[i++] = 0;
 	}
-}
-
-void	*ft_memalloc(size_t size)
-{
-	void	*buf;
-
-	buf = (void *)malloc(size);
-	if (buf != NULL)
-		ft_bzero(buf, size);
 	return (buf);
-}
-
-int		ft_putchar(int c)
-{
-	return ((int)write(1, &c, 1));
 }
 
 int		ft_strlen(const char *s)
