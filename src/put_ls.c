@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 17:21:51 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/10 19:35:49 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/10 20:08:31 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,33 +35,33 @@ static	int		len_of_int_arr(const int *s)
 	return (i);
 }
 
-static	int		len_of_int_wchar_arr(const int *s)
-{
-	unsigned int	i;
-	unsigned int	size;
-	int				k;
-	int				buf;
+// static	int		len_of_int_wchar_arr(const int *s)
+// {
+// 	unsigned int	i;
+// 	unsigned int	size;
+// 	int				k;
+// 	int				buf;
 
-	i = 0;
-	k = 0;
-	while (s[i])
-	{
-		buf = s[i];
-		size = 0;
-		while (buf >> size)
-			size++;
-		if (size <= 7)
-			k += 1;
-		else if (size <= 11)
-			k += 2;
-		else if (size <= 16)
-			k += 3;
-		else
-			k += 4;
-		i++;
-	}
-	return (k);
-}
+// 	i = 0;
+// 	k = 0;
+// 	while (s[i])
+// 	{
+// 		buf = s[i];
+// 		size = 0;
+// 		while (buf >> size)
+// 			size++;
+// 		if (size <= 7)
+// 			k += 1;
+// 		else if (size <= 11)
+// 			k += 2;
+// 		else if (size <= 16)
+// 			k += 3;
+// 		else
+// 			k += 4;
+// 		i++;
+// 	}
+// 	return (k);
+// }
 
 static	int		handle_minln(int *s, unsigned int i, unsigned int j, t_flags *fl)
 {

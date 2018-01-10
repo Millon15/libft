@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/10 19:58:16 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/10 20:25:12 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,15 @@ static	int		handle_minln(char *s, intmax_t n, t_flags *fl)
 	{
 		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 2));
 		j = fl->minus ? i : 0;
-		if (n < 0)
+		if (n < 0 && !fl->precs_spec)
 			ml[j++] = '-';
-		else if (n > 0 && fl->plus)
+		else if (n > 0 && fl->plus && !fl->precs_spec)
 			ml[j++] = '+';
-		else if (n > 0 && fl->space)
+		else if (n > 0 && fl->space && !fl->precs_spec)
 			ml[j++] = ' ';
 		while (j < fl->min_lenth && !fl->minus)
 			ml[j++] = (fl->zero && !fl->precs_spec) ? '0' : ' ';
-		while (i > 0)
+		while (i > (n < 0 || fl->plus || fl->space) ? 1 : 0)
 			ml[--j] = s[--i];
 		j = fl->minus ? ft_strlen(s) : 0;
 		while (j < fl->min_lenth && fl->minus)
