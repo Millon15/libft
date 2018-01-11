@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/01/11 18:52:36 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/01/11 23:06:21 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME): $(OBJ)
 	gcc $(CFLAGS) -o $@ -c $<
 
 test:
-	gcc $(CFLAGS) -o ft_printf.out $(NAME) main.c
+	gcc -o ft_printf.out $(NAME) main.c
 	./ft_printf.out
 
 clean:

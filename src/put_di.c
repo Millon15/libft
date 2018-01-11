@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/10 20:25:12 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 23:15:51 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static	char	*estoa_base(intmax_t value, short base, t_flags *fl)
 	}
 	if (value < 0)
 		buf[0] = '-';
-	else if (value > 0 && fl->plus)
+	else if (value >= 0 && fl->plus)
 		buf[0] = '+';
-	else if (value > 0 && fl->space)
+	else if (value >= 0 && fl->space)
 		buf[0] = ' ';
 	return (norm_it(buf));
 }
@@ -70,27 +70,29 @@ static	int		handle_minln(char *s, intmax_t n, t_flags *fl)
 	{
 		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 2));
 		j = fl->minus ? i : 0;
-		if (n < 0 && !fl->precs_spec)
-			ml[j++] = '-';
-		else if (n > 0 && fl->plus && !fl->precs_spec)
-			ml[j++] = '+';
-		else if (n > 0 && fl->space && !fl->precs_spec)
-			ml[j++] = ' ';
+		if (fl->zero && !fl->precs_spec && !fl->minus)
+			ml[j++] = s[0];
 		while (j < fl->min_lenth && !fl->minus)
 			ml[j++] = (fl->zero && !fl->precs_spec) ? '0' : ' ';
-		while (i > (n < 0 || fl->plus || fl->space) ? 1 : 0)
+		while (i > ((n < 0 || fl->plus || fl->space)\
+		&& fl->zero && !fl->precs_spec && !fl->minus) ? 1 : 0)
 			ml[--j] = s[--i];
 		j = fl->minus ? ft_strlen(s) : 0;
 		while (j < fl->min_lenth && fl->minus)
 			ml[j++] = ' ';
 		free(s);
-		j = ft_putstr(ml);
-		free(ml);
-		return (j);
+		s = ml;
 	}
-	j = (int)write(1, s, i);
+	j = ft_putstr(s);
 	free(s);
 	return (j);
+}
+
+static	void		help(char *s, intmax_t n, unsigned int *i, t_flags *fl)
+{
+	if (fl->precs_spec && !fl->precision && !n)
+		s[0] = 0;
+	*i = ft_strlen(s);
 }
 
 int				put_di(intmax_t n, t_flags *fl)
@@ -101,7 +103,7 @@ int				put_di(intmax_t n, t_flags *fl)
 	char			*s;
 
 	s = estoa_base(n, fl->base, fl);
-	i = ft_strlen(s);
+	help(s, n, &i, fl);
 	if (fl->precs_spec && i <= fl->precision)
 	{
 		precision = (char *)ft_memalloc(sizeof(char) * (fl->precision + 2));
@@ -110,9 +112,9 @@ int				put_di(intmax_t n, t_flags *fl)
 			precision[j++] = '0';
 		if (n < 0)
 			precision[0] = '-';
-		else if (n > 0 && fl->plus)
+		else if (n >= 0 && fl->plus)
 			precision[0] = '+';
-		else if (n > 0 && fl->space)
+		else if (n >= 0 && fl->space)
 			precision[0] = ' ';
 		while (i > ((n < 0 || fl->plus || fl->space) ? 1 : 0))
 			precision[--j] = s[--i];
