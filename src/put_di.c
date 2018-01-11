@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 23:15:51 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 23:20:07 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ static	char	*estoa_base(intmax_t value, short base, t_flags *fl)
 	return (norm_it(buf));
 }
 
-static	int		handle_minln(char *s, intmax_t n, t_flags *fl)
+static	int		handle_minln(char *s, intmax_t n, unsigned int i, t_flags *fl)
 {
-	unsigned int	i;
 	unsigned int	j;
 	char			*ml;
 
@@ -70,7 +69,8 @@ static	int		handle_minln(char *s, intmax_t n, t_flags *fl)
 	{
 		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 2));
 		j = fl->minus ? i : 0;
-		if (fl->zero && !fl->precs_spec && !fl->minus)
+		if ((n < 0 || fl->plus || fl->space) &&\
+		fl->zero && !fl->precs_spec && !fl->minus)
 			ml[j++] = s[0];
 		while (j < fl->min_lenth && !fl->minus)
 			ml[j++] = (fl->zero && !fl->precs_spec) ? '0' : ' ';
@@ -121,5 +121,5 @@ int				put_di(intmax_t n, t_flags *fl)
 		free(s);
 		s = precision;
 	}
-	return (handle_minln(s, n, fl));
+	return (handle_minln(s, n, 0, fl));
 }
