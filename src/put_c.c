@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 21:52:16 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 21:33:23 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 21:43:08 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,11 @@ unsigned char c[], t_flags *fl)
 		k = 4;
 	l = 0;
 	while (!fl->minus && ((k + l++) < fl->min_lenth))
-		write(1, " ", 1);
+		mask[0] += write(1, " ", 1);
 	print_c(k_buf, mask, c);
+	l = 0;
 	while (fl->minus && ((k + l++) < fl->min_lenth))
-		write(1, " ", 1);
+		mask[0] += write(1, " ", 1);
 }
 
 int				put_c(int chr, t_flags *fl)
