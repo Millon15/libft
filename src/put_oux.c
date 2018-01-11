@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 22:05:39 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 22:20:38 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
 		j = fl->minus ? i : 0;
 		while (j < fl->min_lenth && !fl->minus)
 			ml[j++] = (fl->zero && !fl->precs_spec) ? '0' : ' ';
-		if (s[1] == 'x' || s[1] == 'X')
+		if (fl->zero && !fl->precs_spec && fl->hesh\
+		&& !fl->minus && fl->base == 16 && (s[1] == 'x' || s[1] == 'X'))
 			ml[1] = fl->is_small_x ? 'x' : 'X';
 		while (i > ((fl->hesh && fl->zero && !fl->precs_spec && !fl->minus) ?\
 		(fl->base / 8) : 0))
@@ -75,11 +76,9 @@ static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
 		while (j < fl->min_lenth && fl->minus)
 			ml[j++] = ' ';
 		free(s);
-		j = ft_putstr(ml);
-		free(ml);
-		return (j);
+		s = ml;
 	}
-	j = (int)write(1, s, i);
+	j = ft_putstr(s);
 	free(s);
 	return (j);
 }

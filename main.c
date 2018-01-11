@@ -106,8 +106,8 @@ int			main(void)
 	// printf("%.2s\n", NULL);
 	// ft_printf("%.2s\n", NULL);
 
-	printf("%#05x\n", 10);
-	ft_printf("%#05x\n", 10);
+	// printf("%#05x\n", 10);
+	// ft_printf("%#05x\n", 10);
 	
 	return (0);
 }
