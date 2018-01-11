@@ -6,13 +6,13 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 23:23:53 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 23:28:35 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	char	*norm_it(char *buf, t_flags *fl, uintmax_t value)
+static	char	*norm_it(char *buf, t_flags *fl)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -21,9 +21,9 @@ static	char	*norm_it(char *buf, t_flags *fl, uintmax_t value)
 	i = 0;
 	j = 0;
 	res = (char *)ft_memalloc(sizeof(char) * 65);
-	if (buf[0] != '0' || (fl->hesh && !(fl->base % 8) && !value))
+	if (buf[0] != '0' || (fl->hesh && !(fl->base % 8)))
 		res[i++] = buf[j++];
-	if (buf[1] != '0' && !value)
+	if (buf[1] != '0')
 		res[i++] = buf[j++];
 	while (buf[j] == '0')
 		j++;
@@ -51,9 +51,9 @@ static	char	*eutoa_base(uintmax_t value, short base, t_flags *fl)
 		(buf[--i] = "0123456789ABCDEF"[v % base]);
 		v /= base;
 	}
-	if (fl->hesh && base == 16 && !value)
+	if (fl->hesh && base == 16)
 		buf[1] = fl->is_small_x ? 'x' : 'X';
-	return (norm_it(buf, fl, value));
+	return (norm_it(buf, fl));
 }
 
 static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
@@ -83,15 +83,6 @@ static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
 	return (j);
 }
 
-static	void		help(char *s, uintmax_t n, unsigned int *i, t_flags *fl)
-{
-	if (fl->precs_spec && !fl->precision && !n)
-		s[0] = 0;
-	if (fl->precs_spec && !fl->precision && !n && fl->hesh && fl->base == 8)
-		s[0] = '0';
-	*i = ft_strlen(s);
-}
-
 int				put_oux(uintmax_t n, t_flags *fl)
 {
 	unsigned int	i;
@@ -101,7 +92,7 @@ int				put_oux(uintmax_t n, t_flags *fl)
 	char			*s;
 
 	s = eutoa_base(n, fl->base, fl);
-	help(s, n, &i, fl);
+	i = ft_strlen(s);
 	if (fl->precs_spec && i <= fl->precision)
 	{
 		precision = (char *)ft_memalloc(sizeof(char) * (fl->precision + 3));
