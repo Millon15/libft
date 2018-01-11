@@ -6,13 +6,13 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 22:40:34 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 23:23:53 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	char	*norm_it(char *buf, t_flags *fl)
+static	char	*norm_it(char *buf, t_flags *fl, uintmax_t value)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -21,9 +21,9 @@ static	char	*norm_it(char *buf, t_flags *fl)
 	i = 0;
 	j = 0;
 	res = (char *)ft_memalloc(sizeof(char) * 65);
-	if (buf[0] != '0' || (fl->hesh && !(fl->base % 8) && (buf[64] - '0')))
+	if (buf[0] != '0' || (fl->hesh && !(fl->base % 8) && !value))
 		res[i++] = buf[j++];
-	if (buf[1] != '0' && (buf[64] - '0'))
+	if (buf[1] != '0' && !value)
 		res[i++] = buf[j++];
 	while (buf[j] == '0')
 		j++;
@@ -51,9 +51,9 @@ static	char	*eutoa_base(uintmax_t value, short base, t_flags *fl)
 		(buf[--i] = "0123456789ABCDEF"[v % base]);
 		v /= base;
 	}
-	if (fl->hesh && base == 16 && (buf[64] - '0'))
+	if (fl->hesh && base == 16 && !value)
 		buf[1] = fl->is_small_x ? 'x' : 'X';
-	return (norm_it(buf, fl));
+	return (norm_it(buf, fl, value));
 }
 
 static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
