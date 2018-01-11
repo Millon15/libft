@@ -109,5 +109,8 @@ int			main(void)
 	// printf("%#05x\n", 10);
 	// ft_printf("%#05x\n", 10);
 	
+	printf("@moulitest: %#.o$\n", 0);
+	ft_printf("@moulitest: %#.o$\n", 0);
+	// ft_printf("@moulitest: %#.o %#.0o", 0, 0);
 	return (0);
 }

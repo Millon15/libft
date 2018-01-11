@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 22:20:38 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 22:40:34 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,15 @@ static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
 	return (j);
 }
 
+static	void		help(char *s, uintmax_t n, unsigned int *i, t_flags *fl)
+{
+	if (fl->precs_spec && !fl->precision && !n)
+		s[0] = 0;
+	if (fl->precs_spec && !fl->precision && !n && fl->hesh && fl->base == 8)
+		s[0] = '0';
+	*i = ft_strlen(s);
+}
+
 int				put_oux(uintmax_t n, t_flags *fl)
 {
 	unsigned int	i;
@@ -92,7 +101,7 @@ int				put_oux(uintmax_t n, t_flags *fl)
 	char			*s;
 
 	s = eutoa_base(n, fl->base, fl);
-	i = ft_strlen(s);
+	help(s, n, &i, fl);
 	if (fl->precs_spec && i <= fl->precision)
 	{
 		precision = (char *)ft_memalloc(sizeof(char) * (fl->precision + 3));
