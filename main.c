@@ -103,7 +103,11 @@ int			main(void)
 	// printf("%c\n", -126);
 	// ft_printf("%c\n", -126);
 
-	printf("%.2s\n", NULL);
-	ft_printf("%.2s\n", NULL);
+	// printf("%.2s\n", NULL);
+	// ft_printf("%.2s\n", NULL);
+
+	printf("%#05x\n", 10);
+	ft_printf("%#05x\n", 10);
+	
 	return (0);
 }
