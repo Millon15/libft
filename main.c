@@ -100,8 +100,10 @@ int			main(void)
 	// printf("%2c\n", 126);
 	// ft_printf("%2c\n", 126);
 
-	printf("%c\n", -126);
-	ft_printf("%c\n", -126);
-	
+	// printf("%c\n", -126);
+	// ft_printf("%c\n", -126);
+
+	printf("%.2s\n", NULL);
+	ft_printf("%.2s\n", NULL);
 	return (0);
 }
