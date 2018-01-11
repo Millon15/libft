@@ -99,5 +99,9 @@ int			main(void)
 
 	// printf("%2c\n", 126);
 	// ft_printf("%2c\n", 126);
+
+	printf("%c\n", -126);
+	ft_printf("%c\n", -126);
+	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 21:52:16 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 20:59:55 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 21:29:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 static	void	help1(int k, unsigned int mask[], unsigned char c[])
 {
-	c[4] = mask[4];
 	if (k > 0 && k <= 7)
 		mask[0] += write(1, &c[4], 1);
 	if (k > 7 && k <= 11)
@@ -94,7 +93,7 @@ unsigned char c[], t_flags *fl)
 
 int				put_c(int chr, t_flags *fl)
 {
-	unsigned int	mask[7];
+	unsigned int	mask[5];
 	unsigned char	c[5];
 	unsigned int	k;
 
@@ -108,6 +107,7 @@ int				put_c(int chr, t_flags *fl)
 	k = 1;
 	while (mask[4] >> k)
 		k++;
+	c[4] = chr;
 	handle_minln(k, mask, c, fl);
 	return (mask[0]);
 }
