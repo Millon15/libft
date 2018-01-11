@@ -84,8 +84,8 @@ int			main(void)
 	// ft_printf("ft_printf(\"%%C\") :: %-3C$\n\n", c);
 	// printf("\n");
 
-	// printf("%-100.2s\n", "aldfg");
-	// ft_printf("%-100.2s\n", "asdfg");
+	// printf("%-100.2s$\n", "aldfg");
+	// ft_printf("%-100.2s$\n", "asdfg");
 
 	// int		c[] = {1024, 1024, 1024};
 	// printf("%-100.1ls\n", c);
@@ -94,7 +94,10 @@ int			main(void)
 	// printf("%-2%$\n");
 	// ft_printf("%-2%$\n");
 
-	printf("%s\n", "abs");
-	ft_printf("%s\n", "abs");
+	// printf("%s\n", "abs");
+	// ft_printf("%s\n", "abs");
+
+	// printf("%2c\n", 126);
+	// ft_printf("%2c\n", 126);
 	return (0);
 }

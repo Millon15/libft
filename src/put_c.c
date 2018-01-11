@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 21:52:16 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 19:49:08 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 20:21:41 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,34 @@ static	void	print_c(int k, unsigned int mask[], unsigned char c[])
 	}
 }
 
+static	void	handle_minln(unsigned int k, unsigned int mask[],\
+unsigned char c[], t_flags *fl)
+{
+	unsigned int	l;
+	unsigned int	k_buf;
+
+	k_buf = k;
+	if (k <= 7)
+		k = 1;
+	else if (k <= 11)
+		k = 2;
+	else if (k <= 16)
+		k = 3;
+	else
+		k = 4;
+	l = 0;
+	while (!fl->minus && ((k + l++) < fl->min_lenth))
+		write(1, " ", 1);
+	print_c(k_buf, mask, c);
+	while (fl->minus && ((k + l++) < fl->min_lenth))
+		write(1, " ", 1);
+}
+
 int				put_c(int chr, t_flags *fl)
 {
-	unsigned int	mask[5];
+	unsigned int	mask[7];
 	unsigned char	c[5];
 	unsigned int	k;
-	unsigned int	l;
 
 	mask[0] = 0;
 	mask[1] = 49280;
@@ -86,12 +108,6 @@ int				put_c(int chr, t_flags *fl)
 	k = 1;
 	while (mask[4] >> k)
 		k++;
-	l = 1;
-	while (!fl->minus && ((k / 7 + l++) < fl->min_lenth))
-		write(1, " ", 1);
-	print_c(k, mask, c);
-	l = 1;
-	while (fl->minus && ((k / 7 + l++) < fl->min_lenth))
-		write(1, " ", 1);
+	handle_minln(k, mask, c, fl);
 	return (mask[0]);
 }

@@ -6,13 +6,13 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/10 17:29:55 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 20:08:11 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	int		handle_minln(char *s, unsigned int i, unsigned int j, t_flags *fl)
+static	int		handle_minln(const char *s, unsigned int i, unsigned int j, t_flags *fl)
 {
 	char		*ml;
 
@@ -50,6 +50,7 @@ int				put_s(const char *s, t_flags *fl)
 		j = i;
 		while (i > 0)
 			precision[--j] = s[--i];
+		s = precision;
 	}
-	return (handle_minln(precision, i, j, fl));
+	return (handle_minln(s, i, j, fl));
 }
