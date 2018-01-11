@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/10 17:33:22 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 19:43:09 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,31 @@ static	int		help_did(const char *s, size_t *i, va_list ap, t_flags *fl)
 
 static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
-	if (s[*i] == '%' && (*i)++)
-		return (ft_putchar('%'));
 	fl = fill_flags(s, i, NULL);
 	if (s[*i] == 'p' && (*i)++)
 	{
 		fl->hesh = 1;
 		fl->base = 16;
 		fl->is_small_x = 1;
-		return (put_oux(va_arg(ap, long long), fl));
+		return (put_oux(va_arg(ap, uintmax_t), fl));
 	}
 	if ((s[*i] == 's' || (s[*i] == 'S' && (fl->l = 1))) && (*i)++)
 	{
-		if (fl->l)
-			return (put_ls(va_arg(ap, const int *), fl));
-		else
+		// if (fl->l)
+			// return (put_ls(va_arg(ap, const int *), fl));
+		// else 
+		if (!fl->l)
 			return (put_s(va_arg(ap, const char *), fl));
 	}
-	if (s[*i] == 'c' && (*i)++)
-		return (ft_putchar((char)va_arg(ap, int)));
-	if (s[*i] == 'C' && (*i)++)
-		return (ft_putchar((char)va_arg(ap, int)));
+	if ((s[*i] == 'c' || (s[*i] == 'C' && (fl->l = 1))) && (*i)++)
+	{
+		if (fl->l)
+			return (put_c(va_arg(ap, int), fl));
+		else
+			return (put_c((char)va_arg(ap, int), fl));
+	}
+	if (s[*i] == '%' && (*i)++)
+		return (put_c('%', fl));
 	return (help_did(s, i, ap, fl));
 }
 
@@ -101,10 +105,7 @@ int				ft_printf(const char *s, ...)
 			k += findsubstr(s, &i, ap, NULL);
 		}
 		else
-		{
-			write(1, &s[i++], 1);
-			k++;
-		}
+			k += write(1, &s[i++], 1);
 	}
 	va_end(ap);
 	return (k);

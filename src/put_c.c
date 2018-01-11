@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 21:52:16 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/10 17:24:48 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 19:49:08 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,12 @@
 ** 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
 */
 
-static	void	help2(unsigned int mask[], unsigned char c[])
-{
-	c[3] = (mask[4] << 26) >> 26;
-	c[2] = ((mask[4] >> 6) << 26) >> 26;
-	c[1] = ((mask[4] >> 12) << 26) >> 26;
-	c[0] = ((mask[4] >> 18) << 29) >> 29;
-	c[4] = (mask[3] >> 24) | c[0];
-	mask[0] += write(1, &c[4], 1);
-	c[4] = ((mask[3] << 8) >> 24) | c[1];
-	mask[0] += write(1, &c[4], 1);
-	c[4] = ((mask[3] << 16) >> 24) | c[2];
-	mask[0] += write(1, &c[4], 1);
-	c[4] = ((mask[3] << 24) >> 24) | c[3];
-	mask[0] += write(1, &c[4], 1);
-}
-
 static	void	help1(int k, unsigned int mask[], unsigned char c[])
 {
-	if (k <= 11)
+	c[4] = mask[4];
+	if (k > 0 && k <= 7 && MB_CUR_MAX >= 1)
+		mask[0] += write(1, &c[4], 1);
+	if (k > 7 && k <= 11 && MB_CUR_MAX >= 2)
 	{
 		c[1] = (mask[4] << 26) >> 26;
 		c[0] = ((mask[4] >> 6) << 27) >> 27;
@@ -48,7 +35,7 @@ static	void	help1(int k, unsigned int mask[], unsigned char c[])
 		c[4] = ((mask[1] << 24) >> 24) | c[1];
 		mask[0] += write(1, &c[4], 1);
 	}
-	else if (k <= 16)
+	if (k > 11 && k <= 16 && MB_CUR_MAX >= 3)
 	{
 		c[2] = (mask[4] << 26) >> 26;
 		c[1] = ((mask[4] >> 6) << 26) >> 26;
@@ -60,15 +47,34 @@ static	void	help1(int k, unsigned int mask[], unsigned char c[])
 		c[4] = ((mask[2] << 24) >> 24) | c[2];
 		mask[0] += write(1, &c[4], 1);
 	}
-	else
-		help2(mask, c);
 }
 
-int				ft_putchar(int chr)
+static	void	print_c(int k, unsigned int mask[], unsigned char c[])
+{
+	help1(k, mask, c);
+	if (k > 16 && MB_CUR_MAX >= 4)
+	{
+		c[3] = (mask[4] << 26) >> 26;
+		c[2] = ((mask[4] >> 6) << 26) >> 26;
+		c[1] = ((mask[4] >> 12) << 26) >> 26;
+		c[0] = ((mask[4] >> 18) << 29) >> 29;
+		c[4] = (mask[3] >> 24) | c[0];
+		mask[0] += write(1, &c[4], 1);
+		c[4] = ((mask[3] << 8) >> 24) | c[1];
+		mask[0] += write(1, &c[4], 1);
+		c[4] = ((mask[3] << 16) >> 24) | c[2];
+		mask[0] += write(1, &c[4], 1);
+		c[4] = ((mask[3] << 24) >> 24) | c[3];
+		mask[0] += write(1, &c[4], 1);
+	}
+}
+
+int				put_c(int chr, t_flags *fl)
 {
 	unsigned int	mask[5];
 	unsigned char	c[5];
-	int				k;
+	unsigned int	k;
+	unsigned int	l;
 
 	mask[0] = 0;
 	mask[1] = 49280;
@@ -80,11 +86,12 @@ int				ft_putchar(int chr)
 	k = 1;
 	while (mask[4] >> k)
 		k++;
-	mask[4] = chr;
-	c[4] = chr;
-	if (k <= 7)
-		mask[0] += write(1, &(c[4]), 1);
-	else
-		help1(k, mask, c);
+	l = 1;
+	while (!fl->minus && ((k / 7 + l++) < fl->min_lenth))
+		write(1, " ", 1);
+	print_c(k, mask, c);
+	l = 1;
+	while (fl->minus && ((k / 7 + l++) < fl->min_lenth))
+		write(1, " ", 1);
 	return (mask[0]);
 }

@@ -72,18 +72,29 @@ int			main(void)
 	// printf("%p\n", p);
 	// ft_printf("%p\n", p);
 
+	// printf("%lu | %lu | %lu | %lu | %i | %i \n", sizeof(int), sizeof(int *), sizeof(WCHAR_MAX), sizeof(wchar_t), WCHAR_MAX, WCHAR_MIN);
+	// printf("%zu, %zu, %zu, %zu, %zu\n", sizeof(int), sizeof(long), sizeof(long long), sizeof(double), sizeof(long double));
+
 	// int	c;
 	// c = 945;
-	setlocale(LC_ALL, "");
+	// setlocale(LC_ALL, "");
 	// printf("printf(\"%%C\") :: %C\n\n", c);
-	// ft_putchar(c);
+	// ft_printf("ft_printf(\"%%C\") :: %C\n\n", c);
+	// printf("printf(\"%%C\") :: %-3C$\n\n", c);
+	// ft_printf("ft_printf(\"%%C\") :: %-3C$\n\n", c);
 	// printf("\n");
-	// printf("%lu | %lu | %lu | %lu | %i | %i \n", sizeof(int), sizeof(int *), sizeof(WCHAR_MAX), sizeof(wchar_t), WCHAR_MAX, WCHAR_MIN);
+
 	// printf("%-100.2s\n", "aldfg");
 	// ft_printf("%-100.2s\n", "asdfg");
 
-	int		c[] = {1024, 1024, 1024};
-	printf("%-100.1ls\n", c);
-	ft_printf("%-100.1ls\n", c);
+	// int		c[] = {1024, 1024, 1024};
+	// printf("%-100.1ls\n", c);
+	// ft_printf("%-100.1ls\n", c);
+
+	// printf("%-2%$\n");
+	// ft_printf("%-2%$\n");
+
+	printf("%s\n", "abs");
+	ft_printf("%s\n", "abs");
 	return (0);
 }
