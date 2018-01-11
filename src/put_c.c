@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 21:52:16 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 20:58:49 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 20:59:55 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 static	void	help1(int k, unsigned int mask[], unsigned char c[])
 {
 	c[4] = mask[4];
-	if (k > 0 && k <= 7 && MB_CUR_MAX >= 1)
+	if (k > 0 && k <= 7)
 		mask[0] += write(1, &c[4], 1);
-	if (k > 7 && k <= 11 && MB_CUR_MAX >= 2)
+	if (k > 7 && k <= 11)
 	{
 		c[1] = (mask[4] << 26) >> 26;
 		c[0] = ((mask[4] >> 6) << 27) >> 27;
@@ -35,7 +35,7 @@ static	void	help1(int k, unsigned int mask[], unsigned char c[])
 		c[4] = ((mask[1] << 24) >> 24) | c[1];
 		mask[0] += write(1, &c[4], 1);
 	}
-	if (k > 11 && k <= 16 && MB_CUR_MAX >= 3)
+	if (k > 11 && k <= 16)
 	{
 		c[2] = (mask[4] << 26) >> 26;
 		c[1] = ((mask[4] >> 6) << 26) >> 26;
@@ -52,7 +52,7 @@ static	void	help1(int k, unsigned int mask[], unsigned char c[])
 static	void	print_c(int k, unsigned int mask[], unsigned char c[])
 {
 	help1(k, mask, c);
-	if (k > 16 && MB_CUR_MAX >= 4)
+	if (k > 16)
 	{
 		c[3] = (mask[4] << 26) >> 26;
 		c[2] = ((mask[4] >> 6) << 26) >> 26;
