@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 23:38:24 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/12 05:35:07 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static	int		help_oux(const char *s, size_t *i, va_list ap, t_flags *fl)
 	return ((*i)++ * 0);
 }
 
-static	int		help_did(const char *s, size_t *i, va_list ap, t_flags *fl)
+static	int		help_di(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
 	if ((s[*i] == 'd' || s[*i] == 'i' || s[*i] == 'D') && (*i)++)
 	{
@@ -58,6 +58,25 @@ static	int		help_did(const char *s, size_t *i, va_list ap, t_flags *fl)
 	return (help_oux(s, i, ap, fl));
 }
 
+static	int		help_s(const char *s, size_t *i, va_list ap, t_flags *fl)
+{
+	if (s[*i] == 's' && (*i)++)
+	{
+		if (fl->l)
+			return (put_ls(va_arg(ap, const int *), fl));
+		return (put_s(va_arg(ap, const char *), fl));
+	}
+	if ((s[*i] == 'S' && (fl->l = 1)) && (*i)++)
+	{
+		if (fl->hh)
+			return (put_s(va_arg(ap, const char *), fl));
+	// 	if (fl->h)
+			return (put_ls((const short *)va_arg(ap, const int *), fl));
+		return (put_ls(va_arg(ap, const int *), fl));		
+	}
+	return (help_di(s, i, ap, fl));
+}
+
 static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
 	fl = fill_flags(s, i, NULL);
@@ -68,14 +87,7 @@ static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 		fl->is_small_x = 1;
 		return (put_oux(va_arg(ap, uintmax_t), fl));
 	}
-	if ((s[*i] == 's' || (s[*i] == 'S' && (fl->l = 1))) && (*i)++)
-	{
-		// if (fl->l)
-			// return (put_ls(va_arg(ap, const int *), fl));
-		// else 
-		if (!fl->l)
-			return (put_s(va_arg(ap, const char *), fl));
-	}
+	
 	if ((s[*i] == 'c' || (s[*i] == 'C' && (fl->l = 1))) && (*i)++)
 	{
 		if (fl->l)
@@ -85,7 +97,7 @@ static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 	}
 	if (s[*i] == '%' && (*i)++)
 		return (put_c('%', fl));
-	return (help_did(s, i, ap, fl));
+	return (help_s(s, i, ap, fl));
 }
 
 int				ft_printf(const char *s, ...)

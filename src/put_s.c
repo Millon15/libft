@@ -6,15 +6,16 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 21:48:53 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/12 04:50:28 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	int		handle_minln(const char *s, unsigned int i, unsigned int j, t_flags *fl)
+static	int		handle_minln(const char *s, char *tmp, unsigned int j, t_flags *fl)
 {
-	char		*ml;
+	unsigned int	i;
+	char			*ml;
 
 	i = ft_strlen(s);
 	if (i < fl->min_lenth)
@@ -28,9 +29,15 @@ static	int		handle_minln(const char *s, unsigned int i, unsigned int j, t_flags 
 		j = fl->minus ? ft_strlen(s) : 0;
 		while (j < fl->min_lenth && fl->minus)
 			ml[j++] = ' ';
+		if (tmp)
+			free(tmp);
+		tmp = ml;
 		s = ml;
 	}
-	return (ft_putstr(s));
+	j = ft_putstr(s);
+	if (tmp)
+		free(tmp);
+	return (j);
 }
 
 int				put_s(const char *s, t_flags *fl)
@@ -38,10 +45,11 @@ int				put_s(const char *s, t_flags *fl)
 	unsigned int	i;
 	unsigned int	j;
 	char			*precision;
+	char			*tmp;
 
 	i = 0;
 	j = 0;
-	precision = NULL;
+	tmp = NULL;
 	if (!s)
 	{
 		s = (char *)ft_memalloc(sizeof(char) * 6);
@@ -55,7 +63,8 @@ int				put_s(const char *s, t_flags *fl)
 		j = i;
 		while (i > 0)
 			precision[--j] = s[--i];
+		tmp = precision;
 		s = precision;
 	}
-	return (handle_minln(s, i, j, fl));
+	return (handle_minln(s, tmp, j, fl));
 }
