@@ -139,8 +139,24 @@ int			main(void)
 	// printf("%.o\n", 0);
 	// ft_printf("%.o\n\n", 0);
 
-	printf("%p\n", NULL);
-	ft_printf("%p\n\n", NULL);
+	// printf("%p\n", NULL);
+	// ft_printf("%p\n\n", NULL);
+
+	// printf("%.p\n", NULL);
+	// ft_printf("%.p\n\n", NULL);
+
+	// printf("%#.p\n", NULL);
+	// ft_printf("%#.p\n\n", NULL);
+
+	// char	c[] = "sdfds";
+	// printf("%p\n", c);
+	// ft_printf("%p\n\n", c);
+
+	// printf("%.p\n", c);
+	// ft_printf("%.p\n\n", c);
+
+	// printf("%#.p\n", c);
+	// ft_printf("%#.p\n\n", c);
 
 	return (0);
 }
