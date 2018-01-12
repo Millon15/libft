@@ -112,7 +112,35 @@ int			main(void)
 	// printf("@moulitest: %#.o$\n", 0);
 	// ft_printf("@moulitest: %#.o$\n", 0);
 
-	printf("%5d$\n", -42);
-	ft_printf("%5d$\n", -42);
+	// printf("%5d$\n", -42);
+	// ft_printf("%5d$\n", -42);
+
+	// printf("%#x\n", 0);
+	// ft_printf("%#x\n\n", 0);
+
+	// printf("%#.x\n", 0);
+	// ft_printf("%#.x\n\n", 0);
+
+	// printf("%#o\n", 0);
+	// ft_printf("%#o\n\n", 0);
+
+	// printf("%#.o\n", 0);
+	// ft_printf("%#.o\n\n", 0);
+
+	// printf("%x\n", 0);
+	// ft_printf("%x\n\n", 0);
+
+	// printf("%.x\n", 0);
+	// ft_printf("%.x\n\n", 0);
+
+	// printf("%o\n", 0);
+	// ft_printf("%o\n\n", 0);
+
+	// printf("%.o\n", 0);
+	// ft_printf("%.o\n\n", 0);
+
+	printf("%p\n", NULL);
+	ft_printf("%p\n\n", NULL);
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 18:27:08 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/11 23:37:31 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_flags
 	unsigned int	z : 1;
 	unsigned int	t : 1;
 	unsigned int	lll : 1;
+	unsigned int	p : 1;
 	unsigned int	precs_spec : 1;
 	unsigned int	base : 5;
 	unsigned int	precision;
