@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/12 04:50:28 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/12 05:49:23 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int				put_s(const char *s, t_flags *fl)
 	tmp = NULL;
 	if (!s)
 	{
-		s = (char *)ft_memalloc(sizeof(char) * 6);
+		s = (char *)ft_memalloc(sizeof(char) * 7);
 		s = "(null)";
 	}
 	if (fl->precs_spec)
