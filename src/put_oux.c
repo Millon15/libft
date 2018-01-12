@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/12 03:44:54 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/12 03:49:57 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static	void	help(uintmax_t n, char *s, unsigned int *i, t_flags *fl)
 	if (!n && !fl->p && fl->hesh)
 		s[1] = 0;
 	if (!n && fl->precs_spec && !fl->precision && !fl->p &&\
-	(!fl->hesh || (fl->base == 16 && fl->hesh)))
+	(!fl->hesh || ((fl->base == 16 || fl->base == 10) && fl->hesh)))
 		s[0] = 0;
 	if (!n && fl->p)
 		s[0] = '0';

@@ -127,6 +127,18 @@ int			main(void)
 	// printf("%#.o\n", 0);
 	// ft_printf("%#.o\n\n", 0);
 
+	// printf("%#u\n", 0);
+	// ft_printf("%#u\n\n", 0);
+
+	// printf("%#.u\n", 0);
+	// ft_printf("%#.u\n\n", 0);
+
+	// printf("%u\n", 0);
+	// ft_printf("%x\n\n", 0);
+
+	// printf("%.u\n", 0);
+	// ft_printf("%.u\n\n", 0);
+
 	// printf("%x\n", 0);
 	// ft_printf("%x\n\n", 0);
 
