@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 17:21:51 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/12 06:00:08 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/13 21:16:16 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static	int		put_long_s(const int *s, t_flags *fl)
 	k = 0;
 	i = 0;
 	while (s[i])
-		k += put_c(s[i++], fl);
+		k += put_c(s[i++], NULL);
+	free(fl);
 	return (k);
 }
 
@@ -91,6 +92,8 @@ int				put_ls(const int *s, t_flags *fl)
 
 	// i = 0;
 	// j = 0;
+	if (!s)
+		return (put_s(NULL, fl));
 	// precision = NULL;
 	// if (fl->precs_spec)
 	// {
@@ -101,7 +104,6 @@ int				put_ls(const int *s, t_flags *fl)
 	// 	while (i > 0)
 	// 		precision[--j] = s[--i];
 	// }
-	fl->min_lenth = 0;
 	return (put_long_s(s, fl));
 	// return (handle_minln(precision, i, j, fl));
 }

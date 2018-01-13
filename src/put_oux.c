@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/12 03:49:57 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/13 19:03:14 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
 	}
 	j = ft_putstr(s);
 	free(s);
+	free(fl);
 	return (j);
 }
 

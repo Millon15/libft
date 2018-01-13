@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 23:20:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/13 19:03:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static	int		handle_minln(char *s, intmax_t n, unsigned int i, t_flags *fl)
 	unsigned int	j;
 	char			*ml;
 
-	i = ft_strlen(s);
 	if (i < fl->min_lenth)
 	{
 		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 2));
@@ -85,25 +84,15 @@ static	int		handle_minln(char *s, intmax_t n, unsigned int i, t_flags *fl)
 	}
 	j = ft_putstr(s);
 	free(s);
+	free(fl);
 	return (j);
 }
 
-static	void		help(char *s, intmax_t n, unsigned int *i, t_flags *fl)
+static	int		help(char *s, intmax_t n, unsigned int i, t_flags *fl)
 {
-	if (fl->precs_spec && !fl->precision && !n)
-		s[0] = 0;
-	*i = ft_strlen(s);
-}
-
-int				put_di(intmax_t n, t_flags *fl)
-{
-	unsigned int	i;
 	unsigned int	j;
 	char			*precision;
-	char			*s;
 
-	s = estoa_base(n, fl->base, fl);
-	help(s, n, &i, fl);
 	if (fl->precs_spec && i <= fl->precision)
 	{
 		precision = (char *)ft_memalloc(sizeof(char) * (fl->precision + 2));
@@ -121,5 +110,18 @@ int				put_di(intmax_t n, t_flags *fl)
 		free(s);
 		s = precision;
 	}
-	return (handle_minln(s, n, 0, fl));
+	i = ft_strlen(s);
+	return (handle_minln(s, n, i, fl));
+}
+
+int				put_di(intmax_t n, t_flags *fl)
+{
+	unsigned int	i;
+	char			*s;
+
+	s = estoa_base(n, fl->base, fl);
+	if (fl->precs_spec && !fl->precision && !n)
+		s[0] = 0;
+	i = ft_strlen(s);
+	return (help(s, n, i, fl));
 }
