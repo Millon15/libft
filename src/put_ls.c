@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 17:21:51 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/13 21:16:16 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/13 22:06:58 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,42 @@ static	int		put_long_s(const int *s, t_flags *fl)
 // 	return (i);
 // }
 
-// static	int		len_of_int_wchar_arr(const int *s)
+// static	void	help(const int *s, int *bb, unsigned int *i, int *k)
+// {
+// 	*i = 0;
+// 	while (s[*i])
+// 		(*i)++;
+// 	bb = (int *)malloc(sizeof(int) * (*i + 1));
+// 	bb[*i] = 0;
+// 	*i = 0;
+// 	*k = 0;
+// }
+
+// static	int		len_of_int_wchar_arr(const int *s, int *bb)
 // {
 // 	unsigned int	i;
 // 	unsigned int	size;
 // 	int				k;
-// 	int				buf;
 
-// 	i = 0;
-// 	k = 0;
 // 	while (s[i])
 // 	{
-// 		buf = s[i];
 // 		size = 0;
-// 		while (buf >> size)
+// 		while (s[i] >> size)
 // 			size++;
 // 		if (size <= 7)
-// 			k += 1;
+// 			bb[k++] = 1;
 // 		else if (size <= 11)
-// 			k += 2;
+// 			bb[k++] = 2;
 // 		else if (size <= 16)
-// 			k += 3;
+// 			bb[k++] = 3;
 // 		else
-// 			k += 4;
+// 			bb[k++] = 4;
 // 		i++;
 // 	}
+// 	i = 0;
+// 	k = 0;
+// 	while(bb[i])
+// 		k += bb[i++];
 // 	return (k);
 // }
 

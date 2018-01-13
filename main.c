@@ -235,8 +235,13 @@ int			main(void)
 	// printf("%C\n", 15000);
 	// while (1);
 
-	setlocale(LC_ALL, "");
-	ft_printf("%06.0S\n", L"ывм");
-	printf("%06.0S\n", L"ывм");
+	// setlocale(LC_ALL, "");
+	// ft_printf("%06.0S\n", L"ывм");
+	// printf("%06.0S\n", L"ывм");
+
+	// ft_printf("%.5p\n", 0);
+	// printf("%.5p\n", 0);
+
+	printf("{%-15Z}", 123);
 	return (0);
 }
