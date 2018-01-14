@@ -6,11 +6,37 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/13 22:09:30 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/14 20:14:01 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static	int		help_s(const char *s, size_t *i, va_list ap, t_flags *fl)
+{
+	if (s[*i] == 's' && (*i)++)
+	{
+		if (fl->l)
+			return (put_ls(va_arg(ap, const int *), fl));
+		return (put_s(va_arg(ap, const char *), fl));
+	}
+	if ((s[*i] == 'S' && (fl->l = 1)) && (*i)++)
+	{
+		if (fl->hh)
+			return (put_s(va_arg(ap, const char *), fl));
+		return (put_ls(va_arg(ap, const int *), fl));		
+	}
+	if (s[*i])
+	{
+		++(*i);
+		return (put_c(s[*i - 1], fl));
+	}
+	else
+	{
+		free(fl);
+		return (0);
+	}
+}
 
 static	int		help_oux(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
@@ -33,8 +59,7 @@ static	int		help_oux(const char *s, size_t *i, va_list ap, t_flags *fl)
 			return (put_oux(va_arg(ap, size_t), fl));
 		return (put_oux(va_arg(ap, unsigned int), fl));
 	}
-	++(*i);
-	return (s[*i] ? put_c(s[*i - 1], fl) : 0);
+	return (help_s(s, i, ap, fl));
 }
 
 static	int		help_di(const char *s, size_t *i, va_list ap, t_flags *fl)
@@ -59,25 +84,6 @@ static	int		help_di(const char *s, size_t *i, va_list ap, t_flags *fl)
 	return (help_oux(s, i, ap, fl));
 }
 
-static	int		help_s(const char *s, size_t *i, va_list ap, t_flags *fl)
-{
-	if (s[*i] == 's' && (*i)++)
-	{
-		if (fl->l)
-			return (put_ls(va_arg(ap, const int *), fl));
-		return (put_s(va_arg(ap, const char *), fl));
-	}
-	if ((s[*i] == 'S' && (fl->l = 1)) && (*i)++)
-	{
-		if (fl->hh)
-			return (put_s(va_arg(ap, const char *), fl));
-		// if (fl->h)
-		// 	return (put_ls((const short *)va_arg(ap, const int *), fl));
-		return (put_ls(va_arg(ap, const int *), fl));		
-	}
-	return (help_di(s, i, ap, fl));
-}
-
 static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
 	fl = fill_flags(s, i, NULL);
@@ -98,7 +104,7 @@ static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 	}
 	if (s[*i] == '%' && (*i)++)
 		return (put_c('%', fl));
-	return (help_s(s, i, ap, fl));
+	return (help_di(s, i, ap, fl));
 }
 
 int				ft_printf(const char *s, ...)

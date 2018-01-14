@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 17:21:51 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/13 22:06:58 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/14 20:45:29 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,56 +25,35 @@ static	int		put_long_s(const int *s, t_flags *fl)
 	return (k);
 }
 
-// static	int		len_of_int_arr(const int *s)
-// {
-// 	int		i;
+static	void	len_of_int_arr(const int *s, int **bb, int k)
+{
+	unsigned int	i;
+	unsigned int	size;
 
-// 	i = 0;
-// 	while (s[i])
-// 		i++;
-// 	return (i);
-// }
+	i = 0;
+	while (s[i])
+		i++;
+	*bb = (int *)malloc(sizeof(int) * (i + 1));
+	(*bb)[i] = 0;
+	i = 0;
+	while (s[i])
+	{
+		size = 0;
+		while (s[i] >> size)
+			size++;
+		if (size <= 7)
+			(*bb)[k++] = 1;
+		else if (size <= 11)
+			(*bb)[k++] = 2;
+		else if (size <= 16)
+			(*bb)[k++] = 3;
+		else
+			(*bb)[k++] = 4;
+		i++;
+	}
+}
 
-// static	void	help(const int *s, int *bb, unsigned int *i, int *k)
-// {
-// 	*i = 0;
-// 	while (s[*i])
-// 		(*i)++;
-// 	bb = (int *)malloc(sizeof(int) * (*i + 1));
-// 	bb[*i] = 0;
-// 	*i = 0;
-// 	*k = 0;
-// }
-
-// static	int		len_of_int_wchar_arr(const int *s, int *bb)
-// {
-// 	unsigned int	i;
-// 	unsigned int	size;
-// 	int				k;
-
-// 	while (s[i])
-// 	{
-// 		size = 0;
-// 		while (s[i] >> size)
-// 			size++;
-// 		if (size <= 7)
-// 			bb[k++] = 1;
-// 		else if (size <= 11)
-// 			bb[k++] = 2;
-// 		else if (size <= 16)
-// 			bb[k++] = 3;
-// 		else
-// 			bb[k++] = 4;
-// 		i++;
-// 	}
-// 	i = 0;
-// 	k = 0;
-// 	while(bb[i])
-// 		k += bb[i++];
-// 	return (k);
-// }
-
-// static	int		handle_minln(int *s, unsigned int i, unsigned int j, t_flags *fl)
+// static	int		handle_minln(const int *s, unsigned int i, unsigned int j, t_flags *fl)
 // {
 // 	int				*ml;
 
@@ -92,29 +71,32 @@ static	int		put_long_s(const int *s, t_flags *fl)
 // 			ml[j++] = ' ';
 // 		s = ml;
 // 	}
-// 	return (put_long_s(s));
+// 	return (put_long_s(s, fl));
 // }
 
 int				put_ls(const int *s, t_flags *fl)
 {
-	// unsigned int	i;
-	// unsigned int	j;
-	// int				*precision;
+	unsigned int	i;
+	unsigned int	j;
+	int				*bb;
+	int				*precision;
 
-	// i = 0;
-	// j = 0;
 	if (!s)
 		return (put_s(NULL, fl));
-	// precision = NULL;
-	// if (fl->precs_spec)
-	// {
-	// 	while (s[i] && i < fl->precision)
-	// 		i++;
-	// 	precision = (int *)ft_memalloc(sizeof(int) * (fl->precision + 1));
-	// 	j = i;
-	// 	while (i > 0)
-	// 		precision[--j] = s[--i];
-	// }
-	return (put_long_s(s, fl));
+	len_of_int_arr(s, &bb, 0);
+	i = 0;
+	j = 0;
+	precision = NULL;
+	if (fl->precs_spec)
+	{
+		while (j <= fl->precision)
+			j += bb[i++];
+		i--;
+		precision = (int *)ft_memalloc(sizeof(int) * (fl->precision + 1));
+		j = i;
+		while (i > 0)
+			precision[--j] = s[--i];
+	}
+	return (put_long_s(precision ? precision : s, fl));
 	// return (handle_minln(precision, i, j, fl));
 }
