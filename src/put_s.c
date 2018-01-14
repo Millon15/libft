@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/13 20:38:50 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/14 21:33:55 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static	int		handle_minln(const char *s, char **tmp, unsigned int j, t_flags *fl)
 			ml[--j] = s[--i];
 		j = fl->minus ? ft_strlen(s) : 0;
 		while (j < fl->min_lenth && fl->minus)
-			ml[j++] = fl->zero ? '0' : ' ';
+			ml[j++] = ' ';
 		if (*tmp)
 			free(*tmp);
 		*tmp = ml;
