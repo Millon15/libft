@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/14 20:14:01 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/15 19:50:59 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@ static	int		help_s(const char *s, size_t *i, va_list ap, t_flags *fl)
 		return (put_s(va_arg(ap, const char *), fl));
 	}
 	if ((s[*i] == 'S' && (fl->l = 1)) && (*i)++)
-	{
-		if (fl->hh)
-			return (put_s(va_arg(ap, const char *), fl));
-		return (put_ls(va_arg(ap, const int *), fl));		
-	}
+		return (put_ls(va_arg(ap, const int *), fl));
 	if (s[*i])
 	{
 		++(*i);

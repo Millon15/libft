@@ -4,7 +4,7 @@
 
 int			main(void)
 {
-	// printf("\n");
+	printf("\n");
 	// printf("%100.7d\n", 124141);
 	// ft_printf("%100.7d\n", 124142);
 	// printf("%-100.7d\n", 124141);
@@ -68,28 +68,24 @@ int			main(void)
 	// ft_printf("%0100d\n", 0);
 	// printf("\n");
 
-	// char	p[] = "sddfgsd";
-	// printf("%p\n", p);
-	// ft_printf("%p\n", p);
+	// printf("%p\n", "sddfgsd");
+	// ft_printf("%p\n", "sddfgsd");
 
 	// printf("%lu | %lu | %lu | %lu | %i | %i \n", sizeof(int), sizeof(int *), sizeof(WCHAR_MAX), sizeof(wchar_t), WCHAR_MAX, WCHAR_MIN);
 	// printf("%zu, %zu, %zu, %zu, %zu\n", sizeof(int), sizeof(long), sizeof(long long), sizeof(double), sizeof(long double));
 
-	// int	c;
-	// c = 945;
-	// setlocale(LC_ALL, "");
-	// printf("printf(\"%%C\") :: %C\n\n", c);
-	// ft_printf("ft_printf(\"%%C\") :: %C\n\n", c);
-	// printf("printf(\"%%C\") :: %-3C$\n\n", c);
-	// ft_printf("ft_printf(\"%%C\") :: %-3C$\n\n", c);
-	// printf("\n");
+	setlocale(LC_ALL, "");
+	printf("printf(\"%%C\") :: %C\n\n", 945);
+	ft_printf("ft_printf(\"%%C\") :: %C\n\n", 945);
+	printf("printf(\"%%C\") :: %-3C$\n\n", 945);
+	ft_printf("ft_printf(\"%%C\") :: %-3C$\n\n", 945);
+	printf("\n");
 
-	// printf("%-100.2s$\n", "aldfg");
-	// ft_printf("%-100.2s$\n", "asdfg");
+	printf("%-100.2s$\n", "asdfg");
+	ft_printf("%-100.2s$\n", "asdfg");
 
-	// int		c[] = {1024, 1024, 1024};
-	// printf("%-100.1ls\n", c);
-	// ft_printf("%-100.1ls\n", c);
+	printf("{%100.10ls}\n", L"米米");
+	ft_printf("{%100.10ls}\n", L"米米");
 
 	// printf("%-2%$\n");
 	// ft_printf("%-2%$\n");
@@ -224,31 +220,41 @@ int			main(void)
 	// ft_printf("%s\n", NULL);
 	// printf("%s\n", NULL);
 	// ft_printf("%S\n", L"ݗݜशব");
-	// printf("\n");
 	// printf("%S\n", L"ݗݜशব");
 	// ft_printf("%s%s\n", "test", "test");
 	// printf("%s%s\n", "test", "test");
 	// ft_printf("%s%s%s\n", "test", "test", "test");
 	// printf("%s%s%s\n", "test", "test", "test");
 	// ft_printf("%C\n", 15000);
-	// printf("\n");
 	// printf("%C\n", 15000);
-	// while (1);
+	// // while (1);
 
-	setlocale(LC_ALL, "");
-	// ft_printf("%06.0S\n", L"ывм");
-	// printf("%06.0S\n", L"ывм");
+	// // setlocale(LC_ALL, "");
+	ft_printf("%06.0S\n", L"ывм");
+	printf("%06.0S\n", L"ывм");
 
-	// ft_printf("%.5p\n", 0);
-	// printf("%.5p\n", 0);
+	ft_printf("%.5p\n", 0);
+	printf("%.5p\n", 0);
 
-	// ft_printf("{%-15Z}\n", 123);
-	// printf("{%-15Z}\n", 123);
+	ft_printf("{%-15Z}\n", 123);
+	printf("{%-15Z}\n", 123);
 
-	// ft_printf("%", 123);
-	// printf("%", 123);
+	ft_printf("%", 123);
+	printf("%", 123);
 
-	ft_printf("{%60S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-	printf("{%60S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	ft_printf("{%60.10S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("{%60.10S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+
+	ft_printf("{%-60.10S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("{%-60.10S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+
+	ft_printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+
+	ft_printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+
+	ft_printf("%hhS, %hhS\n", 0, L"米米");
+	printf("%hhS, %hhS\n", 0, L"米米");
 	return (0);
 }

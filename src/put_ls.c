@@ -6,13 +6,13 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 17:21:51 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/14 22:41:04 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/15 21:26:40 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	int		put_long_s(const int *s, int *tmp, t_flags *fl)
+static	int		put_long_s(const int *s, int **tmp, t_flags *fl)
 {
 	int				k;
 	unsigned int	i;
@@ -21,8 +21,8 @@ static	int		put_long_s(const int *s, int *tmp, t_flags *fl)
 	i = 0;
 	while (s[i])
 		k += put_c(s[i++], NULL);
-	if (tmp)
-		free(tmp);
+	if (*tmp)
+		free(*tmp);
 	free(fl);
 	return (k);
 }
@@ -55,21 +55,21 @@ static	void	len_of_int_arr(const int *s, int **bb, int k)
 	}
 }
 
-static	int		help(const int *s, unsigned int *buf_j, int *bb, t_flags *fl)
+static	int		help(const int *s, unsigned int *buf_j, int **bb, t_flags *fl)
 {
 	unsigned int	i;
 
 	i = 0;
 	*buf_j = 0;
-	free(bb);
-	len_of_int_arr(s, &bb, 0);
-	while (bb[i] && *buf_j <= fl->min_lenth)
-		*buf_j += bb[i++];
-	bb[0] = i;
+	free(*bb);
+	len_of_int_arr(s, bb, 0);
+	while ((*bb)[i] && *buf_j <= fl->min_lenth)
+		*buf_j += (*bb)[i++];
+	fl->precision = i;
 	return (i);
 }
 
-static	int		handle_minln(const int *s, int *tmp, int *bb, t_flags *fl)
+static	int		handle_minln(const int *s, int **tmp, int **bb, t_flags *fl)
 {
 	unsigned int	i;
 	unsigned int	buf_j;
@@ -86,15 +86,15 @@ static	int		handle_minln(const int *s, int *tmp, int *bb, t_flags *fl)
 		!fl->minus ? (j += i) : (j = i);
 		while (i > 0)
 			ml[--j] = s[--i];
-		j = fl->minus ? bb[0] : 0;
- 		while ((j - bb[0]) < (fl->min_lenth - buf_j) && fl->minus)
+		j = fl->minus ? fl->precision : 0;
+ 		while ((j - fl->precision) < (fl->min_lenth - buf_j) && fl->minus)
 			ml[j++] = ' ';
-		if (tmp)
-			free(tmp);
-		tmp = ml;
+		if (*tmp)
+			free(*tmp);
+		*tmp = ml;
 		s = ml;
 	}
-	free(bb);
+	free(*bb);
 	return (put_long_s(s, tmp, fl));
 }
 
@@ -112,16 +112,16 @@ int				put_ls(const int *s, t_flags *fl)
 	i = 0;
 	j = 0;
 	tmp = NULL;
+	while (bb[i] && j <= fl->precision)
+		j += bb[i++];
 	if (fl->precs_spec)
 	{
-		while (bb[i] && j <= fl->precision)
-			j += bb[i++];
 		precision = (int *)ft_memalloc(sizeof(int) * (fl->precision + 1));
-		j = --i;
+		!bb[i] ? (j = i) : (j = --i);
 		while (i > 0)
 			precision[--j] = s[--i];
 		s = precision;
 		tmp = precision;
 	}
-	return (handle_minln(s, tmp, bb, fl));
+	return (handle_minln(s, &tmp, &bb, fl));
 }
