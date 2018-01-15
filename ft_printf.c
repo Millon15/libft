@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/15 19:50:59 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/15 22:27:49 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,15 @@ static	int		help_s(const char *s, size_t *i, va_list ap, t_flags *fl)
 
 static	int		help_oux(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
-	if ((s[*i] == 'o' ||  s[*i] == 'O' || s[*i] == 'u' || s[*i] == 'U'\
+	if ((s[*i] == 'o' || s[*i] == 'O' || s[*i] == 'u' || s[*i] == 'U'\
 	|| s[*i] == 'X' || (s[*i] == 'x' && (fl->is_small_x = 1))) && (*i)++)
 	{
-		fl->base = ((s[*i - 1] == 'o' || s[*i - 1] == 'O') ? 8 :\
-		(s[*i - 1] == 'u' || s[*i - 1] == 'U') ? 10 : 16);
+		if (s[*i - 1] == 'o' || s[*i - 1] == 'O')
+			fl->base = 8;
+		else if (s[*i - 1] == 'u' || s[*i - 1] == 'U')
+			fl->base = 10;
+		else
+			fl->base = 16;
 		if (fl->ll)
 			return (put_oux(va_arg(ap, unsigned long long), fl));
 		if (fl->l || s[*i - 1] == 'U' || s[*i - 1] == 'O')
@@ -90,7 +94,6 @@ static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 		fl->is_small_x = 1;
 		return (put_oux(va_arg(ap, uintmax_t), fl));
 	}
-	
 	if ((s[*i] == 'c' || (s[*i] == 'C' && (fl->l = 1))) && (*i)++)
 	{
 		if (fl->l)

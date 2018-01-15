@@ -6,13 +6,14 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/15 20:31:31 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/15 22:23:42 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static	int		handle_minln(const char *s, char **tmp, unsigned int j, t_flags *fl)
+static	int		handle_minln(const char *s, char **tmp,\
+unsigned int j, t_flags *fl)
 {
 	unsigned int	i;
 	char			*ml;
@@ -41,7 +42,8 @@ static	int		handle_minln(const char *s, char **tmp, unsigned int j, t_flags *fl)
 	return (j);
 }
 
-static	void	help(const char **s, char **tmp, unsigned int *i, unsigned int *j)
+static	void	help(const char **s, char **tmp,\
+unsigned int *i, unsigned int *j)
 {
 	*i = 0;
 	*j = 0;

@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/14 20:23:13 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/15 22:24:03 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,8 @@ int				put_oux(uintmax_t n, t_flags *fl)
 	{
 		precision = (char *)ft_memalloc(sizeof(char) * (fl->precision + 3));
 		j = 0;
-		while (j < (fl->precision + ((fl->hesh && (n || fl->p) && fl->base == 16) ? 2 : 0)))
+		while (j < (fl->precision + ((fl->hesh && (n || fl->p)\
+		&& fl->base == 16) ? 2 : 0)))
 			precision[j++] = '0';
 		if (fl->hesh && fl->base == 16 && (n || fl->p))
 			precision[1] = fl->is_small_x ? 'x' : 'X';

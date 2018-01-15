@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 17:21:51 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/15 21:26:40 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/15 22:23:08 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static	int		handle_minln(const int *s, int **tmp, int **bb, t_flags *fl)
 		while (i > 0)
 			ml[--j] = s[--i];
 		j = fl->minus ? fl->precision : 0;
- 		while ((j - fl->precision) < (fl->min_lenth - buf_j) && fl->minus)
+		while ((j - fl->precision) < (fl->min_lenth - buf_j) && fl->minus)
 			ml[j++] = ' ';
 		if (*tmp)
 			free(*tmp);
@@ -112,12 +112,13 @@ int				put_ls(const int *s, t_flags *fl)
 	i = 0;
 	j = 0;
 	tmp = NULL;
-	while (bb[i] && j <= fl->precision)
-		j += bb[i++];
 	if (fl->precs_spec)
 	{
 		precision = (int *)ft_memalloc(sizeof(int) * (fl->precision + 1));
-		!bb[i] ? (j = i) : (j = --i);
+		while (bb[i] && j <= fl->precision)
+			j += bb[i++];
+		(!bb[i] && j <= fl->precision) ? (j = i) :\
+		(j = --i);
 		while (i > 0)
 			precision[--j] = s[--i];
 		s = precision;
