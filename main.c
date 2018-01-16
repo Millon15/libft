@@ -76,7 +76,7 @@ int			main(void)
 	// printf("%zu, %zu, %zu, %zu, %zu\n", sizeof(int), sizeof(long),\
 	// sizeof(long long), sizeof(double), sizeof(long double));
 
-	setlocale(LC_ALL, "");
+	// setlocale(LC_ALL, "");
 	printf("printf(\"%%C\") :: %C\n\n", 945);
 	ft_printf("ft_printf(\"%%C\") :: %C\n\n", 945);
 	printf("printf(\"%%C\") :: %-3C$\n\n", 945);
@@ -276,5 +276,9 @@ int			main(void)
 
 	ft_printf("%hhS, %hhS\n", 0, L"米米");
 	printf("%hhS, %hhS\n", 0, L"米米");
+
+	// setlocale(LC_ALL, "");
+	ft_printf("adfafgваиыип\n");
+	printf("adfafgваиыип\n");
 	return (0);
 }
