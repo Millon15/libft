@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/03 12:37:39 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/10 16:52:24 by vbrazas          ###   ########.fr       */
+/*   Created: 2017/08/01 23:41:13 by vbrazas           #+#    #+#             */
+/*   Updated: 2017/11/12 18:26:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	*ft_memalloc(size_t size)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	void			*buf;
-	unsigned char	*k;
-	size_t			i;
+	size_t	i;
+	size_t	f;
 
-	if ((buf = (void *)malloc(size)))
-	{
-		if (size <= 0)
-			return (buf);
-		k = (unsigned char *)buf;
-		i = 0;
-		while (i < size)
-			k[i++] = 0;
-	}
-	return (buf);
-}
-
-int		ft_strlen(const char *s)
-{
-	int		i;
-
+	if (ft_strcmp(needle, "") == 0 || ft_strcmp(haystack, needle) == 0)
+		return ((char *)haystack);
 	i = 0;
-	while (s[i])
+	while (haystack[i])
+	{
+		f = 0;
+		while (haystack[i + f] == needle[f])
+		{
+			f++;
+			if (!needle[f])
+				return ((char *)(haystack + i));
+		}
 		i++;
-	return (i);
-}
-
-int		ft_putstr(const char *s)
-{
-	return ((int)write(1, s, ft_strlen(s)));
+	}
+	return (NULL);
 }

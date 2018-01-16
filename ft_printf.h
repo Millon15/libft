@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/15 22:28:01 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/16 14:53:22 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-
-# include <stdio.h>
 
 typedef struct		s_flags
 {
@@ -42,16 +40,14 @@ typedef struct		s_flags
 	unsigned int	min_lenth;
 }					t_flags;
 
-void				print_fl(t_flags *fl);
+size_t				ft_strlen(const char *s);
+ssize_t				ft_putstr(const char *s);
+void				*ft_memalloc(size_t size);
 
 int					ft_printf(const char *s, ...);
 t_flags				*fill_flags(const char *s, size_t *i, t_flags *fl);
 
 int					put_c(int c, t_flags *fl);
-int					ft_strlen(const char *s);
-int					ft_putstr(const char *s);
-void				*ft_memalloc(size_t size);
-
 int					put_s(const char *s, t_flags *fl);
 int					put_ls(const int *s, t_flags *fl);
 int					put_di(intmax_t n, t_flags *fl);

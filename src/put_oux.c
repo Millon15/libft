@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/15 22:24:03 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/16 14:52:56 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ static	int		handle_minln(char *s, char *ml, unsigned int i, t_flags *fl)
 		while (i > ((fl->hesh && fl->zero && !fl->precs_spec && !fl->minus) ?\
 		(fl->base / 8) : 0))
 			ml[--j] = s[--i];
-		j = fl->minus ? ft_strlen(s) : 0;
+		j = fl->minus ? (unsigned int)ft_strlen(s) : 0;
 		while (j < fl->min_lenth && fl->minus)
 			ml[j++] = ' ';
 		free(s);
 		s = ml;
 	}
-	j = ft_putstr(s);
+	j = (unsigned int)ft_putstr(s);
 	free(s);
 	free(fl);
 	return (j);
@@ -95,7 +95,7 @@ static	void	help(uintmax_t n, char *s, unsigned int *i, t_flags *fl)
 		s[0] = '0';
 	if (!n && fl->precs_spec && !fl->precision && fl->p)
 		s[2] = 0;
-	*i = ft_strlen(s);
+	*i = (unsigned int)ft_strlen(s);
 }
 
 int				put_oux(uintmax_t n, t_flags *fl)
@@ -122,7 +122,7 @@ int				put_oux(uintmax_t n, t_flags *fl)
 			precision[--j] = s[--i];
 		free(s);
 		s = precision;
-		i = ft_strlen(s);
+		i = (unsigned int)ft_strlen(s);
 	}
 	return (handle_minln(s, NULL, i, fl));
 }

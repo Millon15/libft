@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 12:38:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/15 22:23:42 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/16 14:52:20 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ unsigned int j, t_flags *fl)
 	unsigned int	i;
 	char			*ml;
 
-	i = ft_strlen(s);
+	i = (int)ft_strlen(s);
 	if (i < fl->min_lenth)
 	{
 		ml = (char *)ft_memalloc(sizeof(char) * (fl->min_lenth + 1));
@@ -27,7 +27,7 @@ unsigned int j, t_flags *fl)
 			ml[j++] = fl->zero ? '0' : ' ';
 		while (i > 0)
 			ml[--j] = s[--i];
-		j = fl->minus ? ft_strlen(s) : 0;
+		j = fl->minus ? (unsigned int)ft_strlen(s) : 0;
 		while (j < fl->min_lenth && fl->minus)
 			ml[j++] = ' ';
 		if (*tmp)
@@ -35,7 +35,7 @@ unsigned int j, t_flags *fl)
 		*tmp = ml;
 		s = ml;
 	}
-	j = ft_putstr(s);
+	j = (unsigned int)ft_putstr(s);
 	if (*tmp)
 		free(*tmp);
 	free(fl);
