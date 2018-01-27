@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 21:57:30 by vbrazas           #+#    #+#             */
-/*   Updated: 2017/11/12 18:23:46 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/27 15:57:02 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 void	ft_putendl(char const *s)
 {
-	size_t	i;
-
 	if (s == NULL)
 		return ;
-	i = 0;
-	while (s[i])
-		write(1, &s[i++], 1);
+	write(1, s, ft_strlen(s));
 	write(1, "\n", 1);
 }
