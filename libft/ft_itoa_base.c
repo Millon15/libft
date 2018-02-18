@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa_base.c                                        :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 05:22:18 by vbrazas           #+#    #+#             */
-/*   Updated: 2017/12/15 06:33:49 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/01/29 17:17:07 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_itoa_base(int value, int base)
 {
-	int		j;
-	long	b;
-	char	*res;
+	int				j;
+	unsigned int	b;
+	char			*res;
 
 	if (base > 16 || base < 2)
 		return (0);

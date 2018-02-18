@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 22:43:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2017/11/17 19:09:44 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/02/01 18:24:52 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	*ft_strtrim(char const *s)
 		return (NULL);
 	i = 0;
 	j = ft_strlen((char *)s) - 1;
-	while ((s[j] == ' ' || s[j] == '\n' || s[j] == '\t') && s[j])
+	while (ft_iswhitespace(s[j]) && s[j])
 		j--;
-	while ((s[i] == ' ' || s[i] == '\n' || s[i] == '\t') && s[i])
+	while (ft_iswhitespace(s[i]) && s[i])
 		i++;
 	if (s[i] == 0)
 		i = 1;

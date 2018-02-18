@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/02/05 14:14:24 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/02/18 13:49:53 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/02/18 13:52:05 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <string.h>
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -99,5 +98,7 @@ int					ft_iswhitespace(int c);
 int					ft_atoi_base(const char *s, int base);
 unsigned long		ft_atou_base(const char *s, int base);
 void				ft_lstdelcont(void *content, size_t content_size);
+
+int					ft_printf(const char *s, ...);
 
 #endif

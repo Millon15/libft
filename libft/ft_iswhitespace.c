@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_iswhitespace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 22:02:23 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/02/05 14:12:46 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/01/30 18:22:10 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/01/30 18:38:45 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-ssize_t		ft_putstr_fd(char const *s, int fd)
+int		ft_iswhitespace(int c)
 {
-	if (s)
-		return (write(fd, s, ft_strlen(s)));
-	else
-		return (0);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }
