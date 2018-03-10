@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 17:00:14 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/02/01 20:38:17 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/03/02 17:55:57 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int		ft_atoi_base(const char *s, int base)
 			i[2]++;
 		res += i[2] * (!(i[1] - i[0]) ? 1 : (ft_pow(base, i[1] - i[0])));
 	}
+	free(buf);
 	return ((res * i[3]));
 }

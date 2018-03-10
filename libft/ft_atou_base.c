@@ -6,14 +6,14 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 20:18:32 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/02/01 20:56:23 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/02/26 16:28:42 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-**	ft_atoi_base function inputs (char *)s - array of chars, which only include
+**	ft_atou_base function inputs (char *)s - array of chars, which only include
 **	numbers and '-' sign, numbers may be at any base from 2nd to 36th, and
 **	outputs decimal unsigned longinteger value, which represent input number.
 **
@@ -45,5 +45,6 @@ unsigned long		ft_atou_base(const char *s, int base)
 			i[2]++;
 		res += i[2] * (!(i[1] - i[0]) ? 1 : (ft_pow(base, i[1] - i[0])));
 	}
+	free(buf);
 	return ((res * i[3]));
 }
