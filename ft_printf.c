@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/03/10 13:23:15 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/03/21 21:32:20 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static	int		help_di(const char *s, size_t *i, va_list ap, t_flags *fl)
 
 static	int		findsubstr(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
-	fl = fill_flags(s, i, NULL);
+	fl = fill_flags(s, i, ap, NULL);
 	if (s[*i] == 'p' && (fl->p = 1) && (*i)++)
 	{
 		fl->hesh = 1;

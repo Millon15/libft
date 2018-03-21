@@ -6,34 +6,11 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/01/11 23:37:45 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/03/21 21:46:59 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static	void	fill_zr(t_flags **fl)
-{
-	(*fl)->is_small_x = 0;
-	(*fl)->plus = 0;
-	(*fl)->minus = 0;
-	(*fl)->space = 0;
-	(*fl)->hesh = 0;
-	(*fl)->zero = 0;
-	(*fl)->hh = 0;
-	(*fl)->h = 0;
-	(*fl)->l = 0;
-	(*fl)->ll = 0;
-	(*fl)->j = 0;
-	(*fl)->z = 0;
-	(*fl)->t = 0;
-	(*fl)->lll = 0;
-	(*fl)->p = 0;
-	(*fl)->precs_spec = 0;
-	(*fl)->base = 0;
-	(*fl)->precision = 0;
-	(*fl)->min_lenth = 0;
-}
 
 static	int		fill_lenthmod(const char *s, size_t *i, t_flags *fl)
 {
@@ -61,10 +38,30 @@ static	int		fill_lenthmod(const char *s, size_t *i, t_flags *fl)
 	return (0);
 }
 
-t_flags			*fill_flags(const char *s, size_t *i, t_flags *fl)
+static	void	fill_mlth_prs(const char *s, size_t *i, va_list ap, t_flags *fl)
 {
-	fl = (t_flags *)malloc(sizeof(t_flags));
-	fill_zr(&fl);
+	if (s[*i] && s[*i] == '*')
+	{
+		fl->min_lenth = va_arg(ap, int);
+		(*i)++;
+	}
+	else
+		while (s[*i] && (s[*i] >= '0' && s[*i] <= '9'))
+			fl->min_lenth = fl->min_lenth * 10 + s[(*i)++] - '0';
+	if (s[*i] && s[*i] == '.' && s[*i + 1] == '*')
+	{
+		fl->precs_spec = 1;
+		fl->precision = va_arg(ap, int);
+		*i += 2;
+	}
+	else if (s[*i] && s[*i] == '.' && (*i)++ && (fl->precs_spec = 1))
+		while (s[*i] && (s[*i] >= '0' && s[*i] <= '9'))
+			fl->precision = fl->precision * 10 + s[(*i)++] - '0';
+}
+
+t_flags			*fill_flags(const char *s, size_t *i, va_list ap, t_flags *fl)
+{
+	fl = (t_flags *)ft_memalloc(sizeof(t_flags));
 	while (s[*i] && (s[*i] == ' ' || s[*i] == '0' ||
 	s[*i] == '#' || s[*i] == '+' || s[*i] == '-'))
 	{
@@ -80,11 +77,7 @@ t_flags			*fill_flags(const char *s, size_t *i, t_flags *fl)
 			fl->space = 1;
 		(*i)++;
 	}
-	while (s[*i] && (s[*i] >= '0' && s[*i] <= '9'))
-		fl->min_lenth = fl->min_lenth * 10 + s[(*i)++] - '0';
-	if (s[*i] && s[*i] == '.' && (*i)++ && (fl->precs_spec = 1))
-		while (s[*i] && (s[*i] >= '0' && s[*i] <= '9'))
-			fl->precision = fl->precision * 10 + s[(*i)++] - '0';
+	fill_mlth_prs(s, i, ap, fl);
 	fill_lenthmod(s, i, fl);
 	return (fl);
 }
