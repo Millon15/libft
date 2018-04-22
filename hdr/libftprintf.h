@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/04/22 17:03:39 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/04/22 17:16:52 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -42,7 +42,7 @@ int					get_next_line(const int fd, char **line);
 *****************************************************************************
 */
 
-# define LIBFTPRINTF_H
+# define FT_PRINTF_H
 
 int					ft_printf(const char *s, ...);
 
@@ -51,6 +51,8 @@ int					ft_printf(const char *s, ...);
 *************************************LIBFT***********************************
 *****************************************************************************
 */
+
+# define LIBFT_H
 
 typedef struct		s_list
 {
