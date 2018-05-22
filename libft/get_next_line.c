@@ -6,11 +6,11 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 11:01:14 by vbrazas           #+#    #+#             */
-/*   Updated: 2017/12/09 14:33:49 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/05/22 21:07:37 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static	ssize_t	find_n(const char *mas)
 {

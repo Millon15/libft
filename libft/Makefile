@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/03/02 20:37:14 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/05/22 21:08:37 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,9 @@ SRC =	ft_strlen.c \
 		ft_putnstr.c \
 		ft_putnstr_fd.c \
 		ft_putnendl.c \
-		ft_putnendl_fd.c
+		ft_putnendl_fd.c \
+		get_next_line.c \
+		ft_module.c
 OBJ_D	=	obj/
 OBJ		=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
 CFLAGS	=	-Wall -Wextra -Werror

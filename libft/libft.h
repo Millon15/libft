@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/04/22 17:04:01 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/05/22 21:05:35 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,6 @@ ssize_t				ft_putnstr(char const *s, size_t len);
 ssize_t				ft_putnstr_fd(char const *s, int fd, size_t len);
 ssize_t				ft_putnendl(char const *s, size_t len);
 ssize_t				ft_putnendl_fd(char const *s, int fd, size_t len);
+int					ft_module(int x);
 
 #endif
