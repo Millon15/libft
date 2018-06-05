@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/05/22 21:05:35 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/05/24 20:53:45 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strsub(char const *s, size_t start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
@@ -132,5 +132,6 @@ ssize_t				ft_putnstr_fd(char const *s, int fd, size_t len);
 ssize_t				ft_putnendl(char const *s, size_t len);
 ssize_t				ft_putnendl_fd(char const *s, int fd, size_t len);
 int					ft_module(int x);
+char				*checkintstr(char *str);
 
 #endif

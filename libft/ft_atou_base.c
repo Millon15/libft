@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 20:18:32 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/02/26 16:28:42 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/05/23 17:11:23 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ unsigned long		ft_atou_base(const char *s, int base)
 	char			*buf;
 	const	char	st[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+	if (base < 2 || base > 36)
+		return (0);
 	buf = ft_strtrim(s);
 	i[3] = buf[0] == '-' ? -1 : 1;
 	buf = (buf[0] == '-' || buf[0] == '+') ? (buf + 1) : buf;

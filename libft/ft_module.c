@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_module.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 21:04:35 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/05/22 21:05:24 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/05/31 12:53:55 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int			ft_module(int x)
 {
-	return(x < 0 ? -x : x);
+	return (x < 0 ? -x : x);
 }

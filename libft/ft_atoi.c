@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 20:09:38 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/02/05 14:08:17 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/05/24 20:20:16 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,7 @@ int		ft_atoi(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
-	{
 		result = result * 10 + (str[i++] - '0');
-		if (result > 9223372036854775807U && minus == 1)
-			return (-1);
-		if (result > 9223372036854775808U && minus == -1)
-			return (0);
-	}
 	result = result * minus;
 	return ((int)result);
 }

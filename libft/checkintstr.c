@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   checkintstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 14:00:36 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/05/27 14:04:45 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/05/24 20:53:07 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/05/27 15:04:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char			*checkintstr(char *str)
 {
-	size_t	i;
+	size_t		i;
 
 	i = 0;
-	if (c == '\0')
-	{
-		while (s[i])
-			i++;
-		return ((char*)(s + i));
-	}
-	while (s[i])
-		if (s[i++] == c)
-			return ((char*)(s + i - 1));
-	return (NULL);
+	while (str[i] && ft_isdigit(str[i]))
+		i++;
+	return (str[i] == '\0' ? NULL : (char*)(str + i));
 }
