@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/06 05:21:32 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/06 06:04:08 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,15 @@ typedef struct	s_printf
 
 int				ft_printf(const char *cstr, ...);
 
-
+/*
+** General functions
+*/
 size_t			obtainsubstr(const char *s, size_t i, t_printf *p);
+void			get_argument(const char conv, t_printf *p);
 
+/*
+** Buffer functions
+*/
 void			add_str_tobuf(char *str, t_printf *p);
 void			add_char_tobuf(const char c, t_printf *p);
 void			check_buffer(const size_t len, t_printf *p);

@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/06 05:40:59 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/06 05:54:23 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,27 +70,5 @@ int				ft_printf(const char *cstr, ...)
 	}
 	va_end(ap);
 	prtf.totout += write(1, prtf.buf, ft_strlen(prtf.buf));
-
-	printf("\n\n%lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU, %lU\n\n", 
-	prtf.fl.apostrophe, \
-	prtf.fl.zero, \
-	prtf.fl.space, \
-	prtf.fl.hesh, \
-	prtf.fl.plus, \
-	prtf.fl.minus, \
-	prtf.fl.l, \
-	prtf.fl.ll, \
-	prtf.fl.h, \
-	prtf.fl.hh, \
-	prtf.fl.j, \
-	prtf.fl.z, \
-	prtf.fl.t, \
-	prtf.fl.ldouble, \
-	prtf.fl.precs_spec, \
-	prtf.fl.is_prec, \
-	prtf.fl.is_minlenth, \
-	prtf.fl.precision, \
-	prtf.fl.minlenth);
-
 	return (prtf.totout);
 }

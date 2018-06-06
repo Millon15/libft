@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/06 05:42:01 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/06 06:19:31 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ LIB			=	libft/
 LIB_N		=	libft.a
 
 SRC_D		=	src/
-SRC			=	ft_printf.c \
-				$(SRC_D)obtainsubstr.c
+SRC			=	$(SRC_D)ft_printf.c \
+				$(SRC_D)obtainconvstr.c \
+				$(SRC_D)get_argument.c
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))

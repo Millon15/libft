@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obtainsubstr.c                                     :+:      :+:    :+:   */
+/*   obtainconvstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/06 05:17:11 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/06 06:24:45 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static	int		is_conversion_char(const char c)
 		return (0);
 	if (c == 'x' || c == 'X' || c == 'p')
 		return (0);
-	return (0);
+	return (-1);
 }
 
 static	size_t		fill_precision(const char *s, const size_t i, t_printf *p)
@@ -92,10 +92,20 @@ static	size_t		fill_struct(const char *s, size_t i, t_printf *p)
 
 size_t			obtainsubstr(const char *s, size_t i, t_printf *p)
 {
+	const	size_t	start = i;
+
 	i += 1;
-	while (s[i] != '\0' && is_conversion_char(s[i]))
+	while (s[i] != '\0' && is_conversion_char(s[i]) > 0)
 	{
 		i += fill_struct(s, i, p);
+	}
+	if (is_conversion_char(s[i]) == 0)
+	{
+		get_argument(s[i], p);
+	}
+	else
+	{
+		write(1, s, i - start);
 	}
 	return(i);
 }
