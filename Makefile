@@ -3,28 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
+#    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/02/18 14:20:49 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/06 05:42:01 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libftprintf.a
-LIB		=	libft/
-LIB_N	=	libft.a
-SRC_D	=	src/
-SRC		=	ft_printf.c \
-			fill_flags.c \
-			$(SRC_D)put_c.c \
-			$(SRC_D)put_s.c \
-			$(SRC_D)put_ls.c \
-			$(SRC_D)put_di.c \
-			$(SRC_D)put_oux.c
-OBJ_D	=	obj/
-OBJ		=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
-CFLAGS	=	-Wall -Wextra -Werror
+NAME		=	libftprintf.a
 
+LIB			=	libft/
+LIB_N		=	libft.a
+
+SRC_D		=	src/
+SRC			=	ft_printf.c \
+				$(SRC_D)obtainsubstr.c
+
+OBJ_D		=	obj/
+OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
+
+WORKSPACE	=	$(shell pwd)/
+INCLUDE		=	-I $(WORKSPACE) -I $(WORKSPACE)$(LIB)
+CFLAGS		=	-Wall -Wextra -Werror
+C			=	clang
 
 all: $(NAME)
 
@@ -40,7 +41,7 @@ $(OBJ_D):
 	mkdir -p $(OBJ_D)$(SRC_D)
 
 $(OBJ_D)%.o: %.c
-	gcc $(CFLAGS) -o $@ -c $<
+	$(C) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 clean:
 	make clean -C libft
@@ -53,4 +54,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test: all
+	$(C) -o unitest $(INCLUDE) $(NAME) unitest.c
+	./unitest
+
+.PHONY: all clean fclean re test
