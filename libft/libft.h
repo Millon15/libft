@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/06 04:47:32 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 01:25:34 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,8 @@ ssize_t				ft_putnendl(char const *s, size_t len);
 ssize_t				ft_putnendl_fd(char const *s, int fd, size_t len);
 int					ft_module(int x);
 char				*checkintstr(char *str);
+int					ft_islowercase(const int c);
+int					ft_isuppercase(const int c);
+
 
 #endif

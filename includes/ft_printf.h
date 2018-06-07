@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/06 06:04:08 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 04:50:27 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdint.h>
+# include <stdbool.h>
 # include <stdio.h>
-
 # define BUFFER_SIZE 16384
 
 typedef struct	s_flags
@@ -35,8 +36,8 @@ typedef struct	s_flags
 	size_t							hh : 1;
 	size_t							j : 1;
 	size_t							z : 1;
-	size_t							t : 1;
-	size_t							ldouble : 1;
+	size_t							bigx : 1;
+	size_t							wrong_convchar : 1;
 	size_t							precs_spec : 1;
 	size_t							is_prec : 1;
 	size_t							is_minlenth : 1;
@@ -50,6 +51,7 @@ typedef struct	s_printf
 	ssize_t							totout;
 	t_flags							fl;
 	char							*buf;
+	va_list							ap;
 	size_t							i;
 
 }				t_printf;
@@ -61,7 +63,7 @@ int				ft_printf(const char *cstr, ...);
 ** General functions
 */
 size_t			obtainsubstr(const char *s, size_t i, t_printf *p);
-void			get_argument(const char conv, t_printf *p);
+void			get_argument(char conv, t_printf *p);
 
 /*
 ** Buffer functions

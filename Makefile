@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/06 06:19:31 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/07 04:09:50 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
 
 WORKSPACE	=	$(shell pwd)/
-INCLUDE		=	-I $(WORKSPACE) -I $(WORKSPACE)$(LIB)
+INCLUDE		=	-I $(WORKSPACE)includes/ -I $(WORKSPACE)$(LIB)
 CFLAGS		=	-Wall -Wextra -Werror
 C			=	clang
 

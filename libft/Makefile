@@ -6,12 +6,11 @@
 #    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/06 04:47:43 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/07 01:27:07 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	libft.a
-SRC =	ft_strlen.c \
+SRC	=	ft_strlen.c \
 		ft_bzero.c \
 		ft_memccpy.c \
 		ft_memchr.c \
@@ -88,7 +87,11 @@ SRC =	ft_strlen.c \
 		ft_putnendl_fd.c \
 		get_next_line.c \
 		ft_module.c \
-		checkintstr.c
+		checkintstr.c \
+		ft_islowercase.c \
+		ft_isuppercase.c
+
+NAME	=	libft.a
 OBJ_D	=	obj/
 OBJ		=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
 CFLAGS	=	-Wall -Wextra -Werror

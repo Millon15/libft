@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/06 05:54:23 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 03:00:17 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,11 @@ void			add_str_tobuf(char *str, t_printf *p)
 int				ft_printf(const char *cstr, ...)
 {
 	size_t		i;
-	va_list		ap;
 	t_printf	prtf;
 
 	ft_bzero(&prtf, sizeof(prtf));
 	prtf.buf = ft_memalloc(sizeof(char) * BUFFER_SIZE);
-	va_start(ap, cstr);
+	va_start(prtf.ap, cstr);
 	i = 0;
 	while (cstr[i] != '\0')
 	{
@@ -68,7 +67,7 @@ int				ft_printf(const char *cstr, ...)
 			add_char_tobuf(cstr[i], &prtf);
 		i++;
 	}
-	va_end(ap);
+	va_end(prtf.ap);
 	prtf.totout += write(1, prtf.buf, ft_strlen(prtf.buf));
 	return (prtf.totout);
 }

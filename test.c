@@ -3,7 +3,7 @@
 
 int			main()
 {
-	
-	printf("%0 .02s|\n", "aaabbb");
+	char *a;
+	printf("%#p\n", a);
 
 }
