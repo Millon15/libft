@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 05:08:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 07:02:45 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 11:39:18 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,32 @@ int			main( void )
 	// precision, \
 	// minlenth);
 
-	printf("sdfsdfsfsd %12y sfsfd|\n", 123);
-	ft_printf("sdfsdfsfsd %12y sfsfd|\n", 123);
+	// printf("sdfsdfsfsd %12y sfsfd|\n", 123);
+	// ft_printf("sdfsdfsfsd %12y sfsfd|\n", 123);
 
-	printf("%+12.2d|\n", 123);
-	printf("%+12.2o|\n", 123);
+	// printf("%+12.2d|\n", 123);
+	// printf("%+12.2o|\n", 123);
 
-	printf("%012.2d|\n", 123);
-	printf("%012.2o|\n", 123);
+	// printf("%012.2d|\n", 123);
+	// printf("%012.2o|\n", 123);
 
-	printf("%012d|\n", 123);
-	printf("%012o|\n", 123);
+	// printf("%012d|\n", 123);
+	// printf("%012o|\n", 123);
 
 
+	// printf("%012d|\n", 1);
+	// printf("%012o|\n", 1);
+
+	// printf("%-12.2d|\n", 1);
+	// printf("%-12.2o|\n", 1);
 
 	printf("%-12.2d|\n", 1);
 	printf("%-12.2o|\n", 1);
+
+	
+
+	// printf("%.5d\n", 12);
+	// ft_printf("%.5d\n", 12);
 
 	return 0;
 

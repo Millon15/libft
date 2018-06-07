@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 06:05:00 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 07:02:46 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 10:26:12 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static	long long			return_signed(t_printf *p)
 
 void						get_argument(char conv, t_printf *p)
 {
-	p->convchr = conv;
 	if (conv == 'D' || conv == 'O' || conv == 'U' || \
 		conv == 'S' || conv == 'C')
 		p->fl.l = true;
@@ -70,6 +69,7 @@ void						get_argument(char conv, t_printf *p)
 		conv = 'x';
 	}
 	conv = ft_tolower(conv);
+	p->convchr = conv;
 	if (conv == 'd' || conv == 'i')
 		indent_digit(return_signed(p), p);
 	else if (conv == 'o' || conv == 'u' || conv == 'x' || conv == 'p')

@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 07:02:42 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 11:46:14 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdint.h>
 # include <stdbool.h>
 # include <stdio.h>
-# define BUFFER_SIZE 16384
+# define BUFFER_SIZE 4096
 
 typedef struct	s_flags
 {
@@ -40,9 +40,9 @@ typedef struct	s_flags
 	size_t							is_negative : 1;
 	size_t							precs_spec : 1;
 	size_t							is_prec : 1;
-	size_t							is_minlenth : 1;
-	size_t							precision;
-	size_t							minlenth;
+	size_t							is_minl : 1;
+	size_t							prec;
+	size_t							minl;
 
 }				t_flags;
 
@@ -72,7 +72,7 @@ void			indent_string(const void *s, t_printf *p);
 /*
 ** Buffer functions
 */
-void			add_str_tobuf(char *str, t_printf *p);
+void			add_str_tobuf(char *str, bool tofree, t_printf *p);
 void			add_char_tobuf(const char c, t_printf *p);
 void			check_buffer(const size_t len, t_printf *p);
 

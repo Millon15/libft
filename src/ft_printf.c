@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 07:03:56 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 11:46:07 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			add_char_tobuf(const char c, t_printf *p)
 	p->buf[p->i++] = c;
 }
 
-void			add_str_tobuf(char *str, t_printf *p)
+void			add_str_tobuf(char *str, bool tofree, t_printf *p)
 {
 	size_t			slen;
 	ssize_t			i;
@@ -48,6 +48,8 @@ void			add_str_tobuf(char *str, t_printf *p)
 	{
 		p->buf[p->i++] = str[i];
 	}
+	if (str && tofree)
+		free(str);
 }
 
 int				ft_printf(const char *cstr, ...)

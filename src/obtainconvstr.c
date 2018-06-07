@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 07:02:48 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 10:26:01 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static	size_t		fill_precision(const char *s, const size_t i, t_printf *p)
 	l = i;
 	p->fl.precs_spec = false;
 	p->fl.is_prec = true;
-	p->fl.precision = false;
+	p->fl.prec = false;
 	while (ft_isdigit(s[l]))
 	{
-		p->fl.precision = p->fl.precision * 10 + (s[l] - '0');
+		p->fl.prec = p->fl.prec * 10 + (s[l] - '0');
 		l++;
 	}
 	return (l - i);
@@ -52,11 +52,11 @@ static	size_t		fill_minlenth(const char *s, const size_t i, t_printf *p)
 	int			l;
 
 	l = i;
-	p->fl.minlenth = false;
-	p->fl.is_minlenth = true;
+	p->fl.minl = false;
+	p->fl.is_minl = true;
 	while (ft_isdigit(s[l]))
 	{
-		p->fl.minlenth = p->fl.minlenth * 10 + (s[l] - '0');
+		p->fl.minl = p->fl.minl * 10 + (s[l] - '0');
 		l++;
 	}
 	return (l - i);
@@ -95,7 +95,7 @@ size_t			obtainsubstr(const char *s, size_t i, t_printf *p)
 	{
 		i += fill_struct(s, i, p);
 	}
-	if (is_conversion_char(s[i]) != true)
+	if (is_conversion_char(s[i]) == true)
 		indent_char(s[i], p);
 	else
 		get_argument(s[i], p);
