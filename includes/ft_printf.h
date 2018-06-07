@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 04:50:27 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 07:02:42 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct	s_flags
 	size_t							j : 1;
 	size_t							z : 1;
 	size_t							bigx : 1;
-	size_t							wrong_convchar : 1;
+	size_t							is_negative : 1;
 	size_t							precs_spec : 1;
 	size_t							is_prec : 1;
 	size_t							is_minlenth : 1;
@@ -48,11 +48,12 @@ typedef struct	s_flags
 
 typedef struct	s_printf
 {
-	ssize_t							totout;
-	t_flags							fl;
-	char							*buf;
 	va_list							ap;
+	t_flags							fl;
+	char							convchr;
 	size_t							i;
+	char							*buf;
+	ssize_t							totout;
 
 }				t_printf;
 
@@ -64,6 +65,9 @@ int				ft_printf(const char *cstr, ...);
 */
 size_t			obtainsubstr(const char *s, size_t i, t_printf *p);
 void			get_argument(char conv, t_printf *p);
+void			indent_digit(unsigned long long d, t_printf *p);
+void			indent_char(int c, t_printf *p);
+void			indent_string(const void *s, t_printf *p);
 
 /*
 ** Buffer functions

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islowercase.c                                   :+:      :+:    :+:   */
+/*   indent_digit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 01:22:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 07:03:22 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/07 05:08:38 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/07 07:06:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_islowercase(const int c)
+#include <ft_printf.h>
+
+void			indent_digit(unsigned long long d, t_printf *p)
 {
-	if ((c >= 'a' && c <= 'z'))
-		return (1);
-	return (0);
+	ft_utoa_base();
 }

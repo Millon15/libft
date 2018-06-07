@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islowercase.c                                   :+:      :+:    :+:   */
+/*   indent_argument.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 01:22:15 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 07:03:22 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/07 06:11:29 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/07 06:11:43 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_islowercase(const int c)
+#include <ft_printf.h>
+
+void			indent_char(int c, t_printf *p)
 {
-	if ((c >= 'a' && c <= 'z'))
-		return (1);
-	return (0);
+	
+}
+
+void			indent_string(const void *s, t_printf *p)
+{
+	
 }

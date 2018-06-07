@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obtainconvstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 04:29:09 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 07:02:48 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,8 @@ size_t			obtainsubstr(const char *s, size_t i, t_printf *p)
 		i += fill_struct(s, i, p);
 	}
 	if (is_conversion_char(s[i]) != true)
-	{
-		p->fl.wrong_convchar = true;
-	}
-	get_argument(s[i], p);
+		indent_char(s[i], p);
+	else
+		get_argument(s[i], p);
 	return(i);
 }

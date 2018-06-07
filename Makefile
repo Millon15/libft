@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
+#    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/07 04:09:50 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/07 07:03:48 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,16 @@ LIB_N		=	libft.a
 SRC_D		=	src/
 SRC			=	$(SRC_D)ft_printf.c \
 				$(SRC_D)obtainconvstr.c \
-				$(SRC_D)get_argument.c
+				$(SRC_D)get_argument.c \
+				$(SRC_D)indent_argument.c \
+				$(SRC_D)indent_digit.c
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
 
 WORKSPACE	=	$(shell pwd)/
 INCLUDE		=	-I $(WORKSPACE)includes/ -I $(WORKSPACE)$(LIB)
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	#`-Wall -Wextra -Werror
 C			=	clang
 
 all: $(NAME)
@@ -56,7 +58,8 @@ fclean: clean
 re: fclean all
 
 test: all
-	$(C) -o unitest $(INCLUDE) $(NAME) unitest.c
-	./unitest
+	rm -f unitest.out
+	$(C) -o unitest.out $(INCLUDE) $(NAME) unitest.c
+	./unitest.out
 
 .PHONY: all clean fclean re test
