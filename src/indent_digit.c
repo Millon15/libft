@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 05:08:38 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 12:24:11 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/07 23:16:11 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ static	int		fill_minlenth(char *minl, int rlen, t_printf *p)
 	int			i;
 	int			adding;
 
-	i = 0
+	i = 0;
 	i = p->fl.minus ? 0 : p->fl.minl - rlen;
-	adding = (p->fl.space || p->fl.plus || p->fl.is_negative || \
+	// adding = (p->fl.space || p->fl.plus || p->fl.is_negative || \
 	(p->hesh && p->convchr = 'o')) ? 1 : 0;
-	if (p->hesh && p->convchr = 'x')
+	if (p->fl.hesh && p->convchr == 'x')
 	{
 		minl[i++] = '0';
 		minl[i++] = 'x';

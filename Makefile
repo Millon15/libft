@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/07 07:03:48 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/07 23:14:27 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,9 +57,15 @@ fclean: clean
 
 re: fclean all
 
-test: all
+shortfclean:
+	rm -rf $(OBJ_D)
+	rm -f $(NAME)
+
+shortre: shortfclean all
+
+test: shortre
 	rm -f unitest.out
 	$(C) -o unitest.out $(INCLUDE) $(NAME) unitest.c
 	./unitest.out
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test shortfclean shortre
