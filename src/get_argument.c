@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 06:05:00 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 10:26:12 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/09 04:30:44 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ static	unsigned long long	return_unsigned(t_printf *p)
 		return (va_arg(p->ap, unsigned int));
 }
 
-static	long long			return_signed(t_printf *p)
+static	unsigned long long	return_signed(t_printf *p)
 {
-	long long		tmp;
+	long long				tmp;
+	unsigned long long		utmp;
 
 	if (p->fl.ll)
 		tmp = va_arg(p->ap, long long);
@@ -50,10 +51,12 @@ static	long long			return_signed(t_printf *p)
 		tmp = va_arg(p->ap, int);
 	if (tmp < 0)
 	{
-		p->fl.is_negative = 1;
-		tmp = -tmp;
+		p->fl.is_neg = true;
+		utmp = -tmp;
 	}
-	return (tmp);
+	else
+		utmp = tmp;
+	return (utmp);
 }
 
 void						get_argument(char conv, t_printf *p)
@@ -69,11 +72,11 @@ void						get_argument(char conv, t_printf *p)
 		conv = 'x';
 	}
 	conv = ft_tolower(conv);
-	p->convchr = conv;
+	p->cc = conv;
 	if (conv == 'd' || conv == 'i')
-		indent_digit(return_signed(p), p);
+		indent_and_put_number(return_signed(p), p);
 	else if (conv == 'o' || conv == 'u' || conv == 'x' || conv == 'p')
-		indent_digit(return_unsigned(p), p);
+		indent_and_put_number(return_unsigned(p), p);
 	else if (conv == 'c')
 		indent_char(\
 		(p->fl.l ? (char)va_arg(p->ap, int) : va_arg(p->ap, int)), p);

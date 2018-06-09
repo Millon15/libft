@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/07 07:03:38 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/09 03:00:55 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,8 @@ SRC	=	ft_strlen.c \
 		ft_module.c \
 		checkintstr.c \
 		ft_islowercase.c \
-		ft_isuppercase.c
+		ft_isuppercase.c \
+		ft_itoc.c
 
 NAME	=	libft.a
 OBJ_D	=	obj/

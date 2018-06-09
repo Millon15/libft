@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 01:25:34 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/09 03:00:36 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 /*
 *****************************************************************************
@@ -62,7 +63,7 @@ char				*ft_strdup(const char *s1);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack, const char *needle\
-					, size_t len);
+	, size_t len);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strcat(char *dest, const char *src);
@@ -126,7 +127,7 @@ int					ft_atoi_base(const char *s, int base);
 unsigned long		ft_atou_base(const char *s, int base);
 char				*ft_utoa_base(unsigned long value, int base);
 char				*ft_strnjoin(char const *s1, char const *s2, \
-					size_t l1, size_t l2);
+	size_t l1, size_t l2);
 ssize_t				ft_putnstr(char const *s, size_t len);
 ssize_t				ft_putnstr_fd(char const *s, int fd, size_t len);
 ssize_t				ft_putnendl(char const *s, size_t len);
@@ -135,6 +136,7 @@ int					ft_module(int x);
 char				*checkintstr(char *str);
 int					ft_islowercase(const int c);
 int					ft_isuppercase(const int c);
-
+char				ft_itoc(const unsigned char value, \
+	const bool is_upperсase);
 
 #endif

@@ -6,50 +6,21 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 11:46:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/09 03:58:03 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void			check_buffer(const size_t len, t_printf *p)
+void			add_char_to_buf(const char c, t_printf *p)
 {
-	int			slen;
-
-	slen = ft_strlen(p->buf);
-	if ((slen + len) > BUFFER_SIZE)
+	if ((p->i + 1) == BUFFER_SIZE)
 	{
-		p->totout += write(1, p->buf, slen);
-		ft_bzero(p->buf, slen * sizeof(char));
+		p->totout += write(1, p->buf, p->i);
+		ft_bzero(p->buf, p->i * sizeof(char));
 		p->i = 0;
 	}
-}
-
-void			add_char_tobuf(const char c, t_printf *p)
-{
-	check_buffer(1, p);
 	p->buf[p->i++] = c;
-}
-
-void			add_str_tobuf(char *str, bool tofree, t_printf *p)
-{
-	size_t			slen;
-	ssize_t			i;
-
-	slen = ft_strlen(str);
-	if (slen >= BUFFER_SIZE)
-	{
-		p->totout += write(1, str, slen);
-		return ;
-	}
-	check_buffer(slen, p);
-	i = -1;
-	while (p->i < BUFFER_SIZE && str[++i] != '\0')
-	{
-		p->buf[p->i++] = str[i];
-	}
-	if (str && tofree)
-		free(str);
 }
 
 int				ft_printf(const char *cstr, ...)
@@ -66,10 +37,11 @@ int				ft_printf(const char *cstr, ...)
 		if (cstr[i] == '%')
 			i = obtainsubstr(cstr, i, &prtf);
 		else
-			add_char_tobuf(cstr[i], &prtf);
+			add_char_to_buf(cstr[i], &prtf);
 		i++;
 	}
 	va_end(prtf.ap);
-	prtf.totout += write(1, prtf.buf, ft_strlen(prtf.buf));
+	if (prtf.i > 0)
+		prtf.totout += write(1, prtf.buf, prtf.i);
 	return (prtf.totout);
 }

@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/07 23:14:27 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/09 04:53:22 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC			=	$(SRC_D)ft_printf.c \
 				$(SRC_D)obtainconvstr.c \
 				$(SRC_D)get_argument.c \
 				$(SRC_D)indent_argument.c \
-				$(SRC_D)indent_digit.c
+				$(SRC_D)indent_and_put_number.c
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
