@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 05:08:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/09 06:26:10 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 02:11:48 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ int			main( void )
 
 		// printf("\n");
 		// printf("%100.20d|\n", 124141);
-		// ft_printf("%100.20d|\n", 124142);
+		// ft_printf("%100.20d|\n", 124141);
 		// printf("%-100.20d|\n", 124141);
-		// ft_printf("%-100.20d|\n", 124142);
+		// ft_printf("%-100.20d|\n", 124141);
 		// printf("% -100.20d|\n", 124141);
-		// ft_printf("% -100.20d|\n", 124142);
+		// ft_printf("% -100.20d|\n", 124141);
 		// printf("%+-100.20d|\n", 124141);
-		// ft_printf("%+-100.20d|\n", 124142);
+		// ft_printf("%+-100.20d|\n", 124141);
 		// printf("%+-100.20d|\n", -124141);
-		// ft_printf("%+-100.20d|\n", -124142);
+		// ft_printf("%+-100.20d|\n", -124141);
 		// printf("\n");
 
 		// printf("\n");
@@ -59,7 +59,7 @@ int			main( void )
 		// printf("%#0100x|\n", 37732);
 		// ft_printf("%#0100x|\n", 37732);
 		// printf("%#-100.20x|\n", 124141);
-		// ft_printf("%#-100.20x|\n", 124142);
+		// ft_printf("%#-100.20x|\n", 124141);
 		// printf("\n");
 
 		// printf("\n");
@@ -95,6 +95,18 @@ int			main( void )
 		// ft_printf("%0100d|\n", 37732);
 		// printf("\n");
 
+		// printf("%5d|\n", -42);
+		// ft_printf("%5d|\n", -42);
+		// printf("%-5d|\n", -42);
+		// ft_printf("%-5d|\n", -42);
+		// printf("%05d|\n", -42);
+		// ft_printf("%05d|\n", -42);
+		// printf("%25.5d|\n", -42);
+		// ft_printf("%25.5d|\n", -42);
+		// printf("%-25.5d|\n", -42);
+		// ft_printf("%-25.5d|\n", -42);
+		// printf("\n");
+
 		// printf("%.20d|\n", 0);
 		// ft_printf("%.20d|\n", 0);
 		// printf("%20d|\n", 0);
@@ -105,15 +117,15 @@ int			main( void )
 		// ft_printf("%0100d|\n", 0);
 		// printf("\n");
 
-		printf("%#.20x|\n", 0);
-		ft_printf("%#.20x|\n", 0);
-		printf("%#20x|\n", 0);
-		ft_printf("%#20x|\n", 0);
-		printf("%#100.20x|\n", 0);
-		ft_printf("%#100.20x|\n", 0);
-		printf("%#0100x|\n", 0);
-		ft_printf("%#0100x|\n", 0);
-		printf("\n");
+		// printf("%#.20x|\n", 0);
+		// ft_printf("%#.20x|\n", 0);
+		// printf("%#20x|\n", 0);
+		// ft_printf("%#20x|\n", 0);
+		// printf("%#100.20x|\n", 0);
+		// ft_printf("%#100.20x|\n", 0);
+		// printf("%#0100x|\n", 0);
+		// ft_printf("%#0100x|\n", 0);
+		// printf("\n");
 
 		// printf("%#.20o|\n", 0);
 		// ft_printf("%#.20o|\n", 0);
@@ -125,75 +137,71 @@ int			main( void )
 		// ft_printf("%#0100o|\n", 0);
 		// printf("\n");
 
-		// printf("%p\n", "sddfgsd");
-		// ft_printf("%p\n", "sddfgsd");
-
 		// printf("@moulitest: %#.o|\n", 0);
 		// ft_printf("@moulitest: %#.o|\n", 0);
 
 		// printf("@moulitest: %#.o|\n", 1);
 		// ft_printf("@moulitest: %#.o|\n", 1);
 
-		// printf("%5d$\n", -42);
-		// ft_printf("%5d$\n", -42);
+		// printf("%5d|\n", 0);
+		// ft_printf("%5d|\n", 0);
+		// printf("%-5d|\n", 0);
+		// ft_printf("%-5d|\n", 0);
+		// printf("%05d|\n", 0);
+		// ft_printf("%05d|\n", 0);
+		// printf("%25.5d|\n", 0);
+		// ft_printf("%25.5d|\n", 0);
+		// printf("%-25.5d|\n", 0);
+		// ft_printf("%-25.5d|\n", 0);
+		// printf("%5.5d|\n", 0);
+		// ft_printf("%5.5d|\n", 0);
 
-		// printf("%#x\n", 0);
-		// ft_printf("%#x\n\n", 0);
+		// printf("%x|\n", 0);
+		// ft_printf("%x|\n", 0);
+		// printf("%o|\n", 0);
+		// ft_printf("%o|\n", 0);
+		// printf("%u|\n", 0);
+		// ft_printf("%u|\n", 0);
+		// printf("%d|\n", 0);
+		// ft_printf("%d|\n", 0);
+		// printf("\n");
 
-		// printf("%#.x\n", 0);
-		// ft_printf("%#.x\n\n", 0);
+		// printf("%#.x|\n", 0);
+		// ft_printf("%#.x|\n", 0);
+		// printf("%#.o|\n", 0);
+		// ft_printf("%#.o|\n", 0);
+		// printf("%#.u|\n", 0);
+		// ft_printf("%#.u|\n", 0);
+		// printf("%#.d|\n", 0);
+		// ft_printf("%#.d|\n", 0);
+		// printf("\n");
 
-		// printf("%#o\n", 0);
-		// ft_printf("%#o\n\n", 0);
+		// printf("%.x|\n", 0);
+		// ft_printf("%.x|\n", 0);
+		// printf("%.o|\n", 0);
+		// ft_printf("%.o|\n", 0);
+		// printf("%.u|\n", 0);
+		// ft_printf("%.u|\n", 0);
+		// printf("%.d|\n", 0);
+		// ft_printf("%.d|\n", 0);
+		// printf("\n");
 
-		// printf("%#.o\n", 0);
-		// ft_printf("%#.o\n\n", 0);
-
-		// printf("%#u\n", 0);
-		// ft_printf("%#u\n\n", 0);
-
-		// printf("%#.u\n", 0);
-		// ft_printf("%#.u\n\n", 0);
-
-		// printf("%u\n", 0);
-		// ft_printf("%x\n\n", 0);
-
-		// printf("%.u\n", 0);
-		// ft_printf("%.u\n\n", 0);
-
-		// printf("%x\n", 0);
-		// ft_printf("%x\n\n", 0);
-
-		// printf("%.x\n", 0);
-		// ft_printf("%.x\n\n", 0);
-
-		// printf("%o\n", 0);
-		// ft_printf("%o\n\n", 0);
-
-		// printf("%.o\n", 0);
-		// ft_printf("%.o\n\n", 0);
 
 		// printf("%p\n", NULL);
-		// ft_printf("%p\n\n", NULL);
-
+		// ft_printf("%p\n", NULL);
 		// printf("%.p\n", NULL);
-		// ft_printf("%.p\n\n", NULL);
-
+		// ft_printf("%.p\n", NULL);
 		// printf("%#.p\n", NULL);
-		// ft_printf("%#.p\n\n", NULL);
+		// ft_printf("%#.p\n", NULL);
+		// printf("\n");
 
 		// char	c[] = "sdfds";
 		// printf("%p\n", c);
-		// ft_printf("%p\n\n", c);
+		// ft_printf("%p\n", c);
+		// printf("%p\n", "sddfgsd");
+		// ft_printf("%p\n", "sddfgsd");
 
-		// printf("%.p\n", c);
-		// ft_printf("%.p\n\n", c);
-
-		// printf("%#.p\n", c);
-		// ft_printf("%#.p\n\n", c);
-
-		// ft_printf("\n");
-		// printf("\n");
+		// printf("\n\n");
 		// ft_printf("%%\n");
 		// printf("%%\n");
 		// ft_printf("%d\n", 42);

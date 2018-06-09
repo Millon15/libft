@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 10:26:01 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/09 07:54:29 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static	size_t		fill_precision(const char *s, const size_t i, t_printf *p)
 
 	l = i;
 	p->fl.precs_spec = false;
-	p->fl.is_prec = true;
-	p->fl.prec = false;
+	p->fl.prec = 0;
 	while (ft_isdigit(s[l]))
 	{
 		p->fl.prec = p->fl.prec * 10 + (s[l] - '0');
@@ -51,9 +50,9 @@ static	size_t		fill_minlenth(const char *s, const size_t i, t_printf *p)
 {
 	int			l;
 
-	l = i;
-	p->fl.minl = false;
 	p->fl.is_minl = true;
+	p->fl.minl = 0;
+	l = i;
 	while (ft_isdigit(s[l]))
 	{
 		p->fl.minl = p->fl.minl * 10 + (s[l] - '0');
@@ -71,21 +70,20 @@ static	size_t		fill_struct(const char *s, size_t i, t_printf *p)
 	s[i] == '-' ? p->fl.minus = true : false;
 	s[i] == 'j' ? p->fl.j = true : false;
 	s[i] == 'z' ? p->fl.z = true : false;
-	s[i] == '.' ? p->fl.precs_spec = true : false;
 	s[i] == 'l' ? p->fl.l = true : false;
 	s[i] == 'h' ? p->fl.h = true : false;
+	if (s[i] == '.' && (p->fl.precs_spec = true))
+		p->fl.is_prec = true;
 	if (s[i] == 'l' && (s[i + 1] == 'l' || s[i - 1] == 'l'))
 		p->fl.ll = true;
 	if (s[i] == 'h' && (s[i + 1] == 'h' || s[i - 1] == 'h'))
 		p->fl.hh = true;
 	if (s[i] == '0' && !ft_isdigit(s[i - 1]))
-		p->fl.zero = 1;
+		p->fl.zero = true;
 	else if (ft_isdigit(s[i]))
-	{
 		return (p->fl.precs_spec ? \
 		fill_precision(s, i, p) : fill_minlenth(s, i, p));
-	}
-	return (true);
+	return (1);
 }
 
 size_t			obtainsubstr(const char *s, size_t i, t_printf *p)

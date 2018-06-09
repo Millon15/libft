@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/09 04:32:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 02:08:01 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void			get_argument(char conv, t_printf *p);
 void			indent_char(int c, t_printf *p);
 void			indent_string(const void *s, t_printf *p);
 
-void			indent_and_put_number(unsigned long long d, t_printf *p);
+void			indent_and_put_number(const size_t d, t_printf *p);
 
 #endif

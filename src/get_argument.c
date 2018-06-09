@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 06:05:00 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/09 04:30:44 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 02:09:57 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,15 @@ void						get_argument(char conv, t_printf *p)
 	else if (conv == 'X')
 		p->fl.bigx = true;
 	else if (conv == 'p')
-	{
 		p->fl.hesh = true;
-		conv = 'x';
-	}
 	conv = ft_tolower(conv);
 	p->cc = conv;
 	if (conv == 'd' || conv == 'i')
 		indent_and_put_number(return_signed(p), p);
-	else if (conv == 'o' || conv == 'u' || conv == 'x' || conv == 'p')
+	else if (conv == 'o' || conv == 'u' || conv == 'x')
 		indent_and_put_number(return_unsigned(p), p);
+	else if (conv == 'p')
+		indent_and_put_number(va_arg(p->ap, size_t), p);
 	else if (conv == 'c')
 		indent_char(\
 		(p->fl.l ? (char)va_arg(p->ap, int) : va_arg(p->ap, int)), p);
