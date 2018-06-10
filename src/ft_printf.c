@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 04:18:45 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 08:37:54 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int				ft_printf(const char *cstr, ...)
 		if (cstr[i] == '%')
 			i = obtainsubstr(cstr, i, &prtf);
 		else
-			add_char_to_buf(cstr[i], &prtf);
-		i++;
+			add_char_to_buf(cstr[i++], &prtf);
 	}
 	va_end(prtf.ap);
 	if (prtf.i > 0)

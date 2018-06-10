@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/10 04:18:26 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/10 08:09:10 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ SRC_D		=	src/
 SRC			=	$(SRC_D)ft_printf.c \
 				$(SRC_D)obtainconvstr.c \
 				$(SRC_D)get_argument.c \
-				$(SRC_D)indent_argument.c \
-				$(SRC_D)indent_and_put_number.c
+				$(SRC_D)indent_and_put_integer.c \
+				$(SRC_D)indent_and_put_string.c \
+				$(SRC_D)indent_and_put_char.c
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
@@ -34,7 +35,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C $(LIB)
-	mv $(LIB)$(LIB_N) $(NAME)
+	cp $(LIB)$(LIB_N) $(NAME)
 	ar -r $(NAME) $(OBJ)
 	ranlib $(NAME)
 

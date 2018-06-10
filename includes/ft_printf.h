@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 04:31:02 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 09:08:36 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 typedef struct	s_flags
 {
-	size_t							apostrophe : 1;
 	size_t							zero : 1;
 	size_t							space : 1;
 	size_t							hesh : 1;
@@ -48,9 +47,9 @@ typedef struct	s_printf
 	va_list							ap;
 	t_flags							fl;
 	char							cc;
-	size_t							i;
+	int								i;
 	char							*buf;
-	ssize_t							totout;
+	int								totout;
 
 }				t_printf;
 
@@ -58,10 +57,10 @@ int				ft_printf(const char *cstr, ...);
 
 void			add_char_to_buf(const char c, t_printf *p);
 size_t			obtainsubstr(const char *s, size_t i, t_printf *p);
-void			get_argument(char conv, t_printf *p);
-void			indent_char(int c, t_printf *p);
-void			indent_string(const void *s, t_printf *p);
+void			get_argument(const char conv, t_printf *p);
 
-void			indent_and_put_number(const size_t d, t_printf *p);
+void			indent_and_put_integer(const size_t d, t_printf *p);
+void			indent_and_put_string(const char *s, t_printf *p);
+void			indent_and_put_char(const int c, t_printf *p);
 
 #endif

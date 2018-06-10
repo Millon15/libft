@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indent_and_put_number.c                            :+:      :+:    :+:   */
+/*   indent_and_put_integer.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 22:59:22 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 05:09:10 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 08:43:59 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,11 @@ static void		put_all_together(
 )
 {
 	size_t			i;
-	bool			to_print_flags;
-	const	char	minl_char =
+	const char		minl_char = ((p->fl.zero && !p->fl.is_prec) ? '0' : ' ');
+	const bool		to_print_flags =
 
-	(p->fl.zero && !p->fl.is_prec) ? '0' : ' ';
-	to_print_flags = \
-	(p->fl.minl > lenm && p->fl.zero) ? put_flag(r, lenp, p) : true;
-	while (p->fl.minl && p->fl.minl-- > lenm && !p->fl.minus)
+	((p->fl.minl > lenm && p->fl.zero) ? put_flag(r, lenp, p) : true);
+	while (!p->fl.minus && p->fl.minl && p->fl.minl-- > lenm)
 		add_char_to_buf(minl_char, p);
 	to_print_flags ? put_flag(r, lenp, p) : false;
 	while (p->fl.prec && p->fl.prec-- > lenp)
@@ -90,11 +88,11 @@ static void		put_all_together(
 	i = 0;
 	while (r[i])
 		add_char_to_buf(r[i++], p);
-	while (p->fl.minl && p->fl.minl-- >= lenm && p->fl.minus)
+	while (p->fl.minus && p->fl.minl && p->fl.minl-- > lenm)
 		add_char_to_buf(' ', p);
 }
 
-void			indent_and_put_number(const size_t d, t_printf *p)
+void			indent_and_put_integer(const size_t d, t_printf *p)
 {
 	char		r[42];
 	size_t		lenp;
@@ -107,12 +105,11 @@ void			indent_and_put_number(const size_t d, t_printf *p)
 		ft_utoa_base_st(d, 8, r, p);
 	else if (p->cc == 'u' || p->cc == 'd' || p->cc == 'i')
 		ft_utoa_base_st(d, 10, r, p);
-	if (r[0] == '0' && p->fl.is_prec && p->fl.prec == 0)
-		r[0] = 0;
-	if (r[0] == 0 && p->cc == 'o' && p->fl.hesh)
+	if (d == 0 && p->cc == 'o' && p->fl.hesh)
 		r[0] = '0';
+	else if (d == 0 && p->fl.is_prec && p->fl.prec == 0)
+		r[0] = 0;
 	lenp = ft_strlen(r);
 	lenm = (p->fl.prec > lenp ? p->fl.prec : lenp) + count_flag(r, lenp, p);
 	put_all_together(r, lenp, lenm, p);
-	ft_bzero(&p->fl, sizeof(p->fl));
 }
