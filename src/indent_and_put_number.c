@@ -6,14 +6,15 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 22:59:22 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 02:07:49 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 05:09:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-static void		ft_utoa_base_st(const size_t value, \
-	const int base, char r[], t_printf *p)
+static void		ft_utoa_base_st(
+	const size_t value, const int base, char r[], t_printf *p
+)
 {
 	int			j;
 	size_t		b;
@@ -34,7 +35,9 @@ static void		ft_utoa_base_st(const size_t value, \
 	}
 }
 
-static int		count_flag(const char r[], const size_t lenp, t_printf *p)
+static int		count_flag(
+	const char r[], const size_t lenp, const t_printf *p
+)
 {
 	if ((p->cc == 'd' || p->cc == 'i') && p->fl.is_neg)
 		return (1);
@@ -57,9 +60,10 @@ static bool		put_flag(const char r[], const size_t lenp, t_printf *p)
 		add_char_to_buf('+', p);
 	else if ((p->cc == 'd' || p->cc == 'i') && p->fl.space)
 		add_char_to_buf(' ', p);
-	else if (p->cc == 'o' && p->fl.hesh && r[0] != '0' && p->fl.prec <= lenp)
+	else if (p->cc == 'o' && p->fl.hesh && \
+	*r && *r != '0' && p->fl.prec <= lenp)
 		add_char_to_buf('0', p);
-	else if ((p->cc == 'x' && p->fl.hesh && r[0] != '0') || p->cc == 'p')
+	else if ((p->cc == 'x' && p->fl.hesh && *r && *r != '0') || p->cc == 'p')
 	{
 		add_char_to_buf('0', p);
 		add_char_to_buf(p->fl.bigx ? 'X' : 'x', p);
@@ -71,23 +75,19 @@ static void		put_all_together(
 	char r[], const size_t lenp, const size_t lenm, t_printf *p
 )
 {
-	int				i;
+	size_t			i;
 	bool			to_print_flags;
-	const	size_t	prec = p->fl.prec;
+	const	char	minl_char =
 
+	(p->fl.zero && !p->fl.is_prec) ? '0' : ' ';
 	to_print_flags = \
-	p->fl.minl > lenm && p->fl.zero ? put_flag(r, lenp, p) : true;
+	(p->fl.minl > lenm && p->fl.zero) ? put_flag(r, lenp, p) : true;
 	while (p->fl.minl && p->fl.minl-- > lenm && !p->fl.minus)
-		add_char_to_buf(p->fl.zero ? '0' : ' ', p);
+		add_char_to_buf(minl_char, p);
 	to_print_flags ? put_flag(r, lenp, p) : false;
 	while (p->fl.prec && p->fl.prec-- > lenp)
 		add_char_to_buf('0', p);
 	i = 0;
-	if (r[0] == '0' && p->fl.is_prec && prec == 0 && !p->fl.is_minl)
-		r[0] = 0;
-	if (r[0] == 0 && p->fl.is_prec && prec == 0 && \
-	!p->fl.is_minl && p->cc == 'o' && p->fl.hesh)
-		r[0] = '0';
 	while (r[i])
 		add_char_to_buf(r[i++], p);
 	while (p->fl.minl && p->fl.minl-- >= lenm && p->fl.minus)
@@ -107,7 +107,12 @@ void			indent_and_put_number(const size_t d, t_printf *p)
 		ft_utoa_base_st(d, 8, r, p);
 	else if (p->cc == 'u' || p->cc == 'd' || p->cc == 'i')
 		ft_utoa_base_st(d, 10, r, p);
+	if (r[0] == '0' && p->fl.is_prec && p->fl.prec == 0)
+		r[0] = 0;
+	if (r[0] == 0 && p->cc == 'o' && p->fl.hesh)
+		r[0] = '0';
 	lenp = ft_strlen(r);
 	lenm = (p->fl.prec > lenp ? p->fl.prec : lenp) + count_flag(r, lenp, p);
 	put_all_together(r, lenp, lenm, p);
+	ft_bzero(&p->fl, sizeof(p->fl));
 }

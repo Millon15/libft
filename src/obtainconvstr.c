@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/09 07:54:29 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 04:13:13 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	bool		is_conversion_char(const char c)
 	return (false);
 }
 
-static	size_t		fill_precision(const char *s, const size_t i, t_printf *p)
+static	size_t		fill_prec(const char *s, const size_t i, t_printf *p)
 {
 	int			l;
 
@@ -46,7 +46,7 @@ static	size_t		fill_precision(const char *s, const size_t i, t_printf *p)
 	return (l - i);
 }
 
-static	size_t		fill_minlenth(const char *s, const size_t i, t_printf *p)
+static	size_t		fill_minl(const char *s, const size_t i, t_printf *p)
 {
 	int			l;
 
@@ -81,12 +81,11 @@ static	size_t		fill_struct(const char *s, size_t i, t_printf *p)
 	if (s[i] == '0' && !ft_isdigit(s[i - 1]))
 		p->fl.zero = true;
 	else if (ft_isdigit(s[i]))
-		return (p->fl.precs_spec ? \
-		fill_precision(s, i, p) : fill_minlenth(s, i, p));
+		return (p->fl.precs_spec ? fill_prec(s, i, p) : fill_minl(s, i, p));
 	return (1);
 }
 
-size_t			obtainsubstr(const char *s, size_t i, t_printf *p)
+size_t				obtainsubstr(const char *s, size_t i, t_printf *p)
 {
 	i += 1;
 	while (s[i] != '\0' && is_conversion_char(s[i]))
@@ -97,5 +96,5 @@ size_t			obtainsubstr(const char *s, size_t i, t_printf *p)
 		indent_char(s[i], p);
 	else
 		get_argument(s[i], p);
-	return(i);
+	return (i);
 }

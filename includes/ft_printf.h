@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 02:08:01 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 04:31:02 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct	s_printf
 	ssize_t							totout;
 
 }				t_printf;
-
 
 int				ft_printf(const char *cstr, ...);
 

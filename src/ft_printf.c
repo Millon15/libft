@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/09 03:58:03 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 04:18:45 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ int				ft_printf(const char *cstr, ...)
 {
 	size_t		i;
 	t_printf	prtf;
+	char		buf[BUFFER_SIZE];
 
 	ft_bzero(&prtf, sizeof(prtf));
-	prtf.buf = ft_memalloc(sizeof(char) * BUFFER_SIZE);
+	ft_bzero(&buf, BUFFER_SIZE);
+	prtf.buf = buf;
 	va_start(prtf.ap, cstr);
 	i = 0;
 	while (cstr[i] != '\0')

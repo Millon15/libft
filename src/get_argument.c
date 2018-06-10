@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 06:05:00 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 02:09:57 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 04:26:53 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static	unsigned long long	return_unsigned(t_printf *p)
 		return (va_arg(p->ap, unsigned long long));
 	else if (p->fl.l)
 		return (va_arg(p->ap, unsigned long));
-	else if (p->fl.h)
-		return ((unsigned short)va_arg(p->ap, unsigned int));
 	else if (p->fl.hh)
 		return ((unsigned char)va_arg(p->ap, unsigned int));
+	else if (p->fl.h)
+		return ((unsigned short)va_arg(p->ap, unsigned int));
 	else if (p->fl.j)
 		return (va_arg(p->ap, intmax_t));
 	else if (p->fl.z)
@@ -39,10 +39,10 @@ static	unsigned long long	return_signed(t_printf *p)
 		tmp = va_arg(p->ap, long long);
 	else if (p->fl.l)
 		tmp = va_arg(p->ap, long);
-	else if (p->fl.h)
-		tmp = (short)va_arg(p->ap, int);
 	else if (p->fl.hh)
 		tmp = (char)va_arg(p->ap, int);
+	else if (p->fl.h)
+		tmp = (short)va_arg(p->ap, int);
 	else if (p->fl.j)
 		tmp = va_arg(p->ap, intmax_t);
 	else if (p->fl.z)
