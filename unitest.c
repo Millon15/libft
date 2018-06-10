@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 05:08:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 09:13:46 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/11 00:43:55 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -388,8 +388,9 @@ int			main(void)
 	// 		printf("\n");
 
 
-		printf("@main_ftprintf: |%####0000 33..1..#00d\\n|\n", 256);
-		ft_printf("@main_ftprintf: |%####0000 33..1..#00d\\n|\n", 256);
+		// printf("@main_ftprintf: |%####0000 33..1..#00d\\n|\n", 256);
+		// ft_printf("@main_ftprintf: |%####0000 33..1..#00d\\n|\n", 256);
+
 
 	return (0);
 

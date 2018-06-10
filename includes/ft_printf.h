@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 09:08:36 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/10 23:25:11 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,11 @@ typedef struct	s_printf
 
 }				t_printf;
 
-int				ft_printf(const char *cstr, ...);
+int				ft_printf(const char *convstr, ...);
 
 void			add_char_to_buf(const char c, t_printf *p);
-size_t			obtainsubstr(const char *s, size_t i, t_printf *p);
+size_t			obtainconvstr(const char *s, size_t i, t_printf *p);
+size_t			fill_flags(const char *s, size_t i, t_printf *p);
 void			get_argument(const char conv, t_printf *p);
 
 void			indent_and_put_integer(const size_t d, t_printf *p);

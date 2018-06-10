@@ -1,6 +1,7 @@
 # My addings
 .*
 _*
+printf_tests/
 test.c
 
 # Prerequisites

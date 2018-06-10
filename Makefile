@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/10 08:09:10 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/10 23:10:22 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ LIB_N		=	libft.a
 SRC_D		=	src/
 SRC			=	$(SRC_D)ft_printf.c \
 				$(SRC_D)obtainconvstr.c \
+				$(SRC_D)help_obtainconvstr.c \
 				$(SRC_D)get_argument.c \
 				$(SRC_D)indent_and_put_integer.c \
 				$(SRC_D)indent_and_put_string.c \
