@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 23:25:11 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/13 16:43:41 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,21 @@ typedef struct	s_printf
 	char							cc;
 	int								i;
 	char							*buf;
-	int								totout;
+	int								to_out;
 
 }				t_printf;
 
 int				ft_printf(const char *convstr, ...);
 
-void			add_char_to_buf(const char c, t_printf *p);
-size_t			obtainconvstr(const char *s, size_t i, t_printf *p);
-size_t			fill_flags(const char *s, size_t i, t_printf *p);
+void			add_char_to_buf(const int c, t_printf *p);
+size_t			parseconvstr(const char *s, size_t i, t_printf *p);
+size_t			fill_fl_struct(const char *s, size_t i, t_printf *p);
 void			get_argument(const char conv, t_printf *p);
+char			count_active_bites(const int c);
 
-void			indent_and_put_integer(const size_t d, t_printf *p);
-void			indent_and_put_string(const char *s, t_printf *p);
-void			indent_and_put_char(const int c, t_printf *p);
+void			indent_and_print_integer(const size_t d, t_printf *p);
+void			indent_and_print_char(const int c, t_printf *p);
+void			indent_and_print_string(const char *s, t_printf *p);
+void			indent_and_print_wide_string(const wchar_t *s, t_printf *p);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 23:02:47 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 23:12:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/12 15:16:07 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static	size_t		fill_minl(const char *s, size_t i, t_printf *p)
 	return (i - start);
 }
 
-static size_t		help_fill_flags(const char *s, size_t i, t_printf *p)
+static size_t		obtain_minl_and_prec(const char *s, size_t i, t_printf *p)
 {
 	const size_t	start = i;
 
@@ -62,7 +62,7 @@ static size_t		help_fill_flags(const char *s, size_t i, t_printf *p)
 	return (1);
 }
 
-size_t				fill_flags(const char *s, size_t i, t_printf *p)
+size_t				fill_fl_struct(const char *s, size_t i, t_printf *p)
 {
 	if (s[i] == 'l' && (s[i + 1] == 'l' || s[i - 1] == 'l'))
 		p->fl.ll = true;
@@ -84,5 +84,5 @@ size_t				fill_flags(const char *s, size_t i, t_printf *p)
 		p->fl.l = true;
 	else if (s[i] == 'h')
 		p->fl.h = true;
-	return (help_fill_flags(s, i, p));
+	return (obtain_minl_and_prec(s, i, p));
 }

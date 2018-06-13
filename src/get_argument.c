@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 06:05:00 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 08:55:58 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/13 16:43:29 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,18 @@ void						get_argument(const char conv, t_printf *p)
 		p->fl.hesh = true;
 	p->cc = ft_tolower(conv);
 	if (p->cc == 'd' || p->cc == 'i')
-		indent_and_put_integer(return_signed(p), p);
+		indent_and_print_integer(return_signed(p), p);
 	else if (p->cc == 'o' || p->cc == 'u' || p->cc == 'x')
-		indent_and_put_integer(return_unsigned(p), p);
+		indent_and_print_integer(return_unsigned(p), p);
 	else if (p->cc == 'p')
-		indent_and_put_integer(va_arg(p->ap, size_t), p);
+		indent_and_print_integer(va_arg(p->ap, size_t), p);
 	else if (p->cc == 's')
-		indent_and_put_string(va_arg(p->ap, char*), p);
+		(p->fl.l || p->fl.ll) ? \
+		indent_and_print_wide_string(va_arg(p->ap, wchar_t*), p) : \
+		indent_and_print_string(va_arg(p->ap, char*), p);
 	else if (p->cc == 'c')
-		indent_and_put_char((char)va_arg(p->ap, int), p);
+		indent_and_print_char((p->fl.l || p->fl.ll) ? \
+		va_arg(p->ap, int) : (char)va_arg(p->ap, int), p);
 	else
-		indent_and_put_char(conv, p);
+		indent_and_print_char(conv, p);
 }

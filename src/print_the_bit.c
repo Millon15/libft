@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indent_and_put_char.c                              :+:      :+:    :+:   */
+/*   print_the_bit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/07 06:11:29 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/10 08:42:56 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/13 12:55:04 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/13 12:55:13 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void			indent_and_put_char(const int c, t_printf *p)
+void			print_the_bit(size_t b)
 {
-	const	char		minl_char = ((p->fl.zero) ? '0' : ' ');
+	char	arr[sizeof(size_t)];
+	char	i;
 
-	if (p->fl.l)
-		return ;
-	while (!p->fl.minus && p->fl.minl && p->fl.minl-- > 1)
-		add_char_to_buf(minl_char, p);
-	add_char_to_buf(c, p);
-	while (p->fl.minus && p->fl.minl && p->fl.minl-- > 1)
-		add_char_to_buf(' ', p);
+	i = 0;
+	while (b != 0)
+	{
+		arr[i++] = b & 1 ? '1' : '0';
+		b >>= 1;
+	}
+	while (i)
+		ft_putchar(arr[--i]);
 }

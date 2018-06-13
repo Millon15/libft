@@ -1,8 +1,8 @@
 # My addings
 .*
 _*
-printf_tests/
-test.c
+*test*
+main.c
 
 # Prerequisites
 *.d
