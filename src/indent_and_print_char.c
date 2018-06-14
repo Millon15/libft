@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 06:11:29 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/14 15:46:42 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/14 22:09:00 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,24 @@ static void		add_2bit_char_to_buf(const unsigned int c, t_printf *p)
 
 char			count_active_bits(const int c)
 {
-	char		i;
+	unsigned char		i;
 
 	i = 1;
-	while (c >> i && i < 64)
+	while (c >> i && i < MAXINTSIZE)
 		i++;
-	return (i == 64 ? 0 : i);
+	return (i == MAXINTSIZE ? 0 : i);
 }
 
 void			indent_and_print_char(const int c, t_printf *p)
 {
-	char			minlchr;
-	const char		charlen = count_active_bits(c);
+	char				minlchr;
+	const unsigned char	active_bytes = count_active_bytes(c);
+	const char			charlen = count_active_bits(c);
 
 	if (p->cc != 's')
 	{
 		minlchr = ((p->fl.zero) ? '0' : ' ');
-		while (!p->fl.minus && p->fl.minl && p->fl.minl-- > 1)
+		while (!p->fl.minus && p->fl.minl && p->fl.minl-- > active_bytes)
 			add_char_to_buf(minlchr, p);
 	}
 	if (charlen <= 7 && MB_CUR_MAX >= 1)
@@ -86,6 +87,6 @@ void			indent_and_print_char(const int c, t_printf *p)
 	else if (charlen <= 32 && MB_CUR_MAX >= 4)
 		add_4bit_char_to_buf(c, p);
 	if (p->cc != 's')
-		while (p->fl.minus && p->fl.minl && p->fl.minl-- > 1)
+		while (p->fl.minus && p->fl.minl && p->fl.minl-- > active_bytes)
 			add_char_to_buf(' ', p);
 }

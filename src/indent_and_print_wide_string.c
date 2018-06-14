@@ -6,13 +6,13 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 05:26:26 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/14 16:08:44 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/14 21:53:42 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-static	char	count_active_bytes(const int c)
+unsigned char	count_active_bytes(const int c)
 {
 	const char	charlen = count_active_bits(c);
 
@@ -66,7 +66,6 @@ static	void	print_string(const wchar_t *s, size_t len, t_printf *p)
 
 	i = 0;
 	active_bytes_passed = 0;
-
 	if (p->fl.is_prec && p->fl.prec < len)
 	{
 		delimeter = get_delimeter(s, p);
@@ -89,7 +88,7 @@ void			indent_and_print_wide_string(const wchar_t *s, t_printf *p)
 	size_t				lenm;
 
 	if (s == NULL)
- 		s = nullstr;
+		s = nullstr;
 	lenm = (p->fl.is_prec && p->fl.prec < len) ? get_delimeter(s, p) : len;
 	while (!p->fl.minus && p->fl.minl && p->fl.minl-- > lenm)
 	{

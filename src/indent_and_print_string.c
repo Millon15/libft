@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 05:26:26 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/13 22:53:06 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/14 21:53:09 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void			indent_and_print_string(const char *s, t_printf *p)
 	size_t				lenm;
 
 	if (s == NULL)
- 		s = nullstr;
+		s = nullstr;
 	lenm = (p->fl.is_prec && p->fl.prec <= len) ? p->fl.prec : len;
 	while (!p->fl.minus && p->fl.minl && p->fl.minl-- > lenm)
 	{

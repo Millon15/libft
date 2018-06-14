@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/14 16:07:06 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/14 22:06:41 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <libft.h>
 # include <stdarg.h>
 # include <stdio.h>
+# define MAXINTSIZE (sizeof(size_t) * 8)
 # define BUFFER_SIZE 4096
 
 typedef struct	s_flags
@@ -33,7 +34,6 @@ typedef struct	s_flags
 	size_t							z : 1;
 	size_t							bigx : 1;
 	size_t							is_neg : 1;
-	size_t							precs_spec : 1;
 	size_t							is_prec : 1;
 	size_t							is_minl : 1;
 	size_t							prec;
@@ -60,6 +60,7 @@ size_t			fill_fl_struct(const char *s, size_t i, t_printf *p);
 void			get_argument(const char conv, t_printf *p);
 char			count_active_bits(const int c);
 void			print_the_bit(size_t b);
+unsigned char	count_active_bytes(const int c);
 
 void			indent_and_print_integer(const size_t d, t_printf *p);
 void			indent_and_print_char(const int c, t_printf *p);

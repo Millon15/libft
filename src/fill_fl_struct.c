@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help_obtainconvstr.c                               :+:      :+:    :+:   */
+/*   fill_fl_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 23:02:47 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/12 15:16:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/14 19:37:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,7 @@ size_t				fill_fl_struct(const char *s, size_t i, t_printf *p)
 		p->fl.l = true;
 	else if (s[i] == 'h')
 		p->fl.h = true;
-	return (obtain_minl_and_prec(s, i, p));
+	else
+		return (obtain_minl_and_prec(s, i, p));
+	return (1);
 }
