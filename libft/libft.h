@@ -6,16 +6,17 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/09 03:00:36 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/14 16:05:21 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 # include <stdbool.h>
+# include <limits.h>
 
 /*
 *****************************************************************************

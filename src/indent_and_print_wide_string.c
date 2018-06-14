@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 05:26:26 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/13 22:51:54 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/14 16:08:44 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	char	count_active_bytes(const int c)
 {
-	const char	charlen = count_active_bites(c);
+	const char	charlen = count_active_bits(c);
 
 	if (charlen <= 7)
 		return (1);
@@ -43,7 +43,7 @@ static	size_t	ft_wstrlen(const wchar_t *s)
 	return (active_bytes_passed);
 }
 
-static	size_t	get_smth(const wchar_t *s, t_printf *p)
+static	size_t	get_delimeter(const wchar_t *s, t_printf *p)
 {
 	size_t		i;
 	size_t		active_bytes_passed;
@@ -61,7 +61,7 @@ static	size_t	get_smth(const wchar_t *s, t_printf *p)
 static	void	print_string(const wchar_t *s, size_t len, t_printf *p)
 {
 	size_t				i;
-	size_t				smth;
+	size_t				delimeter;
 	size_t				active_bytes_passed;
 
 	i = 0;
@@ -69,8 +69,8 @@ static	void	print_string(const wchar_t *s, size_t len, t_printf *p)
 
 	if (p->fl.is_prec && p->fl.prec < len)
 	{
-		smth = get_smth(s, p);
-		while (active_bytes_passed < smth)
+		delimeter = get_delimeter(s, p);
+		while (active_bytes_passed < delimeter)
 		{
 			indent_and_print_char(s[i], p);
 			active_bytes_passed += count_active_bytes(s[i++]);
@@ -90,7 +90,7 @@ void			indent_and_print_wide_string(const wchar_t *s, t_printf *p)
 
 	if (s == NULL)
  		s = nullstr;
-	lenm = (p->fl.is_prec && p->fl.prec < len) ? get_smth(s, p) : len;
+	lenm = (p->fl.is_prec && p->fl.prec < len) ? get_delimeter(s, p) : len;
 	while (!p->fl.minus && p->fl.minl && p->fl.minl-- > lenm)
 	{
 		add_char_to_buf(minlchr, p);

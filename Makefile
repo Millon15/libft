@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/13 16:39:14 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/14 16:10:49 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC			=	$(SRC_D)ft_printf.c \
 				$(SRC_D)indent_and_print_integer.c \
 				$(SRC_D)indent_and_print_char.c \
 				$(SRC_D)indent_and_print_string.c \
-				$(SRC_D)indent_and_print_wide_string.c
+				$(SRC_D)indent_and_print_wide_string.c \
+				$(SRC_D)print_the_bit.c
 
 OBJ_D		=	obj/
 OBJ			=	$(addprefix $(OBJ_D), $(SRC:.c=.o))
@@ -67,8 +68,8 @@ shortfclean:
 shortre: shortfclean all
 
 test: shortre
-	@ $(C) -o unitest.out $(INCLUDE) $(NAME) unitest.c
-	@ ./unitest.out
-	@ rm -f unitest.out
+	@ $(C) -o unittest.out $(INCLUDE) $(NAME) unittest.c
+	@ ./unittest.out
+	@ rm -f unittest.out
 
 .PHONY: all clean fclean re test shortfclean shortre
