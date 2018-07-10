@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 23:02:47 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/14 19:37:10 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/09 20:07:00 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ static size_t		obtain_minl_and_prec(const char *s, size_t i, t_printf *p)
 
 size_t				fill_fl_struct(const char *s, size_t i, t_printf *p)
 {
-	if (s[i] == 'l' && (s[i + 1] == 'l' || s[i - 1] == 'l'))
+	if (s[i] == 'l' && s[i + 1] == 'l')
 		p->fl.ll = true;
-	else if (s[i] == 'h' && (s[i + 1] == 'h' || s[i - 1] == 'h'))
+	else if (s[i] == 'h' && s[i + 1] == 'h')
 		p->fl.hh = true;
 	else if (s[i] == ' ')
 		p->fl.space = true;

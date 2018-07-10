@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/14 22:06:41 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/09 21:31:16 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_flags
 	size_t							hh : 1;
 	size_t							j : 1;
 	size_t							z : 1;
-	size_t							bigx : 1;
+	size_t							is_bigx : 1;
 	size_t							is_neg : 1;
 	size_t							is_prec : 1;
 	size_t							is_minl : 1;

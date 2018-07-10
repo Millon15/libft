@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/14 22:09:30 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/09 20:06:50 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void			add_char_to_buf(const int c, t_printf *p)
 
 int				ft_printf(const char *convstr, ...)
 {
-	size_t			i;
-	t_printf		prtf;
-	static char		buf[BUFFER_SIZE];
+	size_t				i;
+	static t_printf		prtf;
+	static char			buf[BUFFER_SIZE];
 
 	ft_bzero(&prtf, sizeof(prtf));
 	prtf.buf = buf;

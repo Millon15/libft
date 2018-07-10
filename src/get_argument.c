@@ -6,13 +6,13 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 06:05:00 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/13 16:43:29 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/09 21:31:59 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-static	unsigned long long	return_unsigned(t_printf *p)
+static	size_t			return_unsigned(t_printf *p)
 {
 	if (p->fl.j)
 		return (va_arg(p->ap, intmax_t));
@@ -30,10 +30,10 @@ static	unsigned long long	return_unsigned(t_printf *p)
 		return (va_arg(p->ap, unsigned int));
 }
 
-static	unsigned long long	return_signed(t_printf *p)
+static	size_t			return_signed(t_printf *p)
 {
-	long long				tmp;
-	unsigned long long		utmp;
+	ssize_t				tmp;
+	size_t				utmp;
 
 	if (p->fl.j)
 		tmp = va_arg(p->ap, intmax_t);
@@ -59,16 +59,8 @@ static	unsigned long long	return_signed(t_printf *p)
 	return (utmp);
 }
 
-void						get_argument(const char conv, t_printf *p)
+void					get_argument(const char conv, t_printf *p)
 {
-	if (conv == 'D' || conv == 'O' || conv == 'U' || \
-		conv == 'S' || conv == 'C')
-		p->fl.l = true;
-	else if (conv == 'X')
-		p->fl.bigx = true;
-	else if (conv == 'p')
-		p->fl.hesh = true;
-	p->cc = ft_tolower(conv);
 	if (p->cc == 'd' || p->cc == 'i')
 		indent_and_print_integer(return_signed(p), p);
 	else if (p->cc == 'o' || p->cc == 'u' || p->cc == 'x')

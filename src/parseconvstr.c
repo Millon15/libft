@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 22:09:59 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/12 15:18:01 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/10 16:25:32 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ size_t				parseconvstr(const char *s, size_t i, t_printf *p)
 	}
 	if (s[i] == '\0')
 		return (i);
+	if (s[i] == 'D' || s[i] == 'O' || s[i] == 'U' || \
+		s[i] == 'S' || s[i] == 'C')
+		p->fl.l = true;
+	else if (s[i] == 'X')
+		p->fl.is_bigx = true;
+	else if (s[i] == 'p')
+		p->fl.hesh = true;
+	p->cc = ft_tolower(s[i]);
 	get_argument(s[i], p);
 	ft_bzero(&p->fl, sizeof(p->fl));
 	return (++i);
