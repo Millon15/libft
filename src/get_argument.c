@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 06:05:00 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/07/09 21:31:59 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/19 18:07:57 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static	size_t			return_unsigned(t_printf *p)
 {
 	if (p->fl.j)
-		return (va_arg(p->ap, intmax_t));
+		return (va_arg(p->ap, uintmax_t));
 	else if (p->fl.z)
-		return (va_arg(p->ap, ssize_t));
+		return (va_arg(p->ap, size_t));
 	else if (p->fl.ll)
 		return (va_arg(p->ap, unsigned long long));
 	else if (p->fl.l)
