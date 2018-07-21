@@ -6,12 +6,12 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/07/21 19:54:39 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/21 21:26:18 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 # include <fcntl.h>
 # include <stdlib.h>
@@ -19,6 +19,8 @@
 # include <stdint.h>
 # include <stdbool.h>
 # include <limits.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 
 /*
 *****************************************************************************
@@ -26,7 +28,7 @@
 *****************************************************************************
 */
 
-int				ft_printf(const char *convstr, ...);
+int					ft_printf(const char *convstr, ...);
 
 /*
 *****************************************************************************
@@ -35,8 +37,6 @@ int				ft_printf(const char *convstr, ...);
 */
 
 # define GET_NEXT_LINE_H
-# include <sys/types.h>
-# include <sys/uio.h>
 # define BUFF_SIZE 42
 
 typedef	struct		s_gnl
@@ -151,4 +151,3 @@ char				ft_itoc(const unsigned char value, \
 	const bool is_upperсase);
 
 #endif
-
