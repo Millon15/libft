@@ -6,16 +6,15 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/07/09 21:31:16 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/21 17:22:01 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <libft.h>
+# include "../libft/libft.h"
 # include <stdarg.h>
-# include <stdio.h>
 # define MAXINTSIZE (sizeof(size_t) * 8)
 # define BUFFER_SIZE 4096
 
