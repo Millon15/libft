@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/07/21 19:23:53 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/07/31 17:33:24 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,15 +60,15 @@ fclean: clean
 
 re: fclean all
 
-shortfclean:
+mfclean:
 	rm -rf $(OBJ_D)
 	rm -f $(NAME)
 
-shortre: shortfclean all
+mre: mfclean all
 
-test: shortre
-	$(C) -o unittest.out $(INCLUDE) $(NAME) unittest.c
+test: mre
+	$(C) -o unittest.out $(INCLUDE) $(NAME) unittest.cpp
 	./unittest.out
 	rm -f unittest.out
 
-.PHONY: all clean fclean re test shortfclean shortre
+.PHONY: all clean fclean re test mfclean mre

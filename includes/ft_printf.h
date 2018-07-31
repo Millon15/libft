@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 11:49:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/07/21 17:22:01 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/07/31 17:27:50 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,9 @@ typedef struct	s_printf
 	int								i;
 	char							*buf;
 	int								to_out;
+	int								outfd;
 
 }				t_printf;
-
-int				ft_printf(const char *convstr, ...);
 
 void			add_char_to_buf(const int c, t_printf *p);
 size_t			parseconvstr(const char *s, size_t i, t_printf *p);
