@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/07/31 17:29:22 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/08/16 21:58:43 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,24 @@ int				ft_dprintf(int fd, const char *convstr, ...)
 		p.to_out += write(p.outfd, p.buf, p.i);
 	return (p.to_out);
 }
+
+/*
+** void		print_the_bit(unsigned char num)
+** {
+** 	unsigned char		tmp = 0;
+** 	int					bit;
+**
+** 	for(bit = 0; bit < (sizeof(unsigned char) * 8); bit++)
+** 	{
+** 		tmp <<= 1;
+** 		tmp |= num & 0x01;
+** 		num >>= 1;
+** 	}
+** 	for(bit = 0; bit < (sizeof(unsigned char) * 8); bit++)
+** 	{
+** 		ft_printf("%i ", tmp & 0x01);
+** 		tmp >>= 1;
+** 	}
+** 	ft_putchar('\n');
+** }
+*/

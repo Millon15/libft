@@ -6,16 +6,16 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 00:11:44 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/07 07:36:59 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/08/14 15:47:45 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_utoa_base(unsigned long value, int base)
+char	*ft_utoa_base(size_t value, const int base, const bool is_upperсase)
 {
 	int				j;
-	unsigned long	b;
+	size_t			b;
 	char			*res;
 
 	if (base > 16 || base < 2)
@@ -31,7 +31,7 @@ char	*ft_utoa_base(unsigned long value, int base)
 		res[0] = '0';
 	while (b)
 	{
-		res[j--] = "0123456789ABCDEF"[b % base];
+		res[j--] = ft_itoc(b % base, is_upperсase);
 		b /= base;
 	}
 	return (res);
