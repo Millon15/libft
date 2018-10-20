@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unittest.c                                         :+:      :+:    :+:   */
+/*   unittest.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 05:08:27 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/07/21 21:30:56 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/09/28 07:53:46 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -387,32 +387,38 @@ int			main(void)
 // 		ft_printf("@main_ftprintf: |%####0000 33..1..#00d\\n|\n", 256);
 // printf("\n");
 
-// 	const char		*l = setlocale(LC_ALL, "");
-// 		if (l == NULL) 
-// 			printf("Locale not set\n");
-// 		else
-// 			printf("Locale set to %s\n", l);
-// printf("\n");
+	const char		*l = setlocale(LC_ALL, "");
+		if (l == NULL) 
+			printf("Locale not set\n");
+		else
+			printf("Locale set to %s\n", l);
+printf("\n");
 
-// 		printf("%lc\n", L'ы');
-// 		ft_printf("%lc\n", L'ы');
-// 		printf("%lc\n", L'в');
-// 		ft_printf("%lc\n", L'в');
-// 	printf("\n");
+//		printf("%lc\n", L'ы');
+//		ft_printf("%lc\n", L'ы');
+//		printf("%lc\n", L'в');
+//		ft_printf("%lc\n", L'в');
+//	printf("\n");
 
-// 		printf("{%13S}\n", L"фывфыв");
-// 		ft_printf("{%13S}\n", L"фывфыв");
-// 		printf("{%60.10S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		ft_printf("{%60.10S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		printf("{%-15.2S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		ft_printf("{%-15.2S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		ft_printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		ft_printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		printf("%4.15S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// 		ft_printf("%4.15S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
-// printf("\n");
+		printf("{%13S}\n", L"фывфыв");
+		ft_printf("{%13S}\n", L"фывфыв");
+		printf("{%013S}\n", L"фы");
+		ft_printf("{%013S}\n", L"фы");
+		printf("{%-013S}\n", L"фы");
+		ft_printf("{%-013S}\n", L"фы");
+		printf("{%.3S}\n", L"фывфыв");
+		ft_printf("{%.3S}\n", L"фывфыв");
+//		printf("{%60.10S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		ft_printf("{%60.10S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		printf("{%-15.2S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		ft_printf("{%-15.2S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		ft_printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		ft_printf("{%-60.S}\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		printf("%4.15S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+//		ft_printf("%4.15S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+printf("\n");
 // 		printf("%18.15S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 // 		ft_printf("%18.15S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 // 		printf("%.1S|\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");

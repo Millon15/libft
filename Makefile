@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/07/31 17:33:24 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/09/28 07:54:16 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ mfclean:
 mre: mfclean all
 
 test: mre
-	$(C) -o unittest.out $(INCLUDE) $(NAME) unittest.cpp
+	$(C) -o unittest.out $(INCLUDE) $(NAME) unittest.c
 	./unittest.out
 	rm -f unittest.out
 
