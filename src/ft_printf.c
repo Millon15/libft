@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 14:21:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/10/03 16:40:42 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/08/16 21:58:43 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				ft_printf(const char *convstr, ...)
 	while (convstr[i] != '\0')
 	{
 		if (convstr[i] == '%')
-			i = parseconvstr(convstr, i + 1, &p);
+			i = parseconvstr(convstr, i, &p);
 		else
 			add_char_to_buf(convstr[i++], &p);
 	}

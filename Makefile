@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
-#    Updated: 2018/09/28 07:54:16 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/10/21 10:52:54 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,9 +66,11 @@ mfclean:
 
 mre: mfclean all
 
-test: mre
+test: all
 	$(C) -o unittest.out $(INCLUDE) $(NAME) unittest.c
-	./unittest.out
-	rm -f unittest.out
+	@ echo "------------------------------------------------------------------"
+	@ ./unittest.out
+	@ echo "------------------------------------------------------------------"
+	@ rm -f unittest.out
 
 .PHONY: all clean fclean re test mfclean mre
