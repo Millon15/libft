@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/08/14 19:59:18 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/11/28 13:13:58 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int					ft_dprintf(int fd, const char *convstr, ...);
 */
 
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 42
+# define BUFF_SIZE 4096
 
 typedef	struct		s_gnl
 {
