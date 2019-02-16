@@ -79,7 +79,11 @@ SRC	:=			ft_strlen.c \
 				checkintstr.c \
 				ft_islowercase.c \
 				ft_isuppercase.c \
-				ft_itoc.c
+				ft_itoc.c \
+				ft_freestrjoin.c \
+				ft_tdafree.c \
+				ft_bfree.c
+
 
 PRINTFSRCS	:=	ft_printf.c \
 				parseconvstr.c \
@@ -98,7 +102,7 @@ PRINTF_PATH :=	ft_printf/
 PRINTF_SPATH :=	ft_printf/src/
 
 CC :=			clang
-CFLAGS :=		-Wall -Werror -Wextra
+CFLAGS :=		-Wall -Werror -Wextra -O3
 IFLAGS :=		-I $(PRINTF_PATH)includes/ -I .
 
 SRCS +=			$(SRC)

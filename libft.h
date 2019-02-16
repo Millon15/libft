@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/11/28 13:13:58 by vbrazas          ###   ########.fr       */
+/*   Updated: 2019/02/16 18:54:52 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strdup(const char *s1);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strstr(const char *haystack, const char *needle);
-char				*ft_strnstr(const char *haystack, const char *needle\
-	, size_t len);
+char				*ft_strnstr(
+	const char *haystack, const char *needle, size_t len);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strcat(char *dest, const char *src);
@@ -138,15 +138,15 @@ void				ft_foreach(int *tab, int length, void (*f)(int));
 char				*ft_itoa_base(int value, int base);
 int					ft_atoi_base(const char *s, int base);
 unsigned long		ft_atou_base(const char *s, int base);
-char				*ft_utoa_base(size_t value, const int base,
-	const bool is_upperсase);
+char				*ft_utoa_base(
+	size_t value, const int base, const bool is_upperсase);
 ssize_t				ft_pow(ssize_t n, int pw);
 int					ft_root(int n, int rt);
 int					ft_fcd(int a, int b);
 int					ft_isprint(int c);
 int					ft_iswhitespace(int c);
-char				*ft_strnjoin(char const *s1, char const *s2, \
-	size_t l1, size_t l2);
+char				*ft_strnjoin(
+	char const *s1, char const *s2, size_t l1, size_t l2);
 ssize_t				ft_putnstr(char const *s, size_t len);
 ssize_t				ft_putnstr_fd(char const *s, int fd, size_t len);
 ssize_t				ft_putnendl(char const *s, size_t len);
@@ -155,7 +155,9 @@ int					ft_module(int x);
 char				*checkintstr(char *str);
 int					ft_islowercase(const int c);
 int					ft_isuppercase(const int c);
-char				ft_itoc(const unsigned char value, \
-	const bool is_upperсase);
+char				ft_itoc(const unsigned char value, const bool is_upper);
+bool				ft_freestrjoin(char **dst, const char *source);
+bool				ft_tdafree(char ***arr);
+bool				ft_bfree(void *arr);
 
 #endif
