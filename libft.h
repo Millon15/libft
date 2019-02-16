@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 20:15:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/08/14 19:59:33 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/11/28 13:13:58 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 # include <fcntl.h>
 # include <stdlib.h>
@@ -38,25 +38,26 @@
 
 /*
 *****************************************************************************
-**************************************GNL************************************
+********************************** FT_PRINTF ********************************
 *****************************************************************************
 */
 
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 42
+int					ft_printf(const char *convstr, ...);
+int					ft_dprintf(int fd, const char *convstr, ...);
 
-typedef	struct		s_gnl
-{
-	char			*arr;
-	int				fd;
-	struct s_gnl	*next;
-}					t_gnl;
+/*
+*****************************************************************************
+************************************ GNL ************************************
+*****************************************************************************
+*/
+
+# define BUFF_SIZE 1023
 
 int					get_next_line(const int fd, char **line);
 
 /*
 *****************************************************************************
-*************************************LIBFT***********************************
+************************************ LIBFT **********************************
 *****************************************************************************
 */
 
@@ -134,11 +135,11 @@ void				ft_lstdelcont(void *content, size_t content_size);
 void				ft_swap(int *a, int *b);
 int					*ft_range(int min, int max);
 void				ft_foreach(int *tab, int length, void (*f)(int));
+char				*ft_itoa_base(int value, int base);
 int					ft_atoi_base(const char *s, int base);
 unsigned long		ft_atou_base(const char *s, int base);
 char				*ft_utoa_base(size_t value, const int base,
 	const bool is_upperсase);
-char				*ft_itoa_base(int value, int base);
 ssize_t				ft_pow(ssize_t n, int pw);
 int					ft_root(int n, int rt);
 int					ft_fcd(int a, int b);
